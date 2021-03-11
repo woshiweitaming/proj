@@ -1,0 +1,534 @@
+{
+	"easycom": {
+	    "^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/index",
+			"style": {
+				// "navigationBarTitleText": "",
+				// "color": "#000000",
+				// "navigationBarBackgroundColor": "#ffffff",
+				// "app-plus": {
+				//     "titleNView": {
+				//         "buttons": [ 
+				//             {
+				//                 "text": "\ue6fd",
+				// 				"fontSrc":"/static/fonts/iconfont.ttf"
+				//             }
+				//         ],
+				// 		"titleIcon": "./static/images/logo.png"
+				// 	}
+				// }
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/fund/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/order/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/register/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/forget/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/phone/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/k/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/trade/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/valid/index",
+			"style": {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/recharge/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#0e0440"
+			}
+		},
+		{
+			"path": "pages/recharging/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/pwd/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/nickname/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/information/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/certification/primary",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/certification/advanced",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/setting/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/lang/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/history_record_detail/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/withdraw/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c",
+				"app-plus": {
+				    "titleNView": {
+				        "buttons": [ 
+				            {
+				                "text": "\ue700",
+								"fontSrc":"/static/fonts/iconfont.ttf"
+				            }
+				        ]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/withdraw_record/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/futures_position/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/exchange/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/transfer/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/futures_trade/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/white_paper/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#1c1d31"
+			}
+		},
+		{
+			"path": "pages/kefu/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/desc/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/help/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/withdraw_record/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/wallet/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/add_wallet/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/consume_record/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/coin_pool/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3063d9",
+				"app-plus": {
+					"titleNView": "transparent"
+				}
+				
+			}
+		},
+		{
+			"path": "pages/coin_pool_buy/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3063d9"
+			}
+		},
+		{
+			"path": "pages/coin_pool_rules/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#3063d9"
+			}
+		},
+		{
+			"path": "pages/coin_pool_confirm/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#2351bd"
+			}
+		},
+		{
+			"path": "pages/coin_pool_success/index",
+			"style": {
+				"navigationBarTitleText": "",
+				"color": "#000000",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/coin_pool_record/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#2351bd"
+			}
+		},
+		{
+			"path": "pages/coin_pool_record_detail/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#2351bd"
+			}
+		},
+		{
+			"path": "pages/coin_pool_redeem/index",
+			"style": {
+				"navigationBarTextStyle": "white",
+				"navigationBarBackgroundColor": "#2351bd"
+			}
+		},
+		{
+			"path": "pages/share/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/pool/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"navigationBarBackgroundColor":"#323457",
+				"navigationStyle":"custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/staking/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/pool_trade/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"navigationBarBackgroundColor":"#323457"
+			}
+		},
+		{
+			"path": "pages/pool_redeem/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pool_redeem_confirm/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pool_statking_order/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pool_success/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/success_tips/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pool_confirm/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pool_yield/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff",
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/order_list/index",
+			"style": {
+				"navigationBarTextStyle":"white",
+				"navigationBarBackgroundColor": "#20222c"
+			}
+		},
+		{
+			"path": "pages/pow_detail/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pow_list/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pow_trade/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pow_success/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pow_record/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		},
+		{
+			"path": "pages/pow_record_detail/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"navigationBarBackgroundColor": "#ffffff"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "AotaiEx",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#20222c"
+	},
+	"tabBar": {
+	    "color": "#ffffff",
+	    "selectedColor": "#2970e6",
+	    "borderStyle": "black",
+	    "backgroundColor": "#2a2c33", 
+	    "list": [{
+	        "pagePath": "pages/home/index",
+	        "iconPath": "/static/images/tabbar/home.png",
+	        "selectedIconPath": "/static/images/tabbar/home_selected.png",
+	        "text": "首页"
+	    },{
+	        "pagePath": "pages/pool/index",
+	        "iconPath": "/static/images/tabbar/pool.png",
+	        "selectedIconPath": "/static/images/tabbar/pool_selected.png",
+	        "text": "矿池"
+	    },{
+	        "pagePath": "pages/order/index",
+	        "iconPath": "/static/images/tabbar/order.png",
+	        "selectedIconPath": "/static/images/tabbar/order_selected.png",
+	        "text": "订单"
+	    },{
+	        "pagePath": "pages/fund/index",
+	        "iconPath": "/static/images/tabbar/fund.png",
+	        "selectedIconPath": "/static/images/tabbar/fund_selected.png",
+	        "text": "资产"
+	    },{
+	        "pagePath": "pages/user/index",
+	        "iconPath": "/static/images/tabbar/user.png",
+	        "selectedIconPath": "/static/images/tabbar/user_selected.png",
+	        "text": "我的"
+	    }]
+	}
+}

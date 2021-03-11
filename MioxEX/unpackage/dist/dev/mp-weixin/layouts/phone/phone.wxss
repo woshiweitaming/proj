@@ -1,0 +1,29 @@
+
+.qh.data-v-11596d69{
+	padding-left: 100px;
+}
+.qh_class.data-v-11596d69{
+	position: absolute;
+	left: 0;
+	width: 90px;
+}
+.uni-input.data-v-11596d69{
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	color: #EE9900;
+}
+.get_code.data-v-11596d69{
+	max-width: 80px;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	line-height: 60rpx;
+	font-size: 28rpx;
+	top: -3px;
+	background: #007AFF;
+	border-radius: 5px;
+	color: #fff;
+	padding: 0 5px;
+}
+

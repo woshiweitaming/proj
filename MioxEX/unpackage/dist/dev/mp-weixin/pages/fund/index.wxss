@@ -1,0 +1,50 @@
+
+.main_class.data-v-8ff4c37e{
+	height: 100%;
+	overflow: hidden;
+}
+.current_lefmoney.data-v-8ff4c37e{
+	padding: 40rpx;
+	text-align: left;
+	background: rgba(255,255,255,.03);
+	border-radius: 20rpx;
+	position: relative;
+}
+.current_lefmoney .sub_title.data-v-8ff4c37e,
+.current_lefmoney .leftmoney.data-v-8ff4c37e{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+}
+.current_lefmoney .sub_title.data-v-8ff4c37e{
+	font-size: 30rpx;
+	color: rgba(255,255,255,.5);
+}
+.current_lefmoney .leftmoney.data-v-8ff4c37e{
+	font-size: 50rpx;
+	color: #F0AD4E;
+}
+.mark.data-v-8ff4c37e{
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 150rpx;
+	color: rgba(255,255,255,.05);
+}
+.swiper.data-v-8ff4c37e{
+	height: 100% !important;
+}
+.uni-swiper-item.data-v-8ff4c37e{
+	height: 100%;
+	overflow: auto !important;
+}
+.table_class.data-v-8ff4c37e{
+	height: calc(100% - 160px);
+}
+.table_main.data-v-8ff4c37e{
+	height: calc(100% - 60px);
+}
+.scroll_view.data-v-8ff4c37e{
+	height: 100%;
+}
+

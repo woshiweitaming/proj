@@ -1,0 +1,7 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "position-record": "/layouts/order/position_record",
+    "history-record": "/layouts/order/history_record"
+  }
+}

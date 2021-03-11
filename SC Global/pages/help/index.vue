@@ -1,0 +1,465 @@
+<template>
+	<view class="help_class">
+		<view class="listData">
+			<view class="label" v-for="(items, index) in listData[getGlobalLang]" :key="index">
+				<view class="title">{{items.title}}</view>
+				<view class="desc">
+					<rich-text :nodes="items.desc"></rich-text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	/**
+	 * 帮助中心
+	 */
+	import commonMixins from '@/mixins/common_mixins.js'
+	import langsMixins from '@/mixins/lang_mixins.js'
+	export default {
+		name: 'HelpCenter',
+		mixins: [commonMixins, langsMixins],
+		data(){
+			return {
+				listData: {
+					cn: [
+						{
+							title: '合约交易的风险度代表什么？',
+							desc: '风险度是您合约账户中风险指标，风险度等于100%被视为爆仓。我们建议您，当您的风险度超过50%时，需要谨慎开仓，以免因为爆仓而造成损失。可通过补充合约资产的可用资金，或减少持仓来降低您的风险。'
+						},
+						{
+							title: '什么是限价委托和市价委托？',
+							desc: '限价委托指的是：按照您的指定价格委托平台进行交易的价格。<br />市价委托指的是：委托平台直接以当前市场价格进行交易。 <br />在开放交易规则中，市价订单优先于限价订单。 <br />如果您选择限价单，请根据当前货币市场价格合理开仓。'
+						},
+						{
+							title: '合约交易中的保证金是什么？',
+							desc: '在合约交易中，用户根据合约价格和数量，根据对应的杠杆倍数，缴纳资金作为履行合约的财力担保，便可参与合约的买卖，这种资金就是合约保证金。用户开仓将占用保证金，占用的开仓保证金越多，账户风险越高。'
+						},
+						{
+							title: '合约交易规则是什么？',
+							desc: `交易类型<br />
+							       交易类型分为开仓做多（买入）和开仓做空（卖出）两个方向：<br />
+								   买入做多（看涨），是指您认为当前指数有涨的可能，希望以您设定的价格或者当前市价，新买入一定数量的某种合约。<br />
+								   卖出做空（看跌），是指您认为当前指数有跌的可能，您期望以您设定的价格或当前市价，新卖出一定数量的某种合约。<br />
+								   下单方式<br />
+                                   限价委托：您需要自己指定下单的价格和数量<br />
+                                   市价委托：您只需设定下单的数量，价格为当前市场价格<br />
+                                   持仓<br />
+                                   当您提交的开仓委托单成交后，即称之为持仓<br />
+                                   合约交割问题：<br />
+                                   平台合约为永续合约，无设定交割时间。只要未达到系统爆仓条件或您未手动平仓，您可永久持仓。<br />
+                                   系统平仓<br />
+                                   1.达到止盈止损设定值，系统自动平仓<br />
+                                   2.风险度过高，系统强制平仓`
+						},
+						{
+							title: '期货的交易规则是什么？',
+							desc: `通过预估当前交易对接下来的价格走势（涨跌）的方向式参与交易，结算时不计算涨跌的幅度，只对涨跌的结果进行收益结算。<br />
+                                   不同交割时间结算的盈利百分比不同，盈利将准确的展示在交易界面中。`
+						},
+						{
+							title: '什么是冻结资产？',
+							desc: `冻结资产是指您在进行交易或提币操作时，流程未全部完成，当前资产暂时由系统托管，不能由您自由支配。并不代表您损失了这笔资产或者资产出现异常，请您放心。`
+						},
+						{
+							title: '资产中的折合金额为什么会产生变化？',
+							desc: `资产中折合计算的是当前持有数字货币折合美元的价值，因数字资产的价格产生波动而变化。您的数字资产数量并没有改变。`
+						},
+						{
+							title: '什么是期货？',
+							desc: `简称期货，是一种跨越时间的交易方式。买卖双方透过签订合约，同意按指定的时间、价格与其他交易条件，交收指定数量的现货。通常期货集中在期货交易所，以标准化合约进行买卖。交易的资产通常是商品或金融工具。双方同意购买和出售资产的预定价格被称为远期价格。`
+						},
+						{
+							title: '为什么需要进行资金划转？',
+							desc: `为了保障您各个账户之间的资金独立，有利于您进行合理的风险控制，特此将各大交易板块的账户进行划分。划转是指各个交易账户之间的资产进行互相转换的过程。`
+						},
+						{
+							title: '关于强制平仓的说明',
+							desc: `风险度是衡量您资产风险的指标，当风险度等于100%时，您的仓位被视为爆仓，风险度=（持仓保证金/合约账户权益）*100%，为了防止用户穿仓，系统设定了风险度的调整比例，当风险度达到系统设定的风险值，系统将强制平仓。<br />
+							例如：系统设定的调整比例为10%，则您的风险度大于等于90%时，您的所有仓位仓位都将会被系统强制平仓。<br />
+							注：若是风险度超标导致的系统强制平仓，是将您所有仓位都进行平仓，因此希望您可以合理的控制您的风险度，以免因此造成不必要的损失。<br />
+							`
+						},
+						{
+							title: '如何搬砖获利，有什么优势呢？',
+							desc: `这是一种货币存入，将资产托管给平台，由平台的专业团队进行运作，参与固定收益的投资`
+						},
+						
+					],
+					cns: [
+						{
+							title: '合約交易的風險度代表什麼？',
+							desc: '風險度是您合約帳戶中風險名額，風險度等於100%被視為爆倉。我們建議您，當您的風險度超過50%時，需要謹慎開倉，以免因為爆倉而造成損失。可通過補充合約資產的可用資金，或减少持倉來降低您的風險'
+						},
+						{
+							title: '什麼是限價委託和市價委托？',
+							desc: '限價委託指的是：按照您的指定價格委託平臺進行交易的價格。<br />市價委托指的是：委託平臺直接以當前市場價格進行交易。<br />在開放交易規則中，市價訂單優先於限價訂單。<br />如果您選擇限價單，請根據當前貨幣市場價格合理開倉。'
+						},
+						{
+							title: '合約交易中的保證金是什麼？',
+							desc: '在合約交易中，用戶根據合約價格和數量，根據對應的杠杆倍數，繳納資金作為履行合約的財力擔保，便可參與合約的買賣，這種資金就是合約保證金。用戶開倉將佔用保證金，佔用的開倉保證金越多，帳戶風險越高。'
+						},
+						{
+							title: '合約交易規則是什麼？',
+							desc: `
+							              交易類型<br />
+							              
+							              交易類型分為開倉做多（買入）和開倉做空（賣出）兩個方向：<br />
+							              
+							              買入做多（看漲），是指您認為當前指數有漲的可能，希望以您設定的價格或者當前市價，新買入一定數量的某種合約。<br />
+							              
+							              賣出做空（看跌），是指您認為當前指數有跌的可能，您期望以您設定的價格或當前市價，新賣出一定數量的某種合約。<br />
+							              
+							              下單管道<br />
+							              
+							              限價委託：您需要自己指定下單的價格和數量<br />
+							              
+							              市價委托：您只需設定下單的數量，價格為當前市場價格<br />
+							              
+							              持倉<br />
+							              
+							              當您提交的開倉委託單成交後，即稱之為持倉<br />
+							              
+							              合約交割問題：<br />
+							              
+							              平臺合約為永續合約，無設定交割時間。只要未達到系統爆倉條件或您未手動平倉，您可永久持倉。<br />
+							              
+							              系統平倉<br />
+							              
+							              1.達到止盈止損設定值，系統自動平倉<br />
+							              
+							              2.風險度過高，系統強制平倉
+							`
+						},
+						{
+							title: '期貨的交易規則是什麼？',
+							desc: `通過預估當前交易對接下來的價格走勢（漲跌）的方向式參與交易，結算時不計算漲跌的幅度，只對漲跌的結果進行收益結算。 <br />
+                            不同交割時間結算的盈利百分比不同，盈利將準確的展示在交易界面中。`
+						},
+						{
+							title: '什麼是凍結資產？',
+							desc: `凍結資產是指您在進行交易或提幣操作時，流程未全部完成，當前資產暫時由系統託管，不能由您自由支配。並不代表您損失了這筆資產或者資產出現異常，請您放心。`
+						},
+						{
+							title: '資產中的折合金額為什麼會產生變化？',
+							desc: `資產中折合計算的是當前持有數字貨幣折合美元的價值，因數字資產的價格產生波動而變化。您的數字資產數量並沒有改變。`
+						},
+						{
+							title: '什麼是期貨？',
+							desc: `簡稱期貨，是一種跨越時間的交易方式。買賣雙方透過簽訂合約，同意按指定的時間、價格與其他交易條件，交收指定數量的現貨。通常期貨集中在期貨交易所，以標準化合約進行買賣。交易的資產通常是商品或金融工具。雙方同意購買和出售資產的預定價格被稱為遠期價格。`
+						},
+						{
+							title: '為什麼需要進行資金劃轉？',
+							desc: `為了保障您各個賬戶之間的資金獨立，有利於您進行合理的風險控制，特此將各大交易板塊的賬戶進行劃分。劃轉是指各個交易賬戶之間的資產進行互相轉換的過程。`
+						},
+						{
+							title: '關於強制平倉的說明',
+							desc: `風險度是衡量您資產風險的指標，當風險度等於100%時，您的倉位被視為爆倉，風險度=（持倉保證金/合約賬戶權益）*100%，為了防止用戶穿倉，系統設定了風險度的調整比例，當風險度達到系統設定的風險值，系統將強制平倉。 <br />
+例如：系統設定的調整比例為10%，則您的風險度大於等於90%時，您的所有倉位倉位都將會被系統強制平倉。 <br />
+注：若是風險度超標導致的系統強制平倉，是將您所有倉位都進行平倉，因此希望您可以合理的控制您的風險度，以免因此造成不必要的損失。 <br />
+							`
+						},
+						{
+							title: '如何搬磚獲利，有什麼優勢呢？',
+							desc: `這是一種貨幣存入，將資產託管給平台，由平台的專業團隊進行運作，參與固定收益的投資`
+						},
+					],
+					ja: [
+						{
+							title: '契約取引のリスクは何ですか？?',
+							desc: 'リスク度は契約口座のリスク指標であり、リスク度は100%をバーストと見なします。あなたの危険度が50%を超える場合は、破裂による損失を防ぐために、慎重に倉庫を開けてください。契約資産の使用可能な資金を補充することによって、持ち場を減らすことによって、リスクを低減することができます。'
+						},
+						{
+							title: '価格限定依頼と相場依頼とは？?',
+							desc: `価格制限の委託とは、指定された価格に基づいてプラットフォームに取引を委託する価格のことです。<br/>時価の委託とは、委託プラットフォームが直接現在の市場価格で取引することです。<br/>オープン取引規則では、時価注文は限定価格注文より優先されます。<br/>価格制限表を選択したら、現在の貨幣市場価格によって合理的に倉庫を開けてください。`
+						},
+						{
+							title: '契約取引中の保証金は何ですか？',
+							desc: '契約取引において、ユーザは契約価格と数量に応じて、対応するてこの倍数に応じて、契約履行の財力保証金として資金を納付することができる。ユーザーが倉庫を開けて保証金を占用して、占用するのは多くて、アカウントのリスクはもっと高いです。'
+						},
+						{
+							title: '契約取引のルールは何ですか？',
+							desc: `
+							      取引の種類<br/>
+							      
+							      取引の種類は開倉が多い（買う）と開倉が空いている（売る）の二つの方向に分けられます。
+							      
+							      買いすぎ（強気）とは、現在の指数が上がる可能性があると思います。設定された価格または現在の相場で、新たに一定の数量の契約を買いたいです。<br/>
+							      
+							      売りが空振りするということは、現在の指数が下がる可能性があるということです。設定された価格または現在の相場で、新たに一定の数量の契約を売りたいです。<br/>
+							      
+							      注文の仕方<br/>
+							      
+							      価格制限依頼：注文の価格と数量を自分で指定してください。
+							      
+							      市価委託：注文数量を設定するだけで、価格は現在の市場価格です。
+							      
+							      持ち場<br/>
+							      
+							      あなたが提出した発注書が成約したら、それを手持ちと言います。<br/>
+							      
+							      契約の受け渡し問題：<br/>
+							      
+							      プラットフォーム契約は継続契約で、受け渡し時間は設定されていません。システムのパンク状態に達していない限り、または手動で倉庫を平らにしていない限り、永久に倉庫を持つことができます。<br/>
+							      
+							      システム平倉<br/>
+							      
+							      1.ストップロス設定値に到達し、システムは自動的に倉庫を平らにする<br/>
+							      
+							      2.リスクが高すぎて、システムが倉庫を強制する
+							`
+						},
+						
+						{
+							title: '先物の取引ルールは何ですか？',
+							desc: `現在の取引の次の価格動向（上昇と下降）への方向を予測して取引に参加します。上昇率と下降率は決済時に計算されず、上昇と下降の結果のみが決済されます。 <br />
+                            決済時間が異なると利益率も異なり、利益はトレーディングインターフェースに正確に表示されます。`
+						},
+						{
+							title: '凍結資産とは何ですか？',
+							desc: `凍結資産とは、コインを取引または引き出しているときに、プロセスが完全に完了しておらず、現在の資産が一時的にシステムの管理下にあり、自由に制御できないことを意味します。資産を紛失した、または資産が異常であるという意味ではありませんので、ご安心ください。`
+						},
+						{
+							title: '資産の換算額が変わるのはなぜですか？',
+							desc: `資産の同等の計算は、米ドルに相当する現在のデジタル通貨の値であり、デジタル資産の価格の変動によって変化します。デジタル資産の数は変更されていません。`
+						},
+						{
+							title: '未来とは？',
+							desc: `先物と呼ばれ、時を超えた取引方法です。契約に署名することにより、買い手と売り手は、指定された時間、価格、およびその他の取引条件に従って、指定された量のスポットを提供することに同意します。通常、先物は先物取引所に集中しており、標準化された契約で取引されます。取引される資産は通常、商品または金融商品です。両当事者が資産の売買に同意する所定の価格は、先物価格と呼ばれます。`
+						},
+						{
+							title: 'なぜ資金を送金する必要があるのですか？',
+							desc: `さまざまなアカウント間の資金の独立性を確保し、合理的なリスク管理を容易にするために、主要な取引セクターのアカウントはここに分割されます。譲渡とは、さまざまな取引口座間で資産を相互に変換するプロセスを指します。`
+						},
+						{
+							title: '強制清算に関する注意',
+							desc: `リスクは資産のリスクを測定する指標です。リスクが100％の場合、ポジションは清算とみなされます。リスク=（ポジションマージン/契約勘定エクイティ）* 100％。ユーザーがポジションを突破するのを防ぐために、システムはリスク度の調整率を調整し、リスク度がシステムで設定したリスク値に達すると、強制的にポジションをクローズします。 <br />
+例：システムによって設定された調整率が10％で、リスクレベルが90％以上の場合、すべてのポジションがシステムによって強制的に清算されます。 <br />
+注：システムの強制清算が過度のリスクによって引き起こされた場合、すべてのポジションが清算されます。したがって、不必要な損失を回避するために、リスクを合理的に管理できることを願っています。 <br />
+							`
+						},
+						{
+							title: '利益を上げるためにレンガを動かす方法、利点は何ですか？',
+							desc: `これは通貨預金であり、資産はプラットフォームでホストされ、プラットフォームの専門家チームによって運営され、固定収入投資に参加しています`
+						},
+					],
+					ko: [
+						{
+							title: '계약 거래 의 위험 도 는 무엇 을 대표 합 니까?',
+							desc: '리 스 크 도 는 귀하 의 계약 계 정 에서 리 스 크 기준 으로 리 스 크 도 는 100% 가 창고 폭발 로 간주 된다.저 희 는 귀하 의 위험 도가 50% 를 넘 으 면 창고 가 폭발 로 인해 손실 이 발생 하지 않도록 신중 해 야 합 니 다.계약 자산 의 사용 가능 한 자금 을 보충 하거나 창 고 를 줄 여서 귀하 의 위험 을 낮 출 수 있 습 니 다.'
+						},
+						{
+							title: '가격 제한 의뢰 와 시가 의뢰 는 무엇 입 니까?',
+							desc: '가격 제한 의뢰 란 귀하 가 지정 한 가격 으로 플랫폼 에 의뢰 하여 거래 하 는 가격 을 말 합 니 다.<br /> 시가 위탁 이란 위탁 플랫폼 이 현재 시장 가격 으로 직접 거래 하 는 것 을 말한다.<br /> 오픈 거래 규칙 중 시가 주문 이 한정 주문 보다 우선 합 니 다.<br /> 만약 에 귀하 가 제한 가격 표를 선택 하신 다 면 현재 화폐 시장 가격 에 따라 합 리 적 으로 창 고 를 하 십시오.'
+						},
+						{
+							title: '계약 거래 에서 보증금 은 무엇 입 니까?',
+							desc: '계약 거래 에서 사용 자 는 계약 가격 과 수량 에 따라 해당 하 는 레버 리 지 배수 에 따라 자금 을 납부 하여 계약 을 이행 하 는 재력 담보 로 하면 계약 의 매매 에 참여 할 수 있다. 이런 자금 은 바로 계약 보증금 이다.사용자 가 창 고 를 개설 하면 보증금 을 점용 하고 사용 하 는 창 고 를 개설 하 는 보증금 이 많 을 수록 계 정 리 스 크 가 높아진다.'
+						},
+						{
+							title: '계약 거래 규칙 이 뭐 예요？',
+							desc: `
+							     거래 유형 <br /> 거래 유형 은 창 고 를 많이 하 는 것 (매입) 과 창 고 를 오픈 하 는 것 (매출) 두 가지 방향 으로 나 뉜 다. <br /> 매입 많이 (오 를 기미) 란 현재 지수 가 오 를 가능성 이 있다 고 생각 하고 귀하 가 설정 한 가격 또는 현재 시세 로 일정 수량의 특정한 계약 을 새로 구입 하고 자 하 는 것 을 말 합 니 다.<br />매출 이 헛 되 었 다 (하락 세 를 보 였 다) 는 것 은 현재 지수 가 하락 할 가능성 이 있다 고 생각 하 는 것 을 말 합 니 다. 귀 하 는 귀하 가 설정 한 가격 이나 현재 시세 로 특정한 수량의 계약 을 새로 판매 하 기 를 원 합 니 다.<br /> 주문 방식 <br />한정 위탁: 당신 은 자신 이 주문 한 가격 과 수량 <br /> 을 지정 해 야 합 니 다.시가 의뢰: 당신 은 아래 의 수량 만 설정 하면 됩 니 다. 가격 은 현재 시장 가격 <br /> 입 니 다. 창 고 를 보유 <br />당신 이 제출 한 창 고 개설 의뢰 서 가 거래 된 후, 이 를 창 고 를 보유 <br /> 라 고 합 니 다. 계약 결제 문제: <br />플랫폼 계약 은 영구적 인 계약 이 고 거래 시간 을 설정 하지 않 습 니 다.시스템 폭발 조건 이 되 지 않 거나 수 동 으로 창 고 를 정리 하지 않 으 면 영구적 으로 창 고 를 유지 할 수 있 습 니 다.<br /> 시스템 일반 창 고 <br />1. 이윤 정지 설정 치 달성, 시스템 자동 평 창 <br /> 2. 위험 도가 너무 높 고 시스템 이 창고 평 가 를 강제 한다.
+								 `
+						},
+						{
+							title: '선물 거래 규칙은 무엇입니까?',
+							desc: `현재 거래가 다음 가격 추세 (상승 및 하락)로 향하는 방향을 예측하여 거래에 참여합니다. 정산시 상승 및 하락 비율은 계산되지 않고 상승 및 하락 결과 만 정산됩니다. <br />
+결제 시간에 따라 수익률이 다르며 수익은 거래 인터페이스에 정확하게 표시됩니다.`
+						},
+						{
+							title: '동결 자산이란 무엇입니까?',
+							desc: `동결 된 자산은 코인을 거래하거나 인출 할 때 프로세스가 완전히 완료되지 않았고 현재 자산이 일시적으로 시스템의 관리하에 있으며 사용자가 자유롭게 제어 할 수 없음을 의미합니다. 자산을 잃어 버렸거나 자산이 비정상적인 것은 아닙니다. 안심하십시오.`
+						},
+						{
+							title: '변환 된 자산 금액이 변경되는 이유는 무엇입니까?',
+							desc: `자산의 등가 계산은 디지털 자산의 가격 변동으로 인해 변경되는 미국 달러에 해당하는 현재 보유 디지털 통화의 가치입니다. 디지털 자산의 수는 변경되지 않았습니다.`
+						},
+						{
+							title: '선물이란 무엇입니까?',
+							desc: `선물이라고 불리는 이것은 시간에 걸친 거래 방법입니다. 계약에 서명함으로써 구매자와 판매자는 지정된 시간, 가격 및 기타 거래 조건에 지정된 수량의 현물 상품을 배송하는 데 동의합니다. 일반적으로 선물은 선물 거래소에 집중되어 있으며 표준화 된 계약으로 거래됩니다. 거래되는 자산은 일반적으로 상품 또는 금융 상품입니다. 양 당사자가 자산을 매수 및 매도하기로 합의한 미리 정해진 가격을 선도 가격이라고합니다. `},
+						{
+							title: '자금을 이체해야하는 이유는 무엇입니까?',
+							desc: `다양한 계정 간의 자금 독립성을 보장하고 합리적인 위험 관리를 용이하게하기 위해 주요 거래 부문의 계정을 분할합니다. 양도는 다양한 거래 계정 간의 자산 상호 전환 프로세스를 의미합니다.`
+						},
+						{
+							title: '강제 청산에 관한주의 사항',
+							desc: `위험은 자산의 위험을 측정하는 지표입니다. 위험이 100 % 일 때 귀하의 포지션은 청산으로 간주됩니다. 위험 = (포지션 마진 / 계약 계정 자본) * 100 %. 리스크 조정 비율이 설정되며 리스크가 시스템에서 설정 한 리스크 값에 도달하면 시스템이 포지션을 강제로 닫습니다. <br />
+예 : 시스템에서 설정 한 조정 비율이 10 %이고 위험이 90 % 이상이면 모든 포지션이 시스템에 의해 청산됩니다. <br />
+참고 : 시스템의 강제 청산이 과도한 리스크로 인해 발생한 경우 모든 포지션이 청산되므로 불필요한 손실을 방지하기 위해 리스크를 합리적으로 통제 할 수 있기를 바랍니다. <br />
+							`
+						},
+						{
+							title: '이익을 위해 벽돌을 옮기는 방법, 장점은 무엇입니까?',
+							desc: `이것은 통화 예금이며 자산은 플랫폼에서 호스팅되고 플랫폼의 전문 팀이 운영하며 고정 수입 투자에 참여합니다.`
+						},
+					],
+					vi: [
+						{
+							title: 'Nguy cơ giao dịch hợp đồng là gì?',
+							desc: 'Tỷ lệ rủi ro là tỷ lệ rủi ro trong tài khoản hợp đồng của bạn, nếu mức độ rủi ro bằng 100 Name, nó sẽ được coi là một vụ nổ vị trí.Chúng tôi đề nghị khi rủi ro cao hơn 500kg, hãy cẩn thận mở vị trí để tránh tổn thất do tiếp xúc.Bạn có thể giảm rủi ro bằng cách bổ sung thêm quỹ hợp đồng hoặc giảm vị trí của bạn.'
+						},
+						{
+							title: 'Điều gì là giới hạn trật tự và trật tự thị trường?',
+							desc: 'Giá cả giao nhiệm vụ là giá mà anh giao dịch dựa theo giá đã xác định.Thậm chí còn có tin đồn về giá cả thị trường là platform tổ chức giao dịch trực tiếp với giá trên thị trường.Trong quy tắc thương mại mở, thị trường đặt ưu tiên trên giới hạn.Nếu bạn chọn một lệnh giới hạn, hãy mở vị trí của bạn dựa theo giá thị trường tiền tệ hiện thời.'
+						},
+						{
+							title: 'Giá trị của giao dịch hợp đồng là bao nhiêu?',
+							desc: 'Trong giao dịch hợp đồng, người dùng có thể tham gia giao dịch bằng cách trả quỹ như một bảo đảm tài chính để thực hiện các hợp đồng dựa trên giá và số lượng và tỉ lệ đòn bẩy tương ứng.Càng mở rộng khoảng trống, rủi ro tài khoản càng cao.'
+						},
+						{
+							title: 'Quy tắc hợp đồng？',
+							desc: `
+							    Trong giao dịch hợp đồng, người dùng có thể tham gia giao dịch bằng cách trả quỹ như một bảo đảm tài chính để thực hiện các hợp đồng dựa trên giá và số lượng và tỉ lệ đòn bẩy tương ứng.Càng mở rộng khoảng trống, rủi ro tài khoản càng cao.Kiểu chuyển giao
+							    
+							    Các kiểu giao dịch được chia thành hai hướng: vị trí mở cho dài (mua) và ngắn vị trí mở (bán): tập trung trung trung trung trung:: bh
+							    
+							    Mua dài (màu vàng) có nghĩa là bạn nghĩ rằng chỉ mục hiện thời có khả năng tăng lên và hy vọng mua một số hợp đồng mới nhất định với giá của bạn hoặc giá thị trường hiện thời.David:
+							    
+							    Bán ít (vẻ gấu) đề cập đến việc bạn nghĩ rằng chỉ mục hiện thời có thể giảm, và bạn mong đợi bán một số hợp đồng nhất vào giá bạn đặt hay giá hiện thời.David:
+							    
+							    Phương pháp gọi
+							    
+							    Số giới hạn: bạn cần phải xác định giá và số lượng của đơn đặt
+							    
+							    Việc giao tin vào thị trường: bạn chỉ cần đặt số lượng lệnh, và giá là giá hiện thời trên thị trường.
+							    
+							    Vị trí
+							    
+							    Khi lệnh khai trương được hoàn thành, nó được gọi là vị trí
+							    
+							    Hệ thống phân phối hợp đồng:
+							    
+							    Giao kèo platform là hợp đồng bất hợp pháp mà không có thời gian giao hàng.Miễn là hệ thống không đáp ứng yêu cầu của hệ thống hoặc bạn không đóng vị trí bằng tay, bạn có thể giữ vị trí này vĩnh viễn.David:
+							    
+							    Vị trí đóng hệ thống
+							    
+							    1. Khi nó đạt tới giá trị đã đặt của lãi suất dừng và giảm lỗ, hệ thống sẽ tự động đóng cửa vị trí.
+							    
+							    2. Mức độ rủi ro quá cao, và hệ thống buộc phải đóng cửa vị trí.
+							`
+						},
+						{
+							title: 'Các quy tắc giao dịch cho hợp đồng tương lai là gì?',
+							desc: `Tham gia vào giao dịch bằng cách dự đoán hướng của giao dịch hiện tại đến xu hướng giá tiếp theo (lên và xuống). Tỷ lệ tăng và giảm không được tính toán trong quá trình thanh toán, và chỉ kết quả của sự tăng và giảm được giải quyết. <br />
+Thời gian quyết toán khác nhau có tỷ lệ phần trăm lợi nhuận khác nhau, và lợi nhuận sẽ được hiển thị chính xác trong giao diện giao dịch.`
+						},
+						{
+							title: 'Tài sản phong toả là gì?',
+							desc: `
+Tài sản bị đóng băng có nghĩa là khi bạn đang giao dịch hoặc rút tiền, quá trình này chưa được hoàn tất hoàn toàn và tài sản hiện tại tạm thời thuộc quyền quản lý của hệ thống và bạn không thể tự do kiểm soát. Không có nghĩa là bạn bị mất tài sản hay tài sản bất thường, bạn cứ yên tâm.`
+						},
+						{
+							title: 'Tại sao lượng tài sản quy đổi lại thay đổi?',
+							desc: `Phép tính tương đương trong tài sản là giá trị của đồng tiền kỹ thuật số hiện đang nắm giữ tương đương với đô la Mỹ, giá trị này thay đổi do biến động về giá của tài sản kỹ thuật số. Số lượng tài sản kỹ thuật số của bạn không thay đổi.`
+						},
+						{
+							title: 'Hợp đồng tương lai là gì?',
+							desc: `Được gọi là hợp đồng tương lai, nó là một phương pháp giao dịch kéo dài thời gian. Bằng cách ký kết hợp đồng, người mua và người bán đồng ý giao ngay một lượng xác định theo thời gian, giá cả và các điều kiện giao dịch khác. Thông thường các hợp đồng tương lai tập trung tại các sàn giao dịch kỳ hạn và được giao dịch trong các hợp đồng tiêu chuẩn hóa. Các tài sản được giao dịch thường là hàng hóa hoặc công cụ tài chính. Giá xác định trước mà hai bên đồng ý mua và bán tài sản được gọi là giá kỳ hạn.`
+						},
+						{
+							title: 'Tại sao chúng ta cần chuyển tiền?',
+							desc: `
+Để đảm bảo tính độc lập của nguồn tiền giữa các tài khoản khác nhau của bạn và tạo điều kiện thuận lợi cho việc kiểm soát rủi ro hợp lý, các tài khoản của các lĩnh vực giao dịch chính được chia theo đây. Chuyển giao là quá trình chuyển đổi tài sản lẫn nhau giữa các tài khoản giao dịch khác nhau.`
+						},
+						{
+							title: 'Lưu ý về việc buộc thanh lý',
+							desc: `Rủi ro là một chỉ số để đo lường rủi ro đối với tài sản của bạn. Khi rủi ro bằng 100%, vị thế của bạn được coi là thanh lý. Rủi ro = (ký quỹ vị thế / vốn chủ sở hữu tài khoản hợp đồng) * 100%. Để ngăn người dùng đeo vị thế, hệ thống đặt Tỷ lệ điều chỉnh rủi ro được thiết lập Khi rủi ro đạt đến giá trị rủi ro do hệ thống đặt ra, hệ thống sẽ buộc đóng vị thế. <br />
+Ví dụ: tỷ lệ điều chỉnh do hệ thống đặt ra là 10%, và mức độ rủi ro của bạn lớn hơn hoặc bằng 90%, tất cả các vị thế của bạn sẽ bị hệ thống buộc thanh lý. <br />
+Lưu ý: Nếu hệ thống buộc phải thanh lý do rủi ro quá mức, tất cả các vị thế của bạn sẽ được thanh lý. Vì vậy, chúng tôi mong rằng bạn có thể kiểm soát rủi ro một cách hợp lý để tránh những tổn thất không đáng có. <br />
+							`
+						},
+						{
+							title: 'Làm thế nào để di chuyển gạch để tạo ra lợi nhuận, những lợi thế là gì?',
+							desc: `Đây là một khoản tiền gửi bằng tiền tệ, tài sản được lưu trữ trên nền tảng, được điều hành bởi nhóm chuyên nghiệp của nền tảng và tham gia đầu tư thu nhập cố định`
+						},
+					],
+					en: [
+						{
+							title: 'What is contract risk?',
+							desc: 'When the risk is equal to 100%, it is considered a short position. We recommend that when your risk exceeds 50%, you need to open a position cautiously to avoid losses due to liquidation. You can reduce your risk by replenishing the available funds of contract assets or reducing your positions.'
+						},
+						{
+							title: 'What are limit orders and market orders?',
+							desc: `Limit order refers to ：Entrust platform to trade at the price you specify<br />
+                                   Market order refers to: the entrusted platform directly trades at the current market price.<br />
+                                   In open trading rules,The system will prioritize market orders. If you choose a limit order, please open the position reasonably based on the current currency market price.`
+						},
+						{
+							title: 'What is the margin in contract trading?',
+							desc: 'In contract transactions, users can participate in the purchase and sale of contracts by paying funds as a financial guarantee for performing the contract according to the contract price and quantity, and according to the corresponding leverage multiples. Such funds are the contract security. The user will use the margin to open a position. The more opening margin is used, the higher the account risk.'
+						},
+						{
+							title: 'Notes on forced liquidation',
+							desc: 'Risk is an indicator of the risk of your assets. When the risk is equal to 100%, your order will be forcibly liquidated by the system. Note: We hope you can reasonably control your risk to avoid unnecessary losses.'
+						},
+						{
+							title: 'What are the trading rules for futures?',
+							desc: `Participate in the transaction by predicting the direction of the current transaction to the next price trend (ups and downs). The rate of rise and fall is not calculated during settlement, and only the results of the rise and fall are settled. <br />
+Different settlement times have different profit percentages, and the profit will be accurately displayed in the trading interface.`
+						},
+						{
+							title: 'What is frozen assets?',
+							desc: `Frozen assets means that when you are trading or withdrawing coins, the process is not fully completed, and the current assets are temporarily under the custody of the system and cannot be freely controlled by you. It does not mean that you have lost the asset or the asset is abnormal, please rest assured.`
+						},
+						{
+							title: 'Why does the converted amount of assets change?',
+							desc: `The equivalent calculation in the asset is the value of the current digital currency equivalent to the U.S. dollar, which changes due to fluctuations in the price of the digital asset. The number of your digital assets has not changed.`
+						},
+						{
+							title: 'What are futures?',
+							desc: `Referred to as futures, it is a trading method that spans time. By signing a contract, the buyer and seller agree to deliver a specified amount of spot according to the specified time, price and other trading conditions. Usually futures are concentrated on futures exchanges and are traded in standardized contracts. The assets traded are usually commodities or financial instruments. The predetermined price at which both parties agree to purchase and sell the asset is called the forward price.`
+						},
+						{
+							title: 'Why do we need to transfer funds?',
+							desc: `In order to ensure the independence of funds between your various accounts and facilitate your reasonable risk control, the accounts of the major trading sectors are hereby divided. Transfer refers to the process of mutual conversion of assets between various trading accounts.`
+						},
+						{
+							title: 'Notes on forced liquidation',
+							desc: `Risk is an indicator to measure the risk of your assets. When the risk is equal to 100%, your position is regarded as a liquidation. The risk = (position margin/contract account equity) * 100%. In order to prevent users from breaking the position, the system is set The risk adjustment ratio is set. When the risk reaches the risk value set by the system, the system will force the position to be closed. <br />
+For example: the adjustment ratio set by the system is 10%, and your risk level is greater than or equal to 90%, all your positions will be forced to liquidate by the system. <br />
+Note: If the system's forced liquidation is caused by excessive risk, all your positions will be liquidated. Therefore, we hope that you can reasonably control your risk to avoid unnecessary losses. <br />
+							`
+						},
+						{
+							title: 'How to move bricks to make a profit, what are the advantages?',
+							desc: `This is a currency deposit, the assets are hosted on the platform, operated by the platform's professional team, and they participate in fixed income investment`
+						},
+					]
+				}
+			}
+		},
+		onShow() {
+			this.setTitle(this.getLangs('helpCenter'))
+		}
+	}
+</script>
+
+<style scoped>
+	.help_class{
+		border-top: 1px solid #eee;
+		padding: 40upx 0 0 0;
+		background: #ffff;
+	}
+	.listData{
+		padding-left: 40upx;
+	}
+	.listData .label{
+		border-bottom: 1px solid #eee;
+		position: relative;
+		padding-bottom: 20upx;
+		margin-bottom: 20upx;
+	}
+	.listData .label .title{
+		font-size: 30upx;
+		color: #333;
+		font-weight: bold;
+		line-height: 60upx;
+	}
+	.listData .label .desc{
+		font-size: 26upx;
+		display: block;
+		color: #aaa;
+	}
+</style>
