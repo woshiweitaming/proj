@@ -1,0 +1,113 @@
+{
+	"easycom": {
+		"^u-(.*)": "uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationStyle":"custom"
+			}
+		},
+		{
+			"path": "pages/find/index"
+		},
+		{
+			"path": "pages/kefu/index"
+		},
+		{
+			"path": "pages/fund/index",
+			"style": {
+				"navigationStyle":"custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/my/index"
+		},
+		{
+			"path": "pages/webview/index"
+		},
+		{
+			"path": "pages/bank_list/index"
+		},
+		{
+			"path": "pages/create_bank/index"
+		},
+		{
+			"path": "pages/passwd/index"
+		},
+		{
+			"path": "pages/account/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/mofen/index",
+			"style": {
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path": "pages/exchange_record/index"
+		},
+		{
+			"path": "pages/redpack/index"
+		},
+		{
+			"path": "pages/withdraw_record/index"
+		},
+		{
+			"path": "pages/lessons/index"
+		},
+		{
+			"path": "pages/mofangbao/index"
+		},
+		{
+			"path": "pages/profit_detail/index"
+		},
+		{
+			"path": "pages/trade_record/index"
+		},
+		{
+			"path": "pages/safe/index",
+			"style": {
+				"app-plus": {
+					"titleNView": {
+						"buttons": [
+							{
+								"text": "分享",
+								"fontSize": 14
+							}
+						]
+					}
+				}
+			}
+		},
+		{
+			"path": "pages/product/index"
+		}
+	], 
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#f8fbfd",
+		"navigationBarTitleText":"理财魔方"
+	},
+	"tabBar": {
+	    "color": "#666",
+	    "selectedColor": "#2970e6",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff", 
+	    "list": [{
+	        "pagePath": "pages/home/index" 
+	    },{
+	        "pagePath": "pages/find/index"
+	    },{
+	        "pagePath": "pages/kefu/index"
+	    },{
+	        "pagePath": "pages/fund/index"
+	    }]
+	}
+}

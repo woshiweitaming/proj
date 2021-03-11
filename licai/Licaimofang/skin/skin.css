@@ -1,0 +1,25 @@
+page{
+	background: #f8fbfd
+}
+
+.custom_header{
+	width: 100%;
+	height: calc(88upx + var(--status-bar-height));
+	background: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding-top: var(--status-bar-height);
+	z-index: 10000000;
+}
+.custom_header_main{
+	position: relative;
+}
+
+
+.inner_box{
+	padding: 20upx;
+	background: #fff;
+	border-radius: 20upx;
+	box-shadow: 0 0 20upx 0 rgba(0,0,0,.1);
+}

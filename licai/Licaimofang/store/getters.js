@@ -1,0 +1,1 @@
+export const getCurLang = state => state.curLang
