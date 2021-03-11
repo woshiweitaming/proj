@@ -1,16 +1,32 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import routesConfig from '@/config/routes_config'
+import Vue from 'vue'
+import Router from 'vue-router'
+import RouteMenuDatas from '@/datas/route_menu_datas'
+import storage from '@/utils/storage'
 
-const routes = routesConfig
+Vue.use(Router)
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes
+//默认配置路由
+export const constantRoutes = RouteMenuDatas
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
+const createRouter = () => new Router({
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRoutes
 })
 
+const router = createRouter()
+export function resetRouter() {
+  const newRouter = createRouter()
+  router.matcher = newRouter.matcher // reset router
+}
+
+//路由判断
 //路由判断
 router.beforeEach(async (to, from, next) => {
-  const token = ''
+  const token = storage.getLocalData('token')
   const title = to.meta.title
   document.title = title
   if (to.meta.requireAuth) { 
@@ -25,5 +41,6 @@ router.beforeEach(async (to, from, next) => {
     next()
   }
 })
+
 
 export default router

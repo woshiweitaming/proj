@@ -1,29 +1,57 @@
-const common_mixins = {
+/**
+ * 通用混入组件
+ */
+import { mapMutations, mapGetters } from 'vuex'
+import appConfig from '@/config/appConfig'
+const commonMixins = {
     data(){
         return {
-            form: {}
+            domain: appConfig.domain,
         }
     },
     methods: {
-        layerMsg(msg){
-            layui.use('layer', () => {
-                layui.layer.msg(msg)   
+        //重置分页数据
+        resetPaginationHandler(){
+            this.setPagination({
+                pageNumber: 1,
+                pageSize: 50,
+                total: 0
             })
         },
-        layerOpen(opt){
-            layui.use('layer', () => {
-                layui.layer.open({
-                    title: opt.title || '系统提示',
-                    content: opt.content || '<p>暂无内容'
-                })
-            })
+        //重置查询数据
+        resetQueryData(){
+            this.setQueryData(this.getQueryData)
         },
-        initForm(){
-            layui.use('form', function(){
-                this.form = layui.form;
-            });
-        }
+        //提示
+        backTips(res){
+            this.$tips.successTips(res.rpMsg)
+        },
+        toStartDate(date){
+            if(date == '' || date == null) return ''
+            return (new Date(date + ' 00:00:00').getTime()) / 1000
+        },
+        toEndDate(date){
+            if(date == ''  || date == null) return ''
+            return (new Date(date + ' 23:59:59').getTime()) / 1000
+        },
+        ...mapMutations({
+            setPagination: 'SET_PAGINATION',
+            setQueryData: 'SET_QUERY_DATA',
+            setTableData: 'SET_TABLE_DATA'
+        })
     },
+    computed: {
+        ...mapGetters({
+            getQueryData: 'getQueryData'
+        })
+    },
+    // watch: {
+    //     $route(to, from){
+    //         this.resetPaginationHandler()
+    //         this.resetQueryData()
+    //         // this.setTableData([])
+    //     }
+    // }
 }
 
-export default common_mixins
+export default commonMixins
