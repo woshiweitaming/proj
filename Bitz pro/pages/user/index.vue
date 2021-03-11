@@ -61,6 +61,11 @@
 						path: '/pages/consume_record/index',
 					},
 					{
+						name: 'creditp1',
+						icon: '/static/images/u8.png',
+						path: '/pages/credit/index',
+					},
+					{
 						name: 'walletAddress',
 						icon: '/static/images/u6.png',
 						path: '/pages/wallet/index',

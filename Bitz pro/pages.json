@@ -516,6 +516,14 @@
 				"color": "#ffffff",
 				"navigationBarBackgroundColor": "#fff"
 			}
+		},
+		{
+			"path": "pages/credit/index",
+			"style": {
+				"navigationBarTextStyle":"black",
+				"color": "#ffffff",
+				"navigationBarBackgroundColor": "#fff"
+			}
 		}
 	],
 	"globalStyle": {
