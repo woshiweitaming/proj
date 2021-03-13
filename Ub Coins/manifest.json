@@ -2,8 +2,8 @@
     "name" : "Ub Coins",
     "appid" : "__UNI__EB84E51",
     "description" : "",
-    "versionName" : "3.5",
-    "versionCode" : 350,
+    "versionName" : "3.6",
+    "versionCode" : 360,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
@@ -95,8 +95,8 @@
                 }
             },
             "splashscreen" : {
-                "androidStyle" : "common",
-                "iosStyle" : "common",
+                "androidStyle" : "default",
+                "iosStyle" : "default",
                 "android" : {
                     "hdpi" : "unpackage/images/480x762.png",
                     "xhdpi" : "unpackage/images/720x1242.png",

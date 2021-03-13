@@ -2,24 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../adminForSoftBank"
-		},
-		{
-			"path": "../old/BINAN/pc"
-		},
-		{
-			"path": "../adminForBian"
-		},
-		{
-			"path": "../old/houtaiweb"
-		},
-		{
-			"path": "../adminForRhb"
-		},
-		{
-			"path": "../../../../usr/local/var/www"
 		}
 	]
 }

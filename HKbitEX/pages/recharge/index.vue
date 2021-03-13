@@ -4,7 +4,8 @@
 			<view class="title">{{getLangs('rechargeChannel')}}</view>
 			<view class="recharge_lists">
 				<view @tap="payHandler(items.id)" :class="['recharge_list', items.id === id ? 'on' : '']" v-for="(items, index) in rechargeList" :key="index">
-					{{items.name}}
+					<image mode="widthFix" class="icons" :src="`../../static/images/recharge/${items.id}.png`"></image>
+					<text class="names">{{items.name}}</text>
 					<image class="icon" src="../../static/images/right_arrow.png"></image>
 				</view>
 			</view>
@@ -192,8 +193,10 @@
 	.recharge_class{
 		height: 100%;
 		padding: 40upx;
-		background: url(../../static/images/recharge_bg.png);
-		background-size: 100% 100%;
+		background: url(../../static/images/recharge_bg.jpg);
+		background-size: 100%;
+		background-position: top center;
+		background-repeat: no-repeat;
 	}
 	.recharge_input_main{
 		margin: 20upx auto 10upx auto;
@@ -263,5 +266,14 @@
 	}
 	.table_class{
 		margin-top: 40upx;
+	}
+	.icons{
+		width: 40upx;
+		height: 40upx;
+	}
+	.names{
+		line-height: 40upx;
+		vertical-align: top;
+		margin-left: 20upx;
 	}
 </style>

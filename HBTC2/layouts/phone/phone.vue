@@ -7,7 +7,7 @@
 					<!-- <picker @change="bindPickerChange" mode="selector" :value="index" :range="qhList" class="qh_class" :range-key="getKey">
 					    <view class="uni-input" >{{getQhValue}}</view>
 					</picker> -->
-					<view @tap="open" class="qh_class"><view class="uni-input" >{{getQhValue}}</view></view>
+					<!-- <view @tap="open" class="qh_class"><view class="uni-input" >{{getQhValue}}</view></view> -->
 					<u-select 
 					    class="qh_class"
 					    @confirm="confirm" 
@@ -22,7 +22,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="form_label">
+		<!-- <view class="form_label">
 			<view class="form_label_name"><text class="iconfont icon-shake"></text></view>
 			<view class="form_label_main">
 				<view class="form_input_bar vcode">
@@ -30,7 +30,7 @@
 					<view class="get_code" @click="getMessageCode">{{getVcodeText}}</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -52,7 +52,7 @@
 				//手机号
 				phone: '',
 				//区号 - 中国
-				qh: 1,
+				qh: 86,
 				//验证码
 				vcode: '',
 				//索引
@@ -80,7 +80,7 @@
 				}
 				const params = {
 					phone: this.phone,
-					qh: this.qh
+					qh: 86
 				}
 				this.$tips.showLoading(this.getLangs('loadingText'))
 				const res = await sendSms(params)
@@ -165,7 +165,7 @@
 
 <style scoped>
 	.qh{
-		padding-left: 100px;
+		padding-left: 0;
 	}
 	.qh_class{
 		position: absolute;

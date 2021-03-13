@@ -146,7 +146,7 @@
         "enable" : false
     },
     "h5" : {
-        "title" : "BeuEX",
+        "title" : "HKbitEX",
         "domain" : "",
         "template" : "index.html"
     }

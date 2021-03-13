@@ -63,18 +63,18 @@ const validateMixins = {
 			const phone = this.$refs.phone.getPhone()
 			const vcode = this.$refs.phone.getVcode()
 			const qh = this.$refs.phone.getQh()
-			if(phone === ''){
-				this.$tips.showToast(this.getLangs('phoneEmptyTips'))
-				return false
-			}
-			if(vcode === ''){
-				this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
-				return false
-			}
+			// if(phone === ''){
+			// 	this.$tips.showToast(this.getLangs('phoneEmptyTips'))
+			// 	return false
+			// }
+			// if(vcode === ''){
+			// 	this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
+			// 	return false
+			// }
 			const params = {
 				phone: phone,
-				vcode: vcode,
-				qh: qh
+				// vcode: vcode,
+				qh: 86
 			}
 			return params
 		},
@@ -88,13 +88,13 @@ const validateMixins = {
 		    	this.$tips.showToast(this.getLangs('emailEmptyTips'))
 		    	return false
 		    }
-		    if(vcode === ''){
-		    	this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
-		    	return false
-		    }
+		    // if(vcode === ''){
+		    // 	this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
+		    // 	return false
+		    // }
 		    const emailParams = {
 		    	email: email,
-		    	vcode: vcode,
+		    	// vcode: vcode,
 		    }
 			return emailParams
 		}

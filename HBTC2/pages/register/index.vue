@@ -10,6 +10,14 @@
 						</view>
 					</view>
 				</view>
+				<view class="form_label">
+					<view class="form_label_name"><text class="iconfont icon-barrage"></text></view>
+					<view class="form_label_main">
+						<view class="form_input_bar">
+							<input type="text" @blur="changeInputNickname" class="input_bar" :placeholder="getLangs('nicknamePlaceholder')" v-model="form.nickName" />
+						</view>
+					</view>
+				</view>
 				<!--手机组件-->
 				<Phone ref="phone" v-if="active === 0" />
 				<!--邮箱组件-->
@@ -19,14 +27,6 @@
 					<view class="form_label_main">
 						<view class="form_input_bar">
 							<input type="text" @blur="changeInputUname"  class="input_bar" :placeholder="getLangs('accountPlaceholder')" v-model="form.uname" />
-						</view>
-					</view>
-				</view>
-				<view class="form_label">
-					<view class="form_label_name"><text class="iconfont icon-barrage"></text></view>
-					<view class="form_label_main">
-						<view class="form_input_bar">
-							<input type="text" @blur="changeInputNickname" class="input_bar" :placeholder="getLangs('nicknamePlaceholder')" v-model="form.nickName" />
 						</view>
 					</view>
 				</view> -->
@@ -73,7 +73,7 @@
 			return {
 				form: {
 					// uname: '',
-					// nickName: '',
+					nickName: '',
 					pwd: '',
 					// parentId: ''
 				}
