@@ -194,9 +194,7 @@
 		height: 100%;
 		padding: 40upx;
 		background: url(../../static/images/recharge_bg.jpg);
-		background-size: 100%;
-		background-position: top center;
-		background-repeat: no-repeat;
+		background-size: 100% 100%;
 	}
 	.recharge_input_main{
 		margin: 20upx auto 10upx auto;

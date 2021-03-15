@@ -2,7 +2,7 @@
 	<view class="fund_card_class">
 		<view class="top">
 			<view class="name">{{getLangs('poolp3')}}</view>
-			<view class="amount">{{getTotalAmount}} {{getText}}</view>
+			<view class="amount">{{getTotalAmount}} USDT</view>
 			<view class="yield_class">
 				<view class="btns" @tap="navigateTo('/pages/pool_yield/index')">{{getLangs('poolp2')}}</view>
 			</view>

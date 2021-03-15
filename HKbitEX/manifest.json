@@ -2,8 +2,8 @@
     "name" : "HKbitEX",
     "appid" : "__UNI__A708242",
     "description" : "",
-    "versionName" : "3.5",
-    "versionCode" : 350,
+    "versionName" : "3.7",
+    "versionCode" : 370,
     "transformPx" : false,
     //* 5+App特有相关 */
     "app-plus" : {

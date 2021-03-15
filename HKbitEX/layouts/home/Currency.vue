@@ -101,7 +101,7 @@
 			getRatio(){
 				return (vol) => {
 					const data = vol / 10000
-					return data.toFixed(0) + 'W'
+					return data.toFixed(0) + (this.getGlobalLang === 'cns' ? '萬' : 'W')
 				}
 			}
 		},

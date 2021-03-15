@@ -94,8 +94,10 @@ const appConfig = {
     // wsDomain: 'wss://api.foxoie.site',
     // domain: 'https://api.bitzpro.info',
     // wsDomain: 'wss://api.bitzpro.info',
-    domain: 'https://api.hkbitx.com',
-    wsDomain: 'wss://api.hkbitx.com',
+    // domain: 'https://api.hkbitx.com',
+    // wsDomain: 'wss://api.hkbitx.com',
+    domain: 'https://api.dcoin.site',
+    wsDomain: 'wss://api.dcoin.site',
     logo: `${process.env.BASE_URL}img/logo/logo.png`
 }
 
