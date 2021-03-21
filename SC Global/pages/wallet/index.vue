@@ -5,7 +5,7 @@
 			<view class="labels" v-else v-for="(items, index) in dataList" :key="index">
 				<uni-swipe-action>
 				    <uni-swipe-action-item :options="options" @click="onClick($event, items)">
-				         <view class="items"><text class="currency">USDT</text><text class="box">{{items.chainname}}</text></view>
+				         <view class="items"><text class="currency">{{items.bname}}</text><text class="box">{{items.chainname}}</text></view>
 				         <view class="items"><text class="name">{{items.remarks}}</text></view>
 				         <view class="items"><text class="address">{{items.address}}</text></view>
 				         <view class="more"><image class="more_icon" src="../../static/images/more.png"></image></view>

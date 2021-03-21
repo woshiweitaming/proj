@@ -60,7 +60,7 @@
 				//区号国家
 				curQhCountry: 'USA',
 				//区号列表
-				qhList: prefixSorted,
+				qhList: [],
 				//计时器
 				timer: null,
 				//倒计时时间
@@ -159,6 +159,9 @@
 		},
 		created() {
 			this.index = this.qhList.findIndex(res => res.en === this.curQhCountry)
+			this.qhList = prefixSorted.sort(function(a, b){
+				return Number(a.prefix) - Number(b.prefix)
+			})
 		}
 	}
 </script>

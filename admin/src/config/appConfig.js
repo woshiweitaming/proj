@@ -1,5 +1,7 @@
 const appConfig = {
     appName: '后台管理系统',
+    domain: 'http://180.178.39.226:8080',
+	wsDomain: 'ws://180.178.39.226:8080',
     // domain: 'http://127.0.0.1:8080',
     // wsDomain: 'ws://127.0.0.1:8080',
     // domain: 'https://api.dbsxchange2.com',
@@ -96,8 +98,16 @@ const appConfig = {
     // wsDomain: 'wss://api.bitzpro.info',
     // domain: 'https://api.hkbitx.com',
     // wsDomain: 'wss://api.hkbitx.com',
-    domain: 'https://api.dcoin.site',
-    wsDomain: 'wss://api.dcoin.site',
+    // domain: 'https://api.dcoin.site',
+    // wsDomain: 'wss://api.dcoin.site',
+    // domain: 'https://api.dbsdce.com',
+    // wsDomain: 'wss://api.dbsdce.com',
+    // domain: 'https://api.bitfinex.store',
+    // wsDomain: 'wss://api.bitfinex.store',
+    // domain: 'https://api.terafx.vip',
+    // wsDomain: 'wss://api.terafx.vip',
+    domain: 'https://api.kingexc.cc',
+    wsDomain: 'wss://api.kingexc.cc',
     logo: `${process.env.BASE_URL}img/logo/logo.png`
 }
 

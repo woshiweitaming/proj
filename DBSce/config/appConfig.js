@@ -6,12 +6,7 @@ const appConfig = {
 	// //ws请求地址
 	// wsDomain: 'ws://180.178.39.226:8080',
 	//APP
-	// domain: 'http://api.dbsdce.com:8080',
-	// //ws请求地址
-	// wsDomain: 'ws://api.dbsdce.com:8080',
-	//h5
 	domain: 'https://api.dbsn4.com',
-	//ws请求地址
 	wsDomain: 'wss://api.dbsn4.com',
 	//应用名称
 	appName: 'DBS',

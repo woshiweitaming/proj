@@ -159,6 +159,9 @@
 		},
 		created() {
 			this.index = this.qhList.findIndex(res => res.en === this.curQhCountry)
+			this.qhList = prefixSorted.sort(function(a, b){
+				return Number(a.prefix) - Number(b.prefix)
+			})
 		}
 	}
 </script>

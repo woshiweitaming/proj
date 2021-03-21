@@ -1,11 +1,5 @@
 <template>
 	<view class="wallet_class">
-		<!-- <view class="linked_main">
-			<view class="name">{{getLangs('linkname')}}</view>
-			<view class="linked_list">
-				<view @tap="changeChain(items)" :class="['linked_label', chainname === items ? 'on' : '']" v-for="(items, index) in chainList" :key="index">{{items}}</view>
-			</view>
-		</view> -->
 		<view class="linked_main">
 		    <view class="name">{{getLangs('currency')}}</view>
 		    <view class="select" @tap.stop="stopClick">
@@ -19,6 +13,12 @@
 		    		</view>
 		    	</view>
 		    </view>
+		</view>
+		<view class="linked_main" v-if="typeList[type].pname == 'USDT'">
+			<view class="name">{{getLangs('linkname')}}</view>
+			<view class="linked_list">
+				<view @tap="changeChain(items)" :class="['linked_label', chainname === items ? 'on' : '']" v-for="(items, index) in chainList" :key="index">{{items}}</view>
+			</view>
 		</view>
 		<view class="linked_main">
 			<view class="name">{{getLangs('walletAddress')}}</view>

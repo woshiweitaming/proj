@@ -11,7 +11,7 @@
 				<view class="fd">
 					<view class="items">
 						<view class="name">{{getLangs('singleLimit')}}</view>
-						<view class="value">{{items.money_scope}}</view>
+						<view class="value">{{formatNumber(items.money_scope.split('~')[0]) + '~' + formatNumber(items.money_scope.split('~')[1])}}</view>
 					</view>
 					<view class="items">
 						<view class="name">{{getLangs('dailyYield')}}</view>
@@ -43,6 +43,9 @@
 		methods: {
 			toPage(fid){
 				this.navigateTo('/pages/coin_pool_buy/index', {fid: fid})
+			},
+			formatNumber(num) {
+			    return num >= 1e3 ? (num / 1e3).toFixed(1) + 'k' : num
 			}
 		},
 		computed: {
@@ -103,8 +106,16 @@
 		display: flex;
 		font-size: 28upx
 	}
-	.coin_pool_list_class .coin_pool_data .labels .fd .items{
-		width: 33.333%;
+	.coin_pool_list_class .coin_pool_data .labels .fd .items:first-child{
+		width: 45%;
+		text-align: center;
+	}
+	.coin_pool_list_class .coin_pool_data .labels .fd .items:nth-child(2){
+		width: 30%;
+		text-align: center;
+	}
+	.coin_pool_list_class .coin_pool_data .labels .fd .items:last-child{
+		width: 25%;
 		text-align: center;
 	}
 	.coin_pool_list_class .coin_pool_data .labels .fd .items .name{

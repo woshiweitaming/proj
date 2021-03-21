@@ -1,9 +1,9 @@
 {
     "name" : "SC Global",
-    "appid" : "__UNI__A26138B",
+    "appid" : "__UNI__FC17089",
     "description" : "",
-    "versionName" : "4.2",
-    "versionCode" : 420,
+    "versionName" : "4.3",
+    "versionCode" : 430,
     "transformPx" : false,
     //* 5+App特有相关 */
     "app-plus" : {

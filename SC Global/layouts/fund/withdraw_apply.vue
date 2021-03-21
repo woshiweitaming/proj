@@ -6,27 +6,27 @@
 				<view class="form_label_main">
 					<view class="form_input_bar">
 						<view class="select" @tap.stop="stopClick">
-							<view class="select_label">
-								<view class="select_name">{{getUSDT}}</view>
-								<!-- <text class="iconfont icon-unfold"></text> -->
+							<view class="select_label" @tap="currencyStatus = !currencyStatus">
+								<view class="select_name">{{getBalanceCurrency}}</view>
+								<text class="iconfont icon-unfold"></text>
 							</view>
-							<view class="select_drop" v-show="currency.show">
+							<view class="select_drop" v-show="currencyStatus">
 								<view class="selelct_drop_main" @tap.stop="stopClick">
-									<view @tap="changeDrop(key)" class="select_drop_label" v-for="(items, key) in getAccountList"  :key="key">{{items}}</view>
+									<view @tap="changeDrop1(items.type)" class="select_drop_label" v-for="(items, key) in currecyList"  :key="key">{{items.pname}}</view>
 								</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-			<view class="form_label">
+		<!-- 	<view class="form_label">
 				<view class="form_label_name">{{getLangs('linkname')}}</view>
 				<view class="form_label_main linked_main">
 					<view class="linked_list">
 						<view @tap="changeChain(items.id)" :class="['linked_label', chainId === items.id ? 'on' : '']" v-for="(items, index) in chainList" :key="index">{{items.name}}</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<view class="form_label">
 				<view class="form_label_name">{{getLangs('drawithAddress')}}</view>
 				<view class="form_label_main">
@@ -39,7 +39,7 @@
 							</view>
 							<view class="select_drop" v-show="show">
 								<view class="selelct_drop_main" @tap.stop="stopClick">
-									<view @tap="changeDrop(items)" class="select_drop_label" v-for="(items, key) in walletList"  :key="key">{{items.address}}</view>
+									<view @tap="changeDrop(items)" class="select_drop_label" v-for="(items, key) in getWalletList"  :key="key">{{items.address}}</view>
 								</view>
 							</view>
 						</view>
@@ -53,17 +53,17 @@
 						<input type="text" @input="checkInput" class="input_bar" :placeholder="getLangs('withdrawalAmount')" v-model="dollar" />
 						<text @tap="all" class="all_cash">{{getLangs('drawithAll')}}</text>
 					</view>
-					<text class="sub">{{getLangs('avaliableUsdt')}}(USDT) : {{config.usdt}}</text>
+					<text class="sub">{{getLangs('avaliableUsdt')}}({{getBalanceCurrency}}) : {{getBalanceValue}}</text>
 				</view>
 			</view>
-			<view class="form_label">
+			<!-- <view class="form_label">
 				<view class="form_label_name">{{getLangs('drawithFee')}}</view>
 				<view class="form_label_main">
 					<view class="form_input_bar">
-						<input type="text" class="input_bar fees" :placeholder="getLangs('withdrawalAmount')" :value="getFees" />
+						<input type="text" class="input_bar fees" :disabled="true" :placeholder="getLangs('withdrawalAmount')" :value="getFees" />
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<view class="form_label">
 				<view class="form_label_name">{{getLangs('drawithTips')}}</view>
 				<view class="form_label_main">
@@ -86,7 +86,7 @@
 	import userMixins from '@/mixins/user_mixins.js'
 	import accountLeftmoneyMixins from '@/mixins/account_leftmoney_mixins.js'
 	import currencyMixins from '@/mixins/currency_mixins.js'
-	import { withdrawal, getWinConfig, getPayAddList } from '@/api/user.js'
+	import { withdrawal, getWinConfig, getPayAddList, getWithdrawalTypeList } from '@/api/user.js'
 	import validate from '@/utils/validate.js'
 	export default {
 		name: 'WithdrawApply',
@@ -117,7 +117,10 @@
 				chainId: 1,
 				config: {},
 				walletList: [],
-				show: false
+				show: false,
+				currecyList: [],
+				currencyStatus: false,
+				currencyActive: 0
 			}
 		},
 		methods:{
@@ -161,7 +164,8 @@
 				const params = {
 					dollar: this.dollar,
 					qbdizhi: this.qbdizhi,
-					name: this.chainList.filter(res => res.id == this.chainId)[0].name
+					name: this.chainList.filter(res => res.id == this.chainId)[0].name,
+					pid: this.currecyList.filter(res => res.type == this.currencyActive)[0].pid
 				}
 				const res = await withdrawal(params)
 				this.backTips(res)
@@ -248,6 +252,14 @@
 						//this.amount = val.substring(0, val.length-1)
 					}
 				},50)
+			},
+			async getWithdrawalTypeListHandler(){
+				const res = await getWithdrawalTypeList()
+				this.currecyList = res.list
+			},
+			changeDrop1(type){
+				this.currencyActive = type
+				this.currencyStatus = false
 			}
 		},
 		computed: {
@@ -270,6 +282,24 @@
 			getUSDT(){
 				return 'USDT'
 			},
+			getBalanceValue(){
+				if (this.currecyList.length === 0) return ''
+				return this.currecyList.filter(res => res.type == this.currencyActive)[0].balance
+			},
+			getBalanceCurrency(){
+				if (this.currecyList.length === 0) return ''
+				return this.currecyList.filter(res => res.type == this.currencyActive)[0].pname
+			},
+			getWalletList(){
+				if(this.walletList.length == 0) {
+					this.qbdizhi = ''
+					return []
+				}
+				const arr = this.walletList.filter(res => res.type == this.currencyActive)
+				if(arr.length == 0) return []
+				this.qbdizhi = arr[0].address
+				return arr
+			},
 			...mapGetters({
 				getCertInfo: 'getCertInfo'
 			})
@@ -277,6 +307,7 @@
 		created() {
 			// this.init()
 			this.fromData.active = 'coin'
+			this.getWithdrawalTypeListHandler()
 			//this.getPayAddListHandler()
 		},
 		watch: {
@@ -298,7 +329,7 @@
 <style scoped>
 	.form_class{
 		padding: 20upx;
-		background: #f9f9f9
+		background: #fff;
 	}
 	.form_label{
 		padding-left: 0;
@@ -308,7 +339,7 @@
 	.form_label_name{
 		position: initial !important;
 		font-size: 30upx !important;
-		color: #333 !important;
+		color: #aaa !important;
 		font-weight: bold;
 	}
 	.withdraw_tips{
@@ -337,11 +368,12 @@
 		color: #000;
 	}
 	.input_bar{
-		color: #333;
-		background: rgba(255,255,255,.05);
+		color: #fff;
+		background: #f9f9f9;
 		border-radius: 10upx;
 		padding: 20upx;
 		font-weight: bold;
+		color: #333;
 	}
 	.linked_main .linked_label{
 		width: 160upx;
@@ -351,7 +383,7 @@
 		border-radius: 10upx;
 		text-align: center;
 		font-size: 28upx;
-		color: #333;
+		color: #aaa;
 	}
 	.linked_main .linked_label.on{
 		background: #2970e6;
@@ -393,11 +425,5 @@
 	}
 	.fees{
 		color: #aaa;
-	}
-	.form_input_bar{
-		background: #fff;
-	}
-	.select{
-		background: #fff;
 	}
 </style>

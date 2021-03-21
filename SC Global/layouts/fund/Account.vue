@@ -9,8 +9,8 @@
 			</view>
 		</view>
 		<view class="account_list">
-			<view class="account_list_label" v-for="(items, key) in getAccountBanlance && getAccountBanlance[getActive]" :key="key">
-				<view v-if="key !== 'type'">
+			<view class="account_list_label" v-show="key !== 'type'" v-for="(items, key) in getAccountBanlance && getAccountBanlance[getActive]" :key="key">
+				<view>
 					<view class="currency">{{key}}</view>
 					<view class="table_hd">
 						<view class="table_hd_label">{{getLangs('available')}}</view>

@@ -87,6 +87,26 @@
 		},
 		{
 			"path": "pages/product/index"
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarBackgroundColor":"#f8fbfd",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/register/index",
+			"style": {
+				"navigationBarBackgroundColor":"#f8fbfd",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/coin_exchange/index",
+			"style": {
+				"navigationStyle":"custom"
+			}
 		}
 	], 
 	"globalStyle": {

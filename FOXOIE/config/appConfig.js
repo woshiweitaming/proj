@@ -3,7 +3,7 @@
  */
 const appConfig = {
 	domain: 'https://api.foxoie.site',
-	wsDomain: 'wss://api.foxoie.sit',
+	wsDomain: 'wss://api.foxoie.site',
 	//应用名称
 	appName: 'FOXOIE',
 	//外链

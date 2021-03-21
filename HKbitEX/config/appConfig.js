@@ -2,10 +2,10 @@
  * 应用配置
  */
 const appConfig = {
-	// domain: 'http://180.178.39.226:8080',
-	// wsDomain: 'ws://180.178.39.226:8080',
-	domain: 'https://api.hkbitx.com',
-	wsDomain: 'wss://api.hkbitx.com',
+	domain: 'http://180.178.39.226:8080',
+	wsDomain: 'ws://180.178.39.226:8080',
+	// domain: 'https://api.hkbitx.com',
+	// wsDomain: 'wss://api.hkbitx.com',
 	//应用名称
 	appName: 'HKbitEX',
 	//外链

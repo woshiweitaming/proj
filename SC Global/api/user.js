@@ -572,3 +572,11 @@ export const getContact = (data = {}) => {
 		data
 	})
 }
+
+export const getWithdrawalTypeList = (data = {}) => {
+	return request({
+		url: '/user/getWithdrawalTypeList',
+		method: 'post',
+		data
+	})
+}
