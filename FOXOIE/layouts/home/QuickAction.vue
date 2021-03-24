@@ -56,8 +56,8 @@
 		},
 		computed: {
 			getImg(){
-				if(this.getGlobalLang == 'cn' || this.getGlobalLang == 'cns') return  `/static/images/pool/1.jpg`
-				return `/static/images/pool/2.jpg`
+				if(this.getGlobalLang == 'cn' || this.getGlobalLang == 'cns') return  `/static/images/pool/1.png`
+				return `/static/images/pool/2.png`
 			},
 			...mapGetters({
 				getProductData: 'getProductData',
