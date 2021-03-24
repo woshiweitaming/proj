@@ -23,3 +23,27 @@ page{
 	border-radius: 20upx;
 	box-shadow: 0 0 20upx 0 rgba(0,0,0,.1);
 }
+
+.product{
+	padding: 10upx 20upx 20upx;
+}
+.product_label{
+	padding: 20upx;
+	background: #fff;
+	margin-bottom: 20upx;
+	border-radius: 20upx;
+	position: relative;
+	box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+}
+.product_label .sub{
+	padding-left: 10upx;
+	font-size: 24upx;
+	color: #666;
+}
+.product_label .profit{
+	font-size: 50upx;
+	color: #DD4A68;
+}
+.product_label .tag .u-tag{
+	margin-right: 5px;
+}

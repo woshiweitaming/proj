@@ -51,7 +51,7 @@
 					id: id,
 					type: 1
 				}
-				this.navigateTo('/pages/k/index', params)
+				this.navigateTo('/pages/k_inner/index', params)
 			}
 		},
 		computed: {

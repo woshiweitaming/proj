@@ -2,8 +2,8 @@
     "name" : "Bitz pro",
     "appid" : "__UNI__928DE8F",
     "description" : "",
-    "versionName" : "3.6",
-    "versionCode" : 360,
+    "versionName" : "3.7",
+    "versionCode" : 370,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

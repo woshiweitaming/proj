@@ -205,7 +205,9 @@
 				this.config = res.data
 			},
 			async getPayAddListHandler(){
+				uni.showLoading({mask: true})
 				const res = await getPayAddList()
+				uni.hideLoading()
 				this.walletList= res.data
 				if(this.walletList.length === 0){
 					// this.navigateTo('/pages/add_wallet/index')

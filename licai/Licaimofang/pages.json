@@ -6,11 +6,16 @@
 		{
 			"path": "pages/home/index",
 			"style": {
-				"navigationStyle":"custom"
+				"navigationStyle":"custom",
+				"navigationBarTextStyle": "black"
 			}
 		},
 		{
-			"path": "pages/find/index"
+			"path": "pages/find/index",
+			"style": {
+				"navigationStyle":"custom",
+				"navigationBarTextStyle": "black"
+			}
 		},
 		{
 			"path": "pages/kefu/index"

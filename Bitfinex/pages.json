@@ -501,7 +501,17 @@
 			"path": "pages/tibi/index",
 			"style": {
 				"navigationBarTextStyle":"white",
-				"navigationBarBackgroundColor": "#323a5e"
+				"navigationBarBackgroundColor": "#323a5e",
+				"app-plus": {
+				    "titleNView": {
+				        "buttons": [ 
+				            {
+				                "text": "\ue700",
+								"fontSrc":"/static/fonts/iconfont.ttf"
+				            }
+				        ]
+					}
+				}
 			}
 		}
 	],

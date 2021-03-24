@@ -78,7 +78,7 @@
 		height: calc(600upx + var(--status-bar-height));
 		background: #007AFF;
 		position: relative;
-		padding-top: var(--status-bar-height);
+		padding-top: calc(20upx + var(--status-bar-height));
 	}
 	.total_balance{
 		text-align: center;

@@ -54,7 +54,7 @@
 				const res = await getNConfig()
 				this.bannerList = res.data.banner.map(res => {
 					res.picture = res.img
-					res.path = ''
+					res.path = `/pages/desc/index?id=${res.id}&title=${res.title}`
 					res.title = ''
 					return res
 				})

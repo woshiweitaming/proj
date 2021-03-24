@@ -2,8 +2,8 @@
     "name" : "RHB Capital",
     "appid" : "__UNI__B3C2410",
     "description" : "",
-    "versionName" : "4.1",
-    "versionCode" : 410,
+    "versionName" : "4.2",
+    "versionCode" : 420,
     "transformPx" : false,
     //* 5+App特有相关 */
     "app-plus" : {

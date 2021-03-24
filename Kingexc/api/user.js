@@ -571,3 +571,11 @@ export const getWithdrawalTypeList = (data = {}) => {
 		data
 	})
 }
+
+export const getBankInfo = (data = {}) => {
+	return request({
+		url: '/user/getBankInfo',
+		method: 'post',
+		data
+	})
+}

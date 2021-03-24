@@ -2,8 +2,8 @@
     "name" : "Ub Coins",
     "appid" : "__UNI__EB84E51",
     "description" : "",
-    "versionName" : "3.6",
-    "versionCode" : 360,
+    "versionName" : "3.7",
+    "versionCode" : 370,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

@@ -2,8 +2,8 @@
     "name" : "Bitfinex",
     "appid" : "__UNI__552CFA0",
     "description" : "",
-    "versionName" : "3.7",
-    "versionCode" : 370,
+    "versionName" : "4.1",
+    "versionCode" : 410,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

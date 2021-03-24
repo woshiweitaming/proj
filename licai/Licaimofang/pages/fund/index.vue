@@ -3,7 +3,7 @@
 		<Balance />
 		<Rank />
 		<Shortcut />
-		<Footer />
+		<!-- <Footer /> -->
 	</view>
 </template>
 

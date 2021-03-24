@@ -1,14 +1,28 @@
 <template>
 	<view class="top_bar">
-		<view class="top_bar_img"></view>
+		<view class="top_bar_img">
+			<view class="greeting">{{getLang('home_p25')+'，'+getLang('appName')}}</view>
+			<view class="nav">
+				<view class="labels" v-for="(curItem, index) in topList" :key="index">
+					<image :src="curItem.icon" class="icon"></image>
+					<view class="name">{{getLang(curItem.name)}}</view>
+				</view>
+			</view>
+		</view>
 		<view class="float_bar">
+			<image class="vip" src="/static/images/home/vipicon.png" mode="widthFix"></image>
+			<view class="name">{{getLang('home_p14')}}</view>
+			<view class="enter">{{getLang('home_p15')}}</view>
+			<image class="arrow" src="/static/images/home/arrow.png" mode="widthFix"></image>
+		</view>
+		<!-- <view class="float_bar">
 			<view class="float_bar_item" @click="toPage(curItem.path)" v-for="(curItem, index) in topList" :key="index">
 				<view class="float_bar_label">
 					<view class="name">{{getLang(curItem.name)}}</view>
 					<view class="sub">{{getLang(curItem.sub)}}</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -21,16 +35,24 @@
 			return {
 				topList: [
 					{
-						name: 'home_p1',
-						sub: 'home_p2',
-						icon: '/static/',
-						path: '/pages/safe/index'
+						name: 'home_p26',
+						icon: '/static/images/home/shortcut/i1.png',
+						path: ''
 					},
 					{
-						name: 'home_p3',
-						sub: 'home_p4',
-						icon: '/static/',
-						path: '/pages/webview/index'
+						name: 'home_p27',
+						icon: '/static/images/home/shortcut/i2.png',
+						path: ''
+					},
+					{
+						name: 'home_p28',
+						icon: '/static/images/home/shortcut/i3.png',
+						path: ''
+					},
+					{
+						name: 'home_p29',
+						icon: '/static/images/home/shortcut/i4.png',
+						path: ''
 					}
 				]
 			}
@@ -49,45 +71,66 @@
 	.top_bar{
 		width: 100%;
 		padding-top: calc(var(--status-bar-height) + 88upx);
-		height: 400upx;
+		height: 550upx;
 		position: relative;
 	}
 	.top_bar_img{
 		height: 100%;
-		background: #007AFF;
+		background: url('/static/images/home/bg.png');
+		background-size: 100% 100%
+	}
+	.greeting{
+		padding: 80upx 40upx 40upx 40upx;
+		font-size: 40upx;
+		color: #fff;
+		font-weight: bold;
 	}
 	.float_bar{
 		width: 100%;
 		position: absolute;
 		height: 120upx;
-		bottom: -60upx;
+		bottom: -20upx;
 		left: 0;
+		right: 20upx;
+		display: flex;
+		background: url('/static/images/home/vip_bg.png');
+		background-size: 100% 100%;
+		padding: 26upx 20upx 20upx 20upx;
+		justify-content:space-around
+	}
+	.float_bar .vip{
+		width: 60upx;
+	}
+	.float_bar .name{
+		width: 60%;
+		padding-left: 20upx;
+		font-weight: bold;
+		line-height: 60upx;
+		color: #341400;
+		font-size: 32upx
+	}
+	.float_bar .enter{
+		text-align: right;
+		color: #865105;
+		line-height: 60upx;
+	}
+	.float_bar .arrow{
+		width: 16upx;
+		margin-top: 20upx;
+	}
+	.top_bar_img .nav{
 		display: flex;
 	}
-	.float_bar .float_bar_item{
-		width: 50%;
+	.top_bar_img .nav .labels{
+		width: 25%;
+		text-align: center;
 	}
-	.float_bar .float_bar_item:first-child{
-		padding-left: 30upx;
-		padding-right: 20upx;
+	.top_bar_img .nav .labels .icon{
+		width: 50upx;
+		height: 50upx;
 	}
-	.float_bar .float_bar_item:last-child{
-		padding-right: 30upx;
-		padding-left: 20upx;
-	}
-	.float_bar .float_bar_item .float_bar_label{
-		background: #fff;
-		height: 120upx;
-		padding: 20upx 20upx 20upx 100upx;
-		position: relative;
-		border-radius: 20upx;
-		box-shadow: 0 5upx 30upx 0 rgba(0,0,0,.1);
-	}
-	.float_bar .float_bar_item .float_bar_label .name{
-		font-weight: bold;
-	}
-	.float_bar .float_bar_item .float_bar_label .sub{
-		font-size: 24upx;
-		color: #999;
+	.top_bar_img .nav .labels .name{
+		color: #fff;
+		font-size: 28upx
 	}
 </style>

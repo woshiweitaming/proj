@@ -137,3 +137,11 @@ export const revokeBbEntrust = (data) => {
 		data
 	})
 }
+
+export const getWithdrawalBank = (data = {}) => {
+	return request({
+		url: '/user/getWithdrawalBank',
+		method: 'get',
+		data
+	})
+}

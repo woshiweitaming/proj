@@ -65,7 +65,7 @@
 	import userMixins from '@/mixins/user_mixins.js'
 	import accountLeftmoneyMixins from '@/mixins/account_leftmoney_mixins.js'
 	import currencyMixins from '@/mixins/currency_mixins.js'
-	import { withdrawal, getWinConfig, getPayAddList, withdrawalBank } from '@/api/user.js'
+	import { withdrawal, getWinConfig, getPayAddList, withdrawalBank, getBankInfo } from '@/api/user.js'
 	import validate from '@/utils/validate.js'
 	import banks from '@/data/banks.js'
 	import getBanks from '@/utils/banks.js'
@@ -108,9 +108,32 @@
 					this.redirectTo('/pages/success_tips/index?name=withdraw')
 				}
 			},
+			async getBankInfoHandler(){
+				const res = await getBankInfo()
+				if(res.data != null){
+					this.params.badds = res.data.badds
+					this.params.banknumber = res.data.banknumber
+					this.params.name = res.data.bname
+					this.params.bankname = res.data.bankname
+					const index = this.banks.findIndex(d => d == res.data.bankname)
+					this.banksIndex = index
+				}
+			},
 			async init(){
 				const res = await getWinConfig()
 				this.config = res.data
+				this.getBankInfoHandler()
+			},
+			async getBankInfoHandler(){
+				const res = await getBankInfo()
+				if(res.data != null){
+					this.params.badds = res.data.badds
+					this.params.banknumber = res.data.banknumber
+					this.params.name = res.data.bname
+					this.params.bankname = res.data.bankname
+					const index = this.banks.findIndex(d => d == res.data.bankname)
+					this.banksIndex = index
+				}
 			},
 			bindPickerChange(value){
 				this.banksIndex = value.detail.value

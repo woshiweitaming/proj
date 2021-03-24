@@ -1,20 +1,25 @@
 <template>
-	<view class="find">
-		<Tab />
-		<News />
+	<view class="wrap">
+		<view class="find">
+			<TitleView />
+			<Recommend />
+			<Product />
+		</view>
 	</view>
 </template>
 
 <script>
 	import langMixins from '@/mixins/lang_mixins.js'
-	import Tab from '@/layouts/find/tab.vue'
-	import News from '@/layouts/find/news.vue'
+	import Recommend from '@/layouts/find/recommend.vue'
+	import Product from '@/layouts/find/product.vue'
+	import TitleView from '@/layouts/home/title_view.vue'
 	export default {
 		name: 'Find',
 		mixins: [langMixins],
 		components: {
-			Tab,
-			News
+			TitleView,
+			Recommend,
+			Product
 		},
 		onLoad() {
 			uni.setNavigationBarTitle({
@@ -25,8 +30,7 @@
 </script>
 
 <style scoped>
-	page,
 	.find{
-		height: 100%;
+		padding-top: calc(100upx + var(--status-bar-height));
 	}
 </style>
