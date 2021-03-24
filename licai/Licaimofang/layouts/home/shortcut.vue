@@ -1,6 +1,6 @@
 <template>
 	<view class="shortcut">
-		<view class="labels" v-for="(curItem, index) in dataList" :key="index">
+		<view class="labels" @click="toPage(curItem.path)" v-for="(curItem, index) in dataList" :key="index">
 			<image :src="curItem.icon" class="icon" mode="widthFix"></image>
 			<view class="name">{{getLang(curItem.name)}}</view>
 		</view>
@@ -18,7 +18,7 @@
 					{
 						name: 'home_p16',
 						icon: '/static/images/home/shortcut/h1.png',
-						path: ''
+						path: '/pages/my_investment/index'
 					},
 					{
 						name: 'home_p17',
@@ -56,6 +56,13 @@
 						path: ''
 					}
 				]
+			}
+		},
+		methods: {
+			toPage(path){
+				uni.navigateTo({
+					url: path
+				})
 			}
 		}
 	}

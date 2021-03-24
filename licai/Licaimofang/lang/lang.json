@@ -25,7 +25,7 @@
 		"home_p18": "安全保障",
 		"home_p19": "积分商城",
 		"home_p20": "关于我们",
-		"home_p21": "最新咨询",
+		"home_p21": "最新资讯",
 		"home_p22": "公司资质",
 		"home_p23": "公司优势",
 		"home_p25": "欢迎来到",
@@ -236,6 +236,20 @@
 		"shop_p4": "可用积分",
 		"shop_p5": "剩余可用积分数量",
 		"shop_p6": "数码通讯",
-		"shop_p7": "积分"
+		"shop_p7": "积分",
+		"my_investment_p1": "投资记录",
+		"my_investment_p2": "项目名称",
+		"my_investment_p3": "投资金额",
+		"my_investment_p4": "状态",
+		"investment_detail_p1": "投资详情",
+		"investment_detail_p2": "预期收益",
+		"investment_detail_p3": "投资时间",
+		"investment_detail_p4": "到期时间",
+		"investment_detail_p5": "收益方式",
+		"investment_detail_p6": "期号",
+		"investment_detail_p7": "应收本金",
+		"investment_detail_p8": "应收利息",
+		"investment_detail_p9": "应收时间",
+		"investment_detail_p10": "元"
 	}
 }

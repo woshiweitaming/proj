@@ -108,10 +108,16 @@
 			}
 		},
 		{
-			"path": "pages/coin_exchange/index",
+			"path": "pages/coin_exchange/index", 
 			"style": {
 				"navigationStyle":"custom"
 			}
+		},
+		{
+			"path": "pages/my_investment/index"
+		},
+		{
+			"path": "pages/investment_detail/index"
 		}
 	], 
 	"globalStyle": {
