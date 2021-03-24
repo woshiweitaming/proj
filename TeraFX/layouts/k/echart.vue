@@ -133,8 +133,8 @@
 			},
 			setColor1(data){
 				return params => {
-					const upColor="#1CAD90";//涨颜色
-					const downColor="#CD4E65";//跌颜色
+					const upColor="#CD4E65";//涨颜色
+					const downColor="#1CAD90";//跌颜色
 					var colorList;
 					if (data.datas[params.dataIndex] > data.datas[params.dataIndex-1]) {
 					   colorList = upColor;
@@ -146,8 +146,8 @@
 			},
 			setColor2(data){
 				return params => {
-					const upColor="#1CAD90";//涨颜色
-					const downColor="#CD4E65";//跌颜色
+					const upColor="#CD4E65";//涨颜色
+					const downColor="#1CAD90";//跌颜色
 					var colorList;
 					if (params.data >= 0) {
 					   colorList = upColor;

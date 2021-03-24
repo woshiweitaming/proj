@@ -3,7 +3,7 @@
 		<view class="futures_section">
 			<view class="futures_currency">
 			   {{currency}}
-			   <text :class="['gain', getCurrenctData && getCurrenctData.gain > 0 ? 'green' : 'red']">{{getCurrenctData && getCurrenctData.gain > 0 ? getCurrenctData && getCurrenctData.gain : `${getCurrenctData && getCurrenctData.gain}`}}%</text>
+			   <text :class="['gain', getCurrenctData && getCurrenctData.gain > 0 ? 'red' : 'green']">{{getCurrenctData && getCurrenctData.gain > 0 ? getCurrenctData && getCurrenctData.gain : `${getCurrenctData && getCurrenctData.gain}`}}%</text>
 			  <!-- <view class="position_record">
 				   <text class="iconfont icon-barrage"></text>
 				   <text>{{getLangs('allRecord')}}</text>
@@ -75,12 +75,12 @@
 						   </view>
 						   <view class="table_bd">
 							   <view class="tr" v-for="(items, index) in getCurrenctData && getCurrenctData.latestPrice && getCurrenctData && getCurrenctData.latestPrice['buy']" :key="index+20">
-							   	<text @tap="selectPrice(items.price)" class="bd red left">{{items.price}}</text>
+							   	<text @tap="selectPrice(items.price)" class="bd green left">{{items.price}}</text>
 							   	<text class="bd right">{{items.amount}}</text>
 							   </view>
 							   <view class="sell"></view>
 							   <view class="tr" v-for="(items, index) in getCurrenctData && getCurrenctData.latestPrice && getCurrenctData.latestPrice['sell']" :key="index+10">
-							   	<text @tap="selectPrice(items.price)" class="bd green left">{{items.price}}</text>
+							   	<text @tap="selectPrice(items.price)" class="bd red left">{{items.price}}</text>
 							   	<text class="bd right">{{items.amount}}</text>
 							   </view>
 						   </view>

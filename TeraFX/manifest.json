@@ -2,8 +2,8 @@
     "name" : "TeraFX",
     "appid" : "__UNI__9D7E189",
     "description" : "",
-    "versionName" : "3.8",
-    "versionCode" : 380,
+    "versionName" : "3.9",
+    "versionCode" : 390,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

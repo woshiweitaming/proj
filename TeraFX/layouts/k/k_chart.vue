@@ -23,8 +23,8 @@
 	 * 配置数据
 	 */
 	const bgColor = "#101C31";//背景
-	const upColor="#1CAD90";//涨颜色
-	const downColor="#CD4E65";//跌颜色
+	const upColor="#CD4E65";//涨颜色
+	const downColor="#1CAD90";//跌颜色
 	// ma  颜色
 	const ma5Color = "#39afe6";
 	const ma10Color = "#da6ee8";

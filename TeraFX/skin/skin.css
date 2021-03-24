@@ -33,24 +33,24 @@ page{
 	margin-bottom: 60upx;
 }
 .red{
-	color: #c12d3b !important;
-}
-.red_box{
-	background: #c12d3b !important;
-}
-.green{
 	color: #27c173 !important;
 }
-.green_box{
-	background: #27c173 !important;;
+.red_box{
+	background: #27c173 !important;
 }
-.red_line{
-	border-bottom: 1px solid #c12d3b;
+.green{
 	color: #c12d3b !important;
 }
-.green_line{
+.green_box{
+	background: #c12d3b !important;;
+}
+.red_line{
 	border-bottom: 1px solid #27c173;
-	color: #27c173!important;
+	color: #27c173 !important;
+}
+.green_line{
+	border-bottom: 1px solid #c12d3b;
+	color: #c12d3b!important;
 }
 
 .get_code{
@@ -79,11 +79,11 @@ page{
 }
 
 .on1{
-	background: #c12d3b !important;
+	background: #27c173 !important;
 	color: #fff;
 }
 .on0{
-	background: #27c173 !important;
+	background: #c12d3b!important;
 	color: #fff;
 }
 
