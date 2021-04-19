@@ -44,7 +44,7 @@
 				</view>
 				<view class="select_drop" v-show="currency.show">
 					<view class="selelct_drop_main" @tap.stop="stopClick">
-						<view @tap="changeDrop(key)" class="select_drop_label" v-for="(items, key) in getAccountList"  :key="key">{{items}}</view>
+						<view @tap="changeDrop(key)" v-show="items !== 'type'" class="select_drop_label" v-for="(items, key) in getAccountList"  :key="key">{{items}}</view>
 					</view>
 				</view>
 			</view>

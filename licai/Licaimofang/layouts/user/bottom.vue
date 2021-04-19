@@ -2,8 +2,8 @@
 	<view class="bottom">
 		<view class="version">{{getLang('user_p10')}}: 1.0.0</view>
 		<view class="links">
-			<view class="labels">{{getLang('user_p11')}}</view>|
-			<view class="labels">{{getLang('user_p12')}}</view>
+			<view class="labels" @click="toPage(6)">{{getLang('user_p11')}}</view>|
+			<view class="labels" @click="toPage(7)">{{getLang('user_p12')}}</view>
 		</view>
 	</view>
 </template>
@@ -13,6 +13,13 @@
 	export default {
 		name: 'MyBottom',
 		mixins: [langMixins],
+		methods: {
+			toPage(type){
+				uni.navigateTo({
+					url: '/pages/desc/index?type='+type
+				})
+			}
+		}
 	}
 </script>
 

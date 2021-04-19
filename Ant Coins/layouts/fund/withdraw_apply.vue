@@ -7,19 +7,19 @@
 					<view class="form_input_bar">
 						<view class="select" @tap.stop="stopClick">
 							<view class="select_label" @tap="currencyStatus = !currencyStatus">
-								<view class="select_name">{{currecyList.length > 0 && currecyList[currencyActive].pname}}</view>
+								<view class="select_name">{{getBalanceCurrency}}</view>
 								<text class="iconfont icon-unfold"></text>
 							</view>
 							<view class="select_drop" v-show="currencyStatus">
 								<view class="selelct_drop_main" @tap.stop="stopClick">
-									<view @tap="changeDrop1(key)" class="select_drop_label" v-for="(items, key) in currecyList"  :key="key">{{items.pname}}</view>
+									<view @tap="changeDrop1(items.type)" class="select_drop_label" v-for="(items, key) in currecyList"  :key="key">{{items.pname}}</view>
 								</view>
 							</view>
 						</view>
 					</view>
 				</view>
 			</view>
-			<view class="form_label">
+			<view class="form_label" v-if="currecyList.length > 0 && currecyList.filter(res => res.type == currencyActive)[0].pname === 'USDT'">
 				<view class="form_label_name">{{getLangs('linkname')}}</view>
 				<view class="form_label_main linked_main">
 					<view class="linked_list">
@@ -39,7 +39,7 @@
 							</view>
 							<view class="select_drop" v-show="show">
 								<view class="selelct_drop_main" @tap.stop="stopClick">
-									<view @tap="changeDrop(items)" class="select_drop_label" v-for="(items, key) in walletList"  :key="key">{{items.address}}</view>
+									<view @tap="changeDrop(items)" class="select_drop_label" v-for="(items, key) in getWalletList"  :key="key">{{items.address}}</view>
 								</view>
 							</view>
 						</view>
@@ -56,14 +56,14 @@
 					<text class="sub">{{getLangs('avaliableUsdt')}}({{getBalanceCurrency}}) : {{getBalanceValue}}</text>
 				</view>
 			</view>
-			<view class="form_label">
+			<!-- <view class="form_label">
 				<view class="form_label_name">{{getLangs('drawithFee')}}</view>
 				<view class="form_label_main">
 					<view class="form_input_bar">
-						<input type="text" class="input_bar fees" :placeholder="getLangs('withdrawalAmount')" :value="getFees" />
+						<input type="text" class="input_bar fees" :disabled="true" :placeholder="getLangs('withdrawalAmount')" :value="getFees" />
 					</view>
 				</view>
-			</view>
+			</view> -->
 			<view class="form_label">
 				<view class="form_label_name">{{getLangs('drawithTips')}}</view>
 				<view class="form_label_main">
@@ -144,7 +144,7 @@
 			 * 全部提现
 			 */
 			all(){
-				this.dollar = this.config.usdt
+				this.dollar = this.getBalanceValue
 			},
 			/**
 			 * 提现
@@ -164,8 +164,14 @@
 				const params = {
 					dollar: this.dollar,
 					qbdizhi: this.qbdizhi,
-					name: this.chainList.filter(res => res.id == this.chainId)[0].name,
-					pid: this.currecyList[this.currencyActive].pid
+					pid: this.currecyList.filter(res => res.type == this.currencyActive)[0].pid
+				}
+				const name = this.currecyList.filter(res => res.type == this.currencyActive)[0].pname
+				if(name === 'USDT'){
+					params.name = this.chainList.filter(res => res.id == this.chainId)[0].name
+				}
+				if(name === 'ETH'){
+					params.name = name
 				}
 				const res = await withdrawal(params)
 				this.backTips(res)
@@ -205,8 +211,10 @@
 				this.config = res.data
 			},
 			async getPayAddListHandler(){
+				uni.showLoading({mask: true})
 				const res = await getPayAddList()
 				this.walletList= res.data
+				uni.hideLoading()
 				if(this.walletList.length === 0){
 					// this.navigateTo('/pages/add_wallet/index')
 					let that = this
@@ -257,9 +265,10 @@
 				const res = await getWithdrawalTypeList()
 				this.currecyList = res.list
 			},
-			changeDrop1(index){
-				this.currencyActive = index
+			changeDrop1(type){
+				this.currencyActive = type
 				this.currencyStatus = false
+				this.dollar = ''
 			}
 		},
 		computed: {
@@ -284,11 +293,21 @@
 			},
 			getBalanceValue(){
 				if (this.currecyList.length === 0) return ''
-				return this.currecyList[this.currencyActive].balance
+				return this.currecyList.filter(res => res.type == this.currencyActive)[0].balance
 			},
 			getBalanceCurrency(){
 				if (this.currecyList.length === 0) return ''
-				return this.currecyList[this.currencyActive].pname
+				return this.currecyList.filter(res => res.type == this.currencyActive)[0].pname
+			},
+			getWalletList(){
+				if(this.walletList.length == 0) {
+					this.qbdizhi = ''
+					return []
+				}
+				const arr = this.walletList.filter(res => res.type == this.currencyActive)
+				if(arr.length == 0) return []
+				this.qbdizhi = arr[0].address
+				return arr
 			},
 			...mapGetters({
 				getCertInfo: 'getCertInfo'
@@ -319,7 +338,7 @@
 <style scoped>
 	.form_class{
 		padding: 20upx;
-		background: #20222c;;
+		background: #20222c;
 	}
 	.form_label{
 		padding-left: 0;

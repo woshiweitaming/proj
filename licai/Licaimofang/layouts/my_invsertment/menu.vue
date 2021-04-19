@@ -25,17 +25,16 @@
 	.menu .labels{
 		line-height: 80upx;
 		color: #aaa;
-		font-size: 26upx
+		font-size: 26upx;
+		width: 33.3333%;
 	}
 	.labels:first-child{
-		width: 50%;
 		padding-left: 20upx;
 	}
 	.labels:nth-child(2){
-		width: 30%;
+		text-align: center;
 	}
 	.labels:last-child{
-		width: 20%;
 		padding-right: 20upx;
 		text-align: right;
 	}

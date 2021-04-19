@@ -2,7 +2,8 @@
  * 状态
  */
 const state = {
-	curLang: 'cn'
+	curLang: 'cn',
+	userInfo: {}
 }
 
 export default state

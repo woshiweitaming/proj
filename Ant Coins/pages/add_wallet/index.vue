@@ -1,12 +1,24 @@
 <template>
 	<view class="wallet_class">
-		<view class="title">{{getLangs('currency')}}</view>
-		<view class="currency_label">USDT</view>
-		<view class="linked_main">
+		<!-- <view class="linked_main">
 			<view class="name">{{getLangs('linkname')}}</view>
 			<view class="linked_list">
 				<view @tap="changeChain(items)" :class="['linked_label', chainname === items ? 'on' : '']" v-for="(items, index) in chainList" :key="index">{{items}}</view>
 			</view>
+		</view> -->
+		<view class="linked_main">
+		    <view class="name">{{getLangs('currency')}}</view>
+		    <view class="select" @tap.stop="stopClick">
+		    	<view class="select_label" @tap="show = !show">
+		    		<view class="select_name">{{getPname}}</view>
+		    		<text class="iconfont icon-unfold"></text>
+		    	</view>
+		    	<view class="select_drop" v-show="show">
+		    		<view class="selelct_drop_main" @tap.stop="stopClick">
+		    			<view @tap="changeDrop(items.type)" class="select_drop_label" v-for="(items, key) in typeList"  :key="key">{{items.pname}}</view>
+		    		</view>
+		    	</view>
+		    </view>
 		</view>
 		<view class="linked_main">
 			<view class="name">{{getLangs('walletAddress')}}</view>
@@ -43,7 +55,7 @@
 	import appConfig from '@/config/appConfig.js'
 	import langsMixins from '@/mixins/lang_mixins.js'
 	import commonMixins from '@/mixins/common_mixins.js'
-	import { saveGetPayAdd } from '@/api/user.js'
+	import { saveGetPayAdd, getWithdrawalTypeList  } from '@/api/user.js'
 	import validate from '@/utils/validate.js'
 	export default {
 		name: 'Recharging',
@@ -56,10 +68,26 @@
 				chainname: 'OMINI',
 				address: '',
 				remarks: '',
-				img: ''
+				img: '',
+				type: 0,
+				typeList: [],
+				show: false,
 			}
 		},
 		methods: {
+			openDrop(){
+				this.show = !this.show
+			},
+			changeDrop(index){
+				this.type = index
+				this.show = false
+			},
+			stopClick(e){
+				e.stopPropagation()
+			},
+			eventClick(){
+				this.show = false
+			},
 			/**
 			 * 获取链名称
 			 */
@@ -84,7 +112,7 @@
 			        size: 185,
 			        margin: 10,
 			        backgroundColor: '#ffffff',
-			        foregroundColor: '#000000',
+			        foregroundColor: '#151936',
 			        fileType: 'jpg',
 			        correctLevel: uQRCode.defaults.correctLevel,
 			        success: res => { }
@@ -162,7 +190,8 @@
 				const params = {
 					address: this.address,
 					remarks: this.remarks,
-					chainname: this.chainname
+					chainname: this.chainname,
+					type: this.type
 				}
 				if(typeof this.id != 'undefined'){
 					finalParams = Object.assign(params, {id: this.id})
@@ -175,6 +204,17 @@
 					}, 1500)
 					
 				}
+			},
+			async getWithdrawalTypeListHandler(){
+				const res = await getWithdrawalTypeList()
+				this.typeList = res.list
+			},
+		},
+		computed: {
+			getPname(){
+				if(this.typeList.length === 0) return ''
+				const res = this.typeList.filter(res => res.type == this.type)[0]
+				return res.pname
 			}
 		},
 		onLoad(opt) {
@@ -187,6 +227,7 @@
 		},
 		onShow() {
 			this.setTitle(this.getLangs('addWalletAddress'))
+			this.getWithdrawalTypeListHandler()
 		}
 	}
 </script>
@@ -196,7 +237,7 @@
 		height: 100%;
 		padding: 40upx;
 		border-top: 1px solid rgba(255,255,255,.1);
-		background: #20222c;
+		background: #20222c
 	}
 	.wallet_class .title{
 		font-size: 32upx;
@@ -247,7 +288,7 @@
 	}
 	.recharge_main .btns{
 		font-size: 24upx;
-		background: #4944B3;
+		background: #343a5e;
 		margin-top: 20upx;
 		padding: 10upx;
 		border-radius: 10upx;
@@ -286,7 +327,7 @@
 		left: 0;
 		top: 0;
 		text-align: center;
-		color: #4944B3;
+		color: #343a5e;
 		line-height: 50upx;
 	}
 	.wallet_label .icon .iconfont{
@@ -298,14 +339,14 @@
 	}
 	.wallet_label .value{
 		font-size: 32upx;
-		color: #4944B3
+		color: #343a5e
 	}
 	.qrcode{
 		margin-top: 10px;
 	}
 	.btns{
 		font-size: 24upx;
-		background: #4944B3;
+		background: #343a5e;
 		margin-top: 20upx;
 		padding: 10upx;
 		border-radius: 10upx;
@@ -348,5 +389,8 @@
 	.input_bars .input_bar{
 		font-size: 28upx;
 		font-weight: normal;
+	}
+	.select_drop{
+		z-index: 10000;
 	}
 </style>

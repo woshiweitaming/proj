@@ -1,393 +1,316 @@
-  <template>
-	<view class="exchange_class" @tap="eventClick">
-		<!--账户类型-->
-		<view class="account_type">
+<template>
+	<view class="exchange">
+		<view class="account card">
 			<view class="name">{{getLangs('accountType')}}</view>
-			<view class="select" @tap.stop="stopClick">
-				<view class="select_label" @tap="openDrop('account_drop')">
-					<view class="select_name">{{getLangs(account.accountList[account.active])}}</view>
+			<view class="account_name" @click="show1 = true">
+				<view class="txt">{{getLangs(getCurAccount.name)}}</view>
+				<text class="iconfont icon-unfold"></text>
+			</view>
+		</view>
+		<view class="coin card">
+			<view class="box1">
+				<view class="select" @click="show2 = true">
+					<view class="txt">{{from}}</view>
 					<text class="iconfont icon-unfold"></text>
 				</view>
-				<view class="select_drop" v-show="account.show">
-					<view class="selelct_drop_main" @tap.stop="stopClick">
-						<view @tap="changeAccountDrop('account_drop', index)"class="select_drop_label" v-for="(items, index) in account.accountList" :key="index">{{getLangs(items)}}</view>
-					</view>
+			</view>
+			<view class="box2">
+				<image src="../../static/images/exchange.png" class="icon" mode="widthFix"></image>
+			</view>
+			<view class="box1">
+				<view class="select" @click="show3 = true">
+					<view class="txt">{{to}}</view>
+					<text class="iconfont icon-unfold"></text>
 				</view>
 			</view>
 		</view>
-		<!--币种类型-->
-		<view class="currency_type">
-			<view class="currency">
-				<view class="select" @tap.stop="stopClick">
-					<view class="select_label" @tap="openDrop('currency_out')">
-						<view class="select_name">{{currency_out.outList[currency_out.active]}}</view>
-						<text class="iconfont icon-unfold"></text>
-					</view>
-					<view class="select_drop" v-show="currency_out.show">
-						<view class="selelct_drop_main" @tap.stop="stopClick">
-							<view @tap="changeOutDrop('currency_out', index)"class="select_drop_label" v-for="(items, index) in currency_out.outList"  :key="index">{{items}}</view>
-						</view>
-					</view>
+		<view class="amount card">
+			<view class="exhange_num">{{getLangs('exchangeNum')}}</view>
+			<view class="input_box">
+				<view class="currency">{{from}}</view>
+				<view class="input_bars">
+					<input type="number" class="input_main" v-model="form.num" :placeholder="getLangs('numEmptyTips')"/>
 				</view>
+				<view class="all" @click="all">{{getLangs('all')}}</view>
 			</view>
-			<image src="../../static/images/exchange.png" class="icon"></image>
-			<view class="currency">
-				<view class="select" @tap.stop="stopClick">
-					<view class="select_label" @tap="openDrop('currency_in')">
-						<view class="select_name">{{currency_in.inList[currency_in.active]}}</view>
-						<text class="iconfont icon-unfold"></text>
-					</view>
-					<view class="select_drop" v-show="currency_in.show">
-						<view class="selelct_drop_main" @tap.stop="stopClick">
-							<view @tap="changeInDrop('currency_in', index)"class="select_drop_label" v-for="(items, index) in currency_in.inList"  :key="index">{{items}}</view>
-						</view>
-					</view>
-				</view>
-			</view>
-		</view>
-		<!--交易数量-->
-		<view class="num_class">
-			<text class="exhange_num">{{getLangs('exchangeNum')}}</text>
-			<view class="exchange_input">
-				<view class="currency">{{currency_out.outList[currency_out.active]}}</view>
-				<view class="input_bar">
-					<input type="number" class="input_main" v-model="num" :placeholder="getLangs('numEmptyTips')"/>
-				</view>
-				<view @tap="allChange" class="all">{{getLangs('all')}}</view>
-			</view>
-			<!--各账户余额-->
-			<view class="leftmoney_bar">
+			<view class="info_bar">
 				<view class="labels">
 					<view class="name">{{getLangs('rate')}}</view>
-					<view class="value">{{getRateData}}</view>
+					<view class="value">{{getCurRate}}</view>
 				</view>
 				<view class="labels">
-					<view class="name">{{getLangs('avaliableUsdt')}}{{currency_out.outList[currency_out.active]}}</view>
-					<view class="value">{{getBalance.length > 0 && Number(getBalance[0]).toFixed(6)}}</view>
+					<view class="name">{{getLangs('avaliableUsdt')}}{{from}}</view>
+					<view class="value">{{getBalance}}</view>
 				</view>
 				<view class="labels">
-					<view class="name">{{getLangs('avaliableBtc')}}{{currency_in.inList[currency_in.active]}}</view>
-					<view class="value">{{getAvail}}</view>
+					<view class="name">{{getLangs('avaliableBtc')}}{{to}}</view>
+					<view class="value">{{getValid}}</view>
 				</view>
 			</view>
 		</view>
 		<view class="form_class">
 			<button class="button" @tap="confirmExchangeHandler">{{getLangs('exchange')}}</button>
 		</view>
+		<u-popup v-model="show1" mode="bottom">
+			<view class="title">{{getLangs('accountType')}}</view>
+			<view class="account_labels" @click="selected(curItem.type)" v-for="(curItem, index) in accountList" :key="index">{{getLangs(curItem.name)}}</view>
+		</u-popup>
+		<u-popup v-model="show2" mode="bottom">
+			<view class="account_labels" @click="selected1(curItem)" v-for="(curItem, index) in toList" :key="index">{{curItem}}</view>
+		</u-popup>
+		<u-popup v-model="show3" mode="bottom">
+			<view class="account_labels" @click="selected2(curItem)" v-for="(curItem, index) in fromList" :key="index">{{curItem}}</view>
+		</u-popup>
 	</view>
 </template>
-
 <script>
-	/**
-	 * 兑换
-	 */
-	import { mapMutations, mapGetters } from 'vuex'
-	import commonMixins from '@/mixins/common_mixins.js'
 	import langsMixins from '@/mixins/lang_mixins.js'
 	import { getExchangeRate, confirmExchange } from '@/api/user.js'
-	let timer = null
+	import { getProductId } from '@/api/public.js'
+	import commonMixins from '@/mixins/common_mixins.js'
 	export default {
 		name: 'Exchange',
-		mixins: [commonMixins, langsMixins],
+		mixins: [langsMixins, commonMixins],
 		data(){
 			return {
-				account: {
-					accountList: ['futures', 'contract', 'coin', 'poolp6'],
-					active: 0,
-					show: false
+				show1: false,
+				show2: false,
+				show3: false,
+				btcRate: 0,
+				ethRate: 0,
+				douRate: 0,
+				accountList: [],
+				productList: [],
+				accountType: {
+					0: 'futures', 
+					1: 'contract', 
+					2: 'coin', 
+					3: 'poolp6'
 				},
-				currency_out: {
-					outList: ['BTC', 'ETH', 'USDT', 'ANTC'],
-					active: 1,
-					show: false
+				toList: ['USDT', 'BTC', 'ETH', 'DOU'] ,
+				fromList: ['BTC', 'USDT', 'ETH', 'DOU'],
+				form: {
+					type: 0,
+					inOrOut: 0,//转出usdt还是转入usdt
+					num: '',
 				},
-				currency_in: {
-					inList: ['BTC', 'ETH', 'USDT', 'ANTC'],
-					active: 2,
-					show: false
-				},
-				num: 0
-			 }
+				from: 'USDT',
+				to: 'BTC',
+				timer: null
+			}
 		},
 		methods: {
-			/**
-			 * 获取兑换汇率
-			 */
+			async getProductIdHandler(){
+				const res = await getProductId()
+				this.productList = res.data
+			},
 			async getExchangeRateHandler(){
 				const res = await getExchangeRate()
-				this.setRate(res.data)
+				const that = this
+				this.btcRate = res.data.btcRate
+				this.ethRate = res.data.ethRate
+				this.douRate = res.data.douRate
+			    this.accountList = res.data.balance.map((d, index) => {
+					d.name = that.accountType[d.type]
+					return d
+				})
 			},
-			/**
-			 * 打开下拉
-			 */
-			openDrop(ref){
-				this.eventClick()
-				if(ref == 'account_drop'){
-					this.account.show = !this.account.show	
-				}
-				if(ref == 'currency_out'){
-					this.currency_out.show = !this.currency_out.show	
-				}
-				if(ref == 'currency_in'){
-					this.currency_in.show = !this.currency_in.show	
-				}
+			selected(type){
+				this.form.type = type
+				this.form.num = ''
+				this.show1 = false
 			},
-			/**
-			 * 切换账户
-			 */
-			changeAccountDrop(ref, index){
-				this.num = 0
-				this.account.active = index
-				this.eventClick()
-			},
-			/**
-			 * 切换转出账户
-			 */
-			changeOutDrop(ref, index){
-				this.num = 0
-				this.currency_out.active = index
-				if(this.currency_out.active === 0 || this.currency_out.active == 1 || this.currency_out.active == 3){
-					this.currency_in.active = 2
+			selected1(curItem){
+				this.from = curItem
+				this.form.num = ''
+				if(curItem === 'USDT'){
+					this.to = 'BTC'
 				}else{
-					this.currency_in.active = 0
+					this.to = 'USDT'
 				}
-				this.eventClick()
+				this.show2 = false
 			},
-			/**
-			 * 切换转出账户
-			 */
-			changeInDrop(ref, index){
-				this.num = 0
-				this.currency_in.active = index
-				if(this.currency_in.active === 0 || this.currency_in.active == 1 || this.currency_in.active == 3){
-					this.currency_out.active = 2
+			selected2(curItem){
+				this.to = curItem
+				this.form.num = ''
+				if(curItem === 'USDT'){
+					this.from = 'BTC'
 				}else{
-					this.currency_out.active = 0
+					this.from = 'USDT'
 				}
-				this.eventClick()
+				this.show3 = false
 			},
-			/**
-			 * 全部兑换
-			 */
-			allChange(){
-				this.num = this.getBalance[0]
+			setTimer(){
+				this.timer = setInterval(() => {
+					this.getExchangeRateHandler()
+				}, 1000)
 			},
-			/**
-			 * 确认兑换
-			 */
 			async confirmExchangeHandler(){
-				if(this.num === ''){
+				if(this.form.num.length === 0){
 					return this.$tips.showToast(this.getLangs('numEmptyTips'))
 				}
-				let btype = 0
-				if(this.currency_out.active === 2){
-					btype = this.currency_in.active
+				if(this.from === 'USDT'){
+					this.form.inOrOut = 0
+				}else{
+					this.form.inOrOut = 1
 				}
-				if(this.currency_in.active === 2){
-					btype = this.currency_out.active
+				if(this.from === 'USDT'){
+					this.form.bid = (this.productList.filter(res => res.name == this.to)[0]).id
 				}
-				const bid = this.getWSData.filter(d => d.name == this.currency_out.outList[btype])[0]
-				const params = {
-					type: this.account.active,
-					inOrOut: this.currency_out.active === 2 ? 0 : 1,
-					num: Number(this.num),
-					btype: btype,
-					bid: bid.id
+				if(this.to === 'USDT'){
+					this.form.bid = (this.productList.filter(res => res.name == this.from)[0]).id
 				}
-				const res = await confirmExchange(params)
+				const res = await confirmExchange(this.form)
 				this.backTips(res)
 			},
-			/**
-			 * 定时器
-			 */
-			setTimer(){
-				timer = setInterval(() => {
-					this.getExchangeRateHandler()
-				},3000)
-			},
-			clearTimer(){
-				clearInterval(timer)
-				timer = null
-			},
-			stopClick(e){
-				e.stopPropagation()
-			},
-			eventClick(){
-				this.account.show = false
-				this.currency_in.show = false
-				this.currency_out.show = false
-			},
-			...mapMutations({
-				setRate: 'SET_RATE'
-			})
+			all(){
+				this.form.num = this.getBalance
+			}
 		},
 		computed: {
-			getRateData(){
-				if(this.getRate){
-					const btcRate = this.getRate.btcRate
-					const ethRate =  this.getRate.ethRate
-					const gecRate = this.getRate.antcRate
-					if(this.currency_out.active === 0){
-						return btcRate
-					}
-					if(this.currency_out.active === 1){
-						return ethRate
-					}
-					if(this.currency_out.active === 2){
-						if(this.currency_in.active === 0){
-							return ((1/btcRate).toFixed(7)) 
-						}
-						if(this.currency_in.active === 1){
-							return ((1/ethRate).toFixed(7))
-						}
-						if(this.currency_in.active === 3){
-							return ((1/gecRate).toFixed(7))
-						}
-					}
-					if(this.currency_out.active === 3){
-						return gecRate
-					}
-				}else{
-					return 0
-				}
+			getCurAccount(){
+				const res = this.accountList.filter(res => res.type == this.form.type)
+				return res.length == 0 ? '' : res[0]
 			},
 			getBalance(){
-				if(this.getRate && this.getRate.balance){
-					const leftmoney = this.getRate.balance
-					const currentAccountData = leftmoney.filter(res => res.type === this.account.active)[0]
-					const btc = currentAccountData.btc
-					const eth = currentAccountData.eth
-					const usdt = currentAccountData.usdt
-					const gec = currentAccountData.antc
-					const arr = [btc, eth, usdt, gec]
-					return [arr[this.currency_out.active], arr[this.currency_in.active]]
-				}else{
-					return 0
+				return this.getCurAccount[this.from.toLowerCase()]
+			},
+			getValid(){
+				const res = (this.form.num * this.getCurRate)
+				return res === 0 ? 1 : res.toFixed(6)
+			},
+			getCurRate(){
+				if(this.from === 'BTC') return this.btcRate
+				if(this.from === 'ETH') return this.ethRate
+				if(this.from === 'DOU') return this.douRate
+				if(this.from === 'USDT'){
+					if(this.to === 'BTC'){
+						return (1 / this.btcRate).toFixed(8)
+					}
+					if(this.to === 'ETH'){
+						return (1 / this.ethRate).toFixed(8)
+					}
+					if(this.to === 'DOU'){
+						return (1 / this.douRate).toFixed(8)
+					}
 				}
-			},
-			getAvail(){
-				const res = (Number(this.num) * this.getRateData)
-				const result = res === 0 ? 1 : res
-				return result.toFixed(6)
-			},
-			...mapGetters({
-				getRate: 'getRate',
-				getWSData: 'getWSData'
-			})
+			}
 		},
-		onShow() {
-			this.setTitle(this.getLangs('exchange'))
+		onLoad() {
+			this.getProductIdHandler()
 			this.getExchangeRateHandler()
 			this.setTimer()
 		},
-		onUnload() {
-			this.clearTimer()
+		onHide(){
+			clearInterval(this.timer)
+			this.timer = null
 		}
 	}
 </script>
-
 <style scoped>
-	page{
-		background-color: #111;
-	}
-	.exchange_class{
+	.exchange{
 		padding: 20upx;
+		color: #fff;
 		height: 100%;
+		background: #111;
 	}
-	.account_type,
-	.currency_type,
-	.num_class{
-		padding: 20upx 20upx 20upx 200upx;
-		border-radius: 20upx;
+	.account{
+		padding-left: 200upx !important;
+	}
+	.card{
+		padding: 20upx;
 		background: #20222c;
+		border-radius: 20upx;
+		position: relative;
 		margin-bottom: 20upx;
-		box-sizing: border-box;
-		padding-left: 200upx;
+	}
+	.account .name{
+		width: 200upx;
+		position: absolute;
+		left: 20upx;
+		line-height: 80upx;
+	}
+	.account .account_name{
+		padding: 20upx;
+		background: rgba(255,255,255,.05);
+		position: relative;
+		border-radius: 20upx;
+	}
+	.iconfont{
+		position: absolute;
+		right: 20upx;
+		top: 20upx;
+	}
+	
+	.title{
+		text-align: center;
+		line-height: 80upx;
+		position: relative;
+		color: #aaa;
+		font-weight: bold;
+		background: rgba(0,0,0,.05);
+	}
+	.account_labels{
+		text-align: center;
+		line-height: 120upx;
+		color: #333;
+		border-bottom: 1px solid #f9f9f9;
+	}
+	.coin{
+		display: flex;
+	}
+	.coin .iconfont{
+		top: 0;
+	}
+	.coin .box1{
+		width: 40%;
 		position: relative;
 	}
-	.account_type{
-		z-index: 10;
-	}
-	.account_type .name{
-		width: 160upx;
-		text-align: left;
-		font-size: 32upx;
-		color: #aaa;
-		line-height: 80upx;
-		position: absolute;
-		left: 10px;
-		top: 10px;
-	}
-	.currency_type{
-		padding-left: 20upx;
-		display: flex;
-		justify-content: space-between;
-		z-index: 9;
-	}
-	.num_class{
-		padding-left: 20px;
-	}
-	.currency_type .icon{
-		width: 46upx;
-		height: 46upx;
-		position: absolute;
-		left: 50%;
-		margin-left: -23upx;
-		top: 50%;
-		margin-top: -23upx;
-	}
-	.currency_type .currency{
-		width: 40%;
-	}
-	.num_class .exhange_num{
-		line-height: 80upx;
-		font-size: 32upx;
-		color: #90a2b0;
-	}
-	.num_class .exchange_input{
-		line-height: 100upx;
-		font-size: 50upx;
-		padding: 0 160upx 0 160upx;
-		border-bottom: 1px solid rgba(255,255,255,.1)
-	}
-	.num_class .exchange_input .currency{
-		line-height: 100upx;
-		font-size: 50upx;
-		position: absolute;
-		left: 40upx;
-		color: #fff;
-	}
-	.num_class .exchange_input .input_bar{
-		height: 100upx;
-		font-size: 40upx;
-		box-sizing: border-box;
-		padding-left: 40upx;
-		padding: 30upx 20px;
-		color: #fff;
-	}
-	.num_class .all{
-		position: absolute;
-		right: 20px;
-		color: #007AFF;
-		font-size: 28upx;
-		top: 100upx;
-	}
-	.num_class .leftmoney_bar{
-		display: flex;
-	}
-	.num_class .leftmoney_bar .labels{
-		width: 33.3333%;
+	.coin .box2{
+		width: 20%;
 		text-align: center;
 	}
-	.num_class .leftmoney_bar .name{
-		display: block;
-		line-height: 80upx;
-		font-size: 24upx;
-		color: #90a2b0;
+	.icon{
+		width: 50upx;
+		height: 50upx;
+		padding-top: 10upx;
 	}
-	.num_class .leftmoney_bar .value{
-		display: block;
+	.exhange_num{
+		font-size: 32upx;
+		margin-bottom: 40upx;
+	}
+	.amount{
+		margin-bottom: 40upx;
+	}
+	.amount .input_box{
+		display: flex;
+	}
+	.amount .currency{
+		width: 20%;
+		text-align: left;
+		font-size: 40upx
+	}
+	.amount .input_bars{
+		width: 60%;
+		color: #fff;
+	}
+	.amount .all{
+		width: 20%;
+		text-align: right;
+		color: #007AFF;
+	}
+	.info_bar{
+		width: 100%;
+		display: flex;
+		padding-top: 40upx;
+	}
+	.info_bar .labels{
+		width: 33.3333%;
 		font-size: 24upx;
-		color: #90a2b0;
+		text-align: center;
+		color: rgba(255,255,255,.4);
+	}
+	.info_bar .labels .name{
+		line-height: 60upx;
 	}
 </style>

@@ -763,12 +763,12 @@ page{
 	line-height: 70upx;
 	position: relative;
 	box-sizing: border-box;
-	padding-left: 180upx;
+	padding-left: 280upx;
 }
 .trade_order_info .label .name{
 	position: absolute;
 	left: 0;
-	width: 160upx;
+	width:280upx;
 	text-align: left;
 	color: #242B46;
 }

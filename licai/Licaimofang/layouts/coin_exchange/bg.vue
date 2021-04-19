@@ -1,14 +1,5 @@
 <template>
 	<view class="bg">
-		<u-navbar
-		    back-icon-color="#fff" 
-			:border-bottom="false" 
-			title-color="#fff" 
-			:is-back="true" 
-			:background="{background: 'transparent'}" 
-			:title="getLang('shop_p1')"
-		>
-		</u-navbar>
 	</view>
 </template>
 
@@ -27,7 +18,7 @@
 
 <style scoped>
 	.bg{
-		height: 500upx;
+		height: 100upx;
 		padding-top: var(--status-bar-height);
 		background: #DD4A68;
 		position: relative;

@@ -36,7 +36,7 @@
 					<view class="record_label" v-for="(items, index) in dataList" :key="index">
 						<view class="label_title">
 							<view class="label_name">
-								 {{getLangs('withdrawBtn')}} (USDT)
+								 {{getLangs('withdrawBtn')}} {{items.tcode}}
 								 <text :class="['status','deal'+items.status]">{{toStatus(items.status)}}</text>
 							</view>
 						</view>

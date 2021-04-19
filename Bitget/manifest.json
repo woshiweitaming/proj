@@ -2,8 +2,8 @@
     "name" : "Bitget",
     "appid" : "__UNI__B2520AE",
     "description" : "",
-    "versionName" : "3.7",
-    "versionCode" : 370,
+    "versionName" : "3.8",
+    "versionCode" : 380,
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {

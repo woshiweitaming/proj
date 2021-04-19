@@ -3,13 +3,13 @@
 		<view class="top_bar_img">
 			<view class="greeting">{{getLang('home_p25')+'，'+getLang('appName')}}</view>
 			<view class="nav">
-				<view class="labels" v-for="(curItem, index) in topList" :key="index">
+				<view class="labels" @click="toPage(curItem.path, index)" v-for="(curItem, index) in topList" :key="index">
 					<image :src="curItem.icon" class="icon"></image>
 					<view class="name">{{getLang(curItem.name)}}</view>
 				</view>
 			</view>
 		</view>
-		<view class="float_bar">
+		<view class="float_bar" @click="toPage('/pages/member/index')">
 			<image class="vip" src="/static/images/home/vipicon.png" mode="widthFix"></image>
 			<view class="name">{{getLang('home_p14')}}</view>
 			<view class="enter">{{getLang('home_p15')}}</view>
@@ -47,18 +47,21 @@
 					{
 						name: 'home_p28',
 						icon: '/static/images/home/shortcut/i3.png',
-						path: ''
+						path: '/pages/piggy_bank/index'
 					},
 					{
 						name: 'home_p29',
 						icon: '/static/images/home/shortcut/i4.png',
-						path: ''
+						path: '/pages/invite_friend/index'
 					}
 				]
 			}
 		},
 		methods: {
-			toPage(path){
+			toPage(path, index){
+				if(index === 0){
+					return this.$emit('openDialog')
+				}
 				uni.navigateTo({
 					url: path
 				})

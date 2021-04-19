@@ -45,7 +45,7 @@
 				this.navigateTo('/pages/coin_pool_buy/index?fid='+fid)
 			},
 			formatNumber(num) {
-			    return num >= 1e3 && num < 1e4 ? (num / 1e3).toFixed(0) + 'k' : num >= 1e4 ? (num / 1e4).toFixed(0) + 'w' : num
+			    return num > 1000 ? num / 1000 + 'k' : num
 			}
 		},
 		computed: {

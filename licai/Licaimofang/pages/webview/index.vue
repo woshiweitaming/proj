@@ -5,10 +5,13 @@
 <script>
 	export default {
 		name: 'Webview',
-		props: {
-			url: {
-				type: String,
+		data(){
+			return {
+				url: ''
 			}
+		},
+		onLoad(opt) {
+			this.url = opt.url
 		}
 	}
 </script>

@@ -1,15 +1,15 @@
 <template>
 	<view class="result">
-		<view class="line" @click="toPage" v-for="(curItem, index) in dataList" :key="index">
+		<view class="line" @click="toPage(curItem)" v-for="(curItem, index) in dataList" :key="index">
 			<view class="labels">
-				<view class="name">{{curItem.name}}</view>
-				<view class="number">{{curItem.number}}</view>
+				<view class="name">{{curItem.pro_name}}</view>
+				<view class="number">{{curItem.ExpectedReturn}}</view>
 			</view>
 			<view class="labels">
-				<view class="money">{{formatNum(curItem.money)}}</view>
+				<view class="money">{{formatNum(curItem.amount.toString())}}</view>
 			</view>
 			<view class="labels">
-				<view class="status">{{curItem.status}}</view>
+				<view class="status">{{curItem.status == 0 ? getLang('my_investment_p5') : getLang('my_investment_p6')}}</view>
 			</view>
 		</view>
 	</view>
@@ -19,24 +19,8 @@
 	import langMixins from '@/mixins/lang_mixins.js'
 	export default {
 		name: 'Result',
-		data(){
-			return {
-				dataList: [
-					{
-						name: '项目项目项目',
-						number: 123042,
-						money: '1000000',
-						status: '已完成'
-					},
-					{
-						name: '项目项目项目项目项目项目项目项目项目项目项目项目',
-						number: 123042,
-						money: '1000000',
-						status: '已完成'
-					}
-				]
-			}
-		},
+		props: ['dataList'],
+		mixins: [langMixins],
 		methods: {
 			formatNum(str){
 			    let newStr = "";
@@ -64,9 +48,24 @@
 			    }
 				return newStr
 			},
-			toPage(){
+			convertObj(data) {
+			    let _result = [];
+			    for (let key in data) {
+			      let value = data[key];
+			      if (value.constructor == Array) {
+			        value.forEach((_value) => {
+			          _result.push(key + "=" + _value);
+			        });
+			      } else {
+			        _result.push(key + '=' + value);
+			      }
+			    }
+			    return _result.join('&');
+			},
+			toPage(json){
+				const urlParams = this.convertObj(json)
 				uni.navigateTo({
-					url: '/pages/investment_detail/index'
+					url: '/pages/investment_detail/index?'+urlParams
 				})
 			}
 		}
@@ -82,17 +81,16 @@
 		display: flex;
 	}
 	.result .labels{
+		width: 33.3333%;
 		padding: 20upx;
 	}
 	.result .labels:first-child{
-		width: 50%;
 		padding-left: 20upx;
 	}
 	.result .labels:nth-child(2){
-		width: 30%;
+		text-align: center;
 	}
 	.result .labels:last-child{
-		width: 20%;
 		padding-right: 20upx;
 		text-align: right;
 	}

@@ -2,8 +2,8 @@
  * 应用配置
  */
 const appConfig = {
-	domain: 'http://180.178.39.226:8080',
-	wsDomain: 'ws://180.178.39.226:8080',
+	domain: 'http://180.178.39.226:9999',
+	privateKey: 'licaimofang_',
 	tabbar: [
 		{
 			text: 'home',

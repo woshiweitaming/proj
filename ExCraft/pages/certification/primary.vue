@@ -34,6 +34,14 @@
 					</view>
 				</view>
 			</view>
+			<view class="form_label">
+				<view class="form_label_name"><text class="iconfont icon-mail"></text></view>
+				<view class="form_label_main">
+					<view class="form_input_bar">
+						<input type="text" class="input_bar" :placeholder="getLangs('email')" v-model="form.email" />
+					</view>
+				</view>
+			</view>
 			<view @tap="checkInhHandler" class="button">{{getLangs('submit')}}</view>
 		</view>
 	</view>
@@ -58,6 +66,7 @@
 					name: '',
 					idcard: '',
 					adds: '',
+					email: ''
 				},
 				countryList: country,
 				show: false
@@ -76,6 +85,9 @@
 				}
 				if(this.form.adds.length == 0){
 					return this.$tips.showToast(this.getLangs('addressTips')) 
+				}
+				if(this.form.email.length == 0){
+					return this.$tips.showToast(this.getLangs('email')) 
 				}
 				const res = await checkCertInfo(this.form)
 				this.backTips(res)

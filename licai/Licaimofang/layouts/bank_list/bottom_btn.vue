@@ -21,7 +21,12 @@
 
 <style scoped>
 	.btns{
-		margin-top: 20upx;
+		width: 50%;
+		position: fixed;
+		bottom: 20upx;
+		left: 50%;
+		margin-left: -25%;
+		right: 20upx;
 	}
 </style>
 

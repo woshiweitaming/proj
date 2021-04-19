@@ -26,7 +26,7 @@
 						<view class="expire_name">{{getLangs('expireDate')}}</view>
 						<view class="expire_date_wrap">
 							<view @tap="changeExpireDate(index)" :class="['swiper_item', index === selected ? 'on' : '']" v-for="(items, index) in dataList" :key="index">
-								<view class="seconds">{{toSecond(items[0])}}<text class="s">{{items[0] > 999 ? getLangs('hour') : getLangs('second')}}</text></view>
+								<view class="seconds">{{toSecond(items[0])}}<text class="s">{{getText(items[0])}}</text></view>
 								<view class="profit">{{items[1] && items[1]}}%</view>
 							</view>
 						</view>
@@ -189,8 +189,16 @@
 				timer = null
 			},
 			toSecond(value){
-				if(Number(value) > 999){
-					return Math.ceil(Number(value)/3600)
+				const val = Number(value)
+				// if(Number(value) > 999){
+				// 	return Math.ceil(Number(value)/3600)
+				// }
+				if (val >= 86400){
+				   return  Math.ceil(val / 86400)
+				}else if (val >= 3600){
+				   return  Math.ceil(val / 3600)
+				}else if (val >= 60){
+				   return  Math.ceil(val / 60)
 				}
 				return value
 			},
@@ -218,6 +226,18 @@
 					return this.getAccountBanlance.filter(res => res.type == 0)[0]['USDT']['usable']
 				}
 				return 0
+			},
+			getText(){
+				return (val) => {
+					if (val >= 86400){
+					   return 'day'
+					}else if (val >= 3600){
+					   return  'hour'
+					}else if (val >= 60){
+					   return 'min'
+					}
+					return 'sec'
+				}
 			},
 			...mapGetters({
 				getWSData: 'getWSData'

@@ -1,26 +1,26 @@
 <template>
 	<view class="info">
 		<view class="summary">
-			<view class="name">{{data.name}}</view>
-			<view class="money">{{data.money.toFixed(2)}}{{getLang('investment_detail_p10')}}</view>
-			<view class="status">{{data.status}}</view>
+			<view class="name">{{opt.pro_name}}</view>
+			<view class="money">{{opt.amount.toString()}}{{getLang('investment_detail_p10')}}</view>
+			<view class="status">{{opt.status == 0 ? getLang('my_investment_p5') : getLang('my_investment_p6')}}</view>
 		</view>
 		<view class="details">
 			<view class="labels">
 				<view class="name">{{getLang('investment_detail_p2')}}</view>
-				<view class="value profit">3.92{{getLang('investment_detail_p10')}}</view>
+				<view class="value profit">{{opt.ExpectedReturn}}{{getLang('investment_detail_p10')}}</view>
 			</view>
 			<view class="labels">
 				<view class="name">{{getLang('investment_detail_p3')}}</view>
-				<view class="value">2020-03-08</view>
+				<view class="value">{{opt.add_time}}</view>
 			</view>
 			<view class="labels">
 				<view class="name">{{getLang('investment_detail_p4')}}</view>
-				<view class="value">2020-03-10</view>
+				<view class="value">{{opt.end_time}}</view>
 			</view>
 			<view class="labels">
 				<view class="name">{{getLang('investment_detail_p5')}}</view>
-				<view class="value">每日返息,到期还本</view>
+				<view class="value">{{getLang('investment_detail_p11')}}</view>
 			</view>
 		</view>
 	</view>
@@ -31,15 +31,7 @@
 	export default {
 		name: 'Info',
 		mixins: [langMixins],
-		data(){
-			return {
-				data: {
-					name: '新手转享福利',
-					money: 800,
-					status: '已完成'
-				}
-			}
-		}
+		props: ['opt'],
 	}
 </script>
 

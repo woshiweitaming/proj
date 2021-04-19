@@ -1,13 +1,7 @@
 <template>
 	<view class="bottom_bar">
-		<view class="labels labels1">
-			<view class="border btn">
-				<image src="../../static/images/share/wj.png" class="icon" mode="widthFix"></image>
-			    <text class="name">{{getLang('product_p33')}}</text>
-			</view>
-		</view>
-		<view class="labels labels2">
-			<view class="bg btn">{{getLang('product_p34')}}</view>
+		<view class="labels">
+			<view class="bg btn" @click="toPage">{{getLang('product_p34')}}</view>
 		</view>
 	</view>
 </template>
@@ -16,7 +10,12 @@
 	import langMixins from '@/mixins/lang_mixins.js'
 	export default {
 		name: 'BottomBar',
-		mixins: [langMixins]
+		mixins: [langMixins],
+		methods: {
+			toPage(){
+				this.$emit('callback')
+			}
+		}
 	}
 </script>
 
@@ -33,18 +32,16 @@
 		display: flex;
 	}
 	.bottom_bar .labels{
+		width: 100%;
 		padding: 0 20upx;
 		text-align: center;
-	}
-	.bottom_bar .labels1{
-		width: 30%;
 	}
 	.bottom_bar .labels2{
 		width: 70%;
 	}
 	.bottom_bar .btn{
 		line-height: 80upx;
-		border-radius: 20upx;
+		border-radius: 10upx;
 		box-sizing: border-box;
 		font-weight: bold;
 	}

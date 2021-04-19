@@ -1,12 +1,12 @@
 <template>
 	<view class="goods">
-		<view class="title">{{getLang('shop_p6')}}</view>
 		<view class="goods_list">
 			<view class="goods_labels" v-for="(curItem, index) in dataList" :key="index">
-				<view class="goods_items">
-					<image class="img"></image>
+				<view class="goods_items" @click="toPage(curItem)">
+					<image class="img">{{curItem.logo}}</image>
 					<view class="name">{{curItem.name}}</view>
-					<view class="coin">{{curItem.coin}}{{getLang('shop_p7')}}</view>
+					<view class="coin">{{curItem.jifen}}{{getLang('shop_p7')}}</view>
+					<view class="left_nums">{{getLang('shop_p8')}}{{curItem.surplus}}</view>
 				</view>
 			</view>
 		</view>
@@ -18,30 +18,20 @@
 	export default {
 		name: 'Goods',
 		mixins: [langMixins],
-		data(){
-			return {
-				dataList: [
-					{
-						name: '商品1',
-						coin: 10000
-					},
-					{
-						name: '商品2发送到发多少发送到发送',
-						coin: 10000
-					},
-					{
-						name: '商品3',
-						coin: 10000
-					}
-				]
+		props: ['dataList'],
+		methods: {
+			toPage(){
+				uni.navigateTo({
+					url: '/pages/goods/index'
+				})
 			}
-		}
+		},
+
 	}
 </script>
 
 <style scoped>
 	.goods{
-		margin-top: -140upx;
 		padding: 20upx;
 		background: #fff;
 	}
@@ -64,6 +54,7 @@
 		border: 1px solid #f9f9f9;
 		border-radius: 20upx;
 		box-shadow: 0 0 20upx 0 rgba(0,0,0,.05);
+		position: relative;
 	}
 	.img{
 		width: 100%;
@@ -83,5 +74,15 @@
 		color: #F0AD4E;
 		padding-bottom: 20upx;
 		font-size: 26upx
+	}
+	.left_nums{
+		position: absolute;
+		right: 0;
+		top: 0;
+		border-radius: 0 20upx 0 0;
+		padding: 8upx;
+		background: rgba(0,0,0,.2);
+		color: #fff;
+		font-size: 24upx
 	}
 </style>

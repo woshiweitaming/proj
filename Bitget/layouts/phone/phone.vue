@@ -22,7 +22,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="form_label">
+		<!-- <view class="form_label">
 			<view class="form_label_name"><text class="iconfont icon-shake"></text></view>
 			<view class="form_label_main">
 				<view class="form_input_bar vcode">
@@ -30,7 +30,7 @@
 					<view class="get_code" @click="getMessageCode">{{getVcodeText}}</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 

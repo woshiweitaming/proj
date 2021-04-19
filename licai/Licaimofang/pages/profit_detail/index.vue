@@ -15,7 +15,7 @@
 		},
 		onLoad() {
 			uni.setNavigationBarTitle({
-				title: this.getLang('profit_p1')
+				title: this.getLang('profit_p1') 
 			})
 		}
 	}

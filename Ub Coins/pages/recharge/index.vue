@@ -4,9 +4,30 @@
 			<view class="title">{{getLangs('rechargeChannel')}}</view>
 			<view class="recharge_lists">
 				<view @tap="payHandler(items.id)" :class="['recharge_list', items.id === id ? 'on' : '']" v-for="(items, index) in rechargeList" :key="index">
-					{{items.name}}
+					<image mode="widthFix" class="icons" :src="`../../static/images/recharge/p/${items.id}.png`"></image>
+					<text class="names">{{items.name}}</text>
 					<image class="icon" src="../../static/images/right_arrow.png"></image>
 				</view>
+			</view>
+		</view>
+		<view class="recharge_box recharge_box1">
+			<view class="recharge_list">
+				<image @click="toUrl('https://www.kraken.com/')" class="icon" src="/static/images/recharge/1.png"></image>
+			</view>
+			<view class="recharge_list">
+				<image @click="toUrl('https://www.binance.com/')" class="icon" src="/static/images/recharge/2.png"></image>
+			</view>
+			<view class="recharge_list">
+				<image @click="toUrl('https://localbitcoins.com/')" class="icon" src="/static/images/recharge/3.png"></image>
+			</view>
+			<view class="recharge_list">
+				<image @click="toUrl('https://www.huobi.com/')" class="icon" src="/static/images/recharge/4.png"></image>
+			</view>
+			<view class="recharge_list">
+				<image @click="toUrl('https://www.coinbase.com/')" class="icon" src="/static/images/recharge/5.png"></image>
+			</view>
+			<view class="recharge_list">
+				<image @click="toUrl('https://www.bitopro.com/')" class="icon" src="/static/images/recharge/6.png"></image>
 			</view>
 		</view>
 		<!-- <view class="recharge_input_main">
@@ -80,10 +101,7 @@
 			 * 充值
 			 */
 			async payHandler(id){
-				// if(this.amount === ''){
-				// 	return this.$tips.showToast(this.getLangs('rechargeLimit'))
-				// }
-				//客服充值
+				///客服充值
 				if(id == 1){
 					return this.kefuRecharge()
 				}
@@ -92,16 +110,6 @@
 					name: this.rechargeList.filter(res => res.id == id)[0].name
 				}
 				this.navigateTo('/pages/recharging/index', params)
-				// const res = await pay(params)
-				// this.backTips(res)
-				// if(validate.checkCode(res)){
-				// 	this.getRechargeRecord()
-				// 	const urlParams = {
-				// 		amount: this.amount,
-				// 		orderno: res.data.orderno
-				// 	}
-				// 	this.navigateTo('/pages/recharging/index', urlParams)
-				// }
 			},
 			/**
 			 * 获取充值记录
@@ -150,6 +158,12 @@
 						//this.amount = val.substring(0, val.length-1)
 					}
 				},20)
+			},
+			toUrl(path){
+				// #ifdef H5
+				return window.open(path)
+				// #endif
+				return plus.runtime.openURL(path)
 			}
 		},
 		onShow() {
@@ -162,7 +176,7 @@
 	.recharge_box{
 		width: 100%;
 		background: #fff;
-		margin: 60% auto 0 auto;
+		margin: 30% auto 0 auto;
 		border-radius: 20upx;
 		padding-bottom: 10upx;
 	}
@@ -186,6 +200,18 @@
 		right: 20upx;
 		width: 40upx;
 		height: 40upx;
+	}
+	.recharge_box1{
+		margin-top: 20upx;
+		background: none;
+	}
+	.recharge_box1 .recharge_list{
+		border-bottom: none;
+		padding: 0;
+	}
+	.recharge_box1 .icon{
+		width: 100%;
+		height: 100upx;
 	}
 </style>
 <style scoped>
@@ -263,5 +289,14 @@
 	}
 	.table_class{
 		margin-top: 40upx;
+	}
+	.icons{
+		width: 40upx;
+		height: 40upx;
+	}
+	.names{
+		line-height: 40upx;
+		vertical-align: top;
+		margin-left: 20upx;
 	}
 </style>

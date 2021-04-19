@@ -25,7 +25,7 @@ page{
 }
 
 .product{
-	padding: 10upx 20upx 20upx;
+	padding: 20upx;
 }
 .product_label{
 	padding: 20upx;
@@ -34,6 +34,7 @@ page{
 	border-radius: 20upx;
 	position: relative;
 	box-shadow: 0 0 10px 0 rgba(0,0,0,.1);
+	position: relative;
 }
 .product_label .sub{
 	padding-left: 10upx;
@@ -46,4 +47,95 @@ page{
 }
 .product_label .tag .u-tag{
 	margin-right: 5px;
+}
+
+.form_wrap{
+	padding: 40upx;
+}
+.form_wrap .form_label{
+	margin-bottom: 40upx;
+}
+.form_wrap .form_input_bar{
+	background: #fff;
+	border: 1px solid #eee;
+	border-radius: 20upx;
+}
+.form_wrap .form_input_bar .input_bar{
+	line-height: 80upx;
+	height: 80upx;
+	padding-left: 20upx;
+	font-size: 28upx
+}
+.form_wrap .btns{
+	text-align: center;
+	line-height: 80upx;
+	background: #0077FF;
+	border-radius: 40upx;
+	color: #fff;
+}
+
+.record_main{
+	padding: 20upx;
+}
+
+.record_main .record_label{
+	background: #fff;
+	box-shadow:  0 0 10upx 0 rgba(0,0,0,.1);
+	padding: 10upx;
+	border-radius: 20upx;
+	margin-bottom: 20upx;
+}
+
+.record_main .record_label .no{
+	font-weight: bold;
+	font-size: 26upx;
+	line-height: 60upx;
+	color: #000;
+}
+.record_main .record_info{
+	display: flex;
+	flex-wrap: wrap;
+}
+.record_main .record_info .box{
+	width: 50%;
+	margin-bottom: 20upx;
+	font-size: 24upx;
+	text-align: center;
+}
+.record_main .record_info .box .name{
+	color: #aaa;
+}
+.record_main .record_info .box .value{
+	line-height: 60upx;
+	font-size: 28upx
+}
+
+.forms{
+	padding: 0;
+}
+.forms .labels{
+	min-height: 80upx;
+	display: flex;
+	background: #fff;
+	flex-wrap: wrap;
+	padding-bottom: 20upx;
+}
+.forms .labels .name{
+	text-align: left;
+	width: 30%;
+	font-size: 28upx;
+	line-height: 80upx;
+	color: #666;
+	padding-left: 20upx;
+}
+.forms .labels .input_bar{
+	width: 70%;
+	padding-left: 20upx;
+}
+.forms .labels .input_bar .input{
+	background: none;
+	height: 80upx;
+	line-height: 80upx;
+	font-size: 28upx;
+	border-bottom: 1px solid #eee;
 }

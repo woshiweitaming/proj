@@ -1,0 +1,24 @@
+/**
+ * 页面级皮肤
+ */
+.page_bg{
+	background: #f9f9f9;
+}
+
+.buttons{
+	background: #007AFF;
+	color: #fff;
+}
+
+.card{
+	background: #fff;
+}
+
+.tips{
+	color: #DD524D;
+}
+
+.input_bar{
+	background: rgba(255,255,255,.1);
+	color: #333;
+}

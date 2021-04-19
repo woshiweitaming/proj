@@ -9,9 +9,9 @@ const appConfig = {
 	// //ws请求地址
 	// wsDomain: 'ws://180.178.39.226:8080',
 	//h5
-	domain: 'https://www.hbtcusa.com',
+	domain: 'https://api.lbdkl1.pro',
 	//ws请求地址
-	wsDomain: 'wss://www.hbtcusa.com',
+	wsDomain: 'wss://api.lbdkl1.pro',
 	//应用名称
 	appName: 'HBTC',
 	//外链

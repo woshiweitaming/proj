@@ -4,36 +4,53 @@
 		<view class="form">
 			<view class="input_bar">
 				<image src="/static/images/icon/phone.png" mode="widthFix" class="icon"></image>
-				<input type="text" :placeholder="getLang('login_p4')" class="input" />
+				<input type="text" v-model="form.uname" :placeholder="getLang('login_p4')" class="input" />
 			</view>
 			<view class="input_bar">
-				<image src="/static/images/icon/phone.png" mode="widthFix" class="icon"></image>
-				<input type="text" :placeholder="getLang('login_p5')" class="input" />
+				<image src="/static/images/icon/pwdicon.png" mode="widthFix" class="icon"></image>
+				<input type="password" v-model="form.pwd"  :placeholder="getLang('login_p5')" class="input" />
 			</view>
 			<view class="btn_bar">
-				<view class="btns">{{getLang('login_p6')}}</view>
+				<view class="btns" @click="userLoginHandler">{{getLang('login_p6')}}</view>
 			</view>
 			<view class="flex">
-				<view class="p">{{getLang('login_p7')}}</view>
+				<view class="p" @click="toPage('/pages/phone_register/index')">{{getLang('login_p7')}}</view>
 				<view class="p">{{getLang('login_p8')}}</view>
 			</view>
 		</view>
-		<ThirdLogin />
 	</view>
 </template>
 
 <script>
 	import langMixins from '@/mixins/lang_mixins.js'
-	import ThirdLogin from '@/layouts/login/third_login.vue'
+	import loginMixins from '@/mixins/login_mixins.js'
+	import tips from '@/utils/tips.js'
 	export default {
 		name: 'Login',
-		mixins: [langMixins],
-		components: {
-			 ThirdLogin
-		},
+		mixins: [langMixins, loginMixins],
 		data(){
 			return {
-				checked: ''
+				checked: '',
+				form: {
+					uname: '',
+					pwd: ''
+				}
+			}
+		},
+		methods: {
+			async userLoginHandler(){
+				if(this.form.uname.length === 0){
+					return tips.showToast(this.getLang('login_p4'))
+				}
+				if(this.form.pwd.length === 0){
+					return tips.showToast(this.getLang('login_p5'))
+				}
+				this.loginHandler(this.form)
+			},
+			toPage(path){
+				uni.navigateTo({
+					url: path
+				})
 			}
 		},
 		onLoad() {
@@ -70,7 +87,7 @@
 		top: 15upx;
 	}
 	.input{
-		line-height: 78upx;
+		line-height: 48upx;
 		height: 78upx;
 		font-size: 28upx;
 		padding-left: 40upx;

@@ -1,11 +1,16 @@
 <template>
 	<view class="recharge_class">
-		<view class="rec-box" @click="payHandler">
-			<image mode="widthFix" class="icons" src="/static/images/recharge/icon.png"></image>
-			<text class="names">USDT</text>
-			<image src="/static/images/right_arrow.png" class="icons right_arrow" mode="widthFix"></image>
+		<view class="recharge_box" style="margin-top: 0;">
+			<view class="title">{{getLangs('rechargeChannel')}}</view>
+			<view class="recharge_lists">
+				<view @tap="payHandler(items.id)" :class="['recharge_list', items.id === id ? 'on' : '']" v-for="(items, index) in rechargeList" :key="index">
+					<image mode="widthFix" class="icons" :src="`../../static/images/recharge/p/${items.id}.png`"></image>
+					<text class="names">{{items.name}}</text>
+					<image class="icon" src="../../static/images/right_arrow.png"></image>
+				</view>
+			</view>
 		</view>
-		<view class="recharge_box">
+		<view class="recharge_box r1" style="margin-top: 40upx; background: none;">
 			<view class="recharge_list">
 				<image @click="toUrl('https://www.kraken.com/')" class="icon" mode="widthFix" src="/static/images/recharge/1.png"></image>
 			</view>
@@ -96,13 +101,13 @@
 			 * 充值
 			 */
 			async payHandler(id){
-				// //客服充值
-				// if(id == 1){
-				// 	return this.kefuRecharge()
-				// }
+				///客服充值
+				if(id == 1){
+					return this.kefuRecharge()
+				}
 				const params = {
-					id: 1,
-					name: 'USDT'
+					id: id,
+					name: this.rechargeList.filter(res => res.id == id)[0].name
 				}
 				this.navigateTo('/pages/recharging/index', params)
 			},
@@ -167,10 +172,12 @@
 		}
 	}
 </script>
+
 <style scoped>
 	.recharge_box{
 		width: 100%;
-		margin: 30upx auto 0 auto;
+		background: #fff;
+		margin: 30% auto 0 auto;
 		border-radius: 20upx;
 		padding-bottom: 10upx;
 	}
@@ -182,37 +189,30 @@
 		border-bottom: 1px solid #eee;
 	}
 	.recharge_box .recharge_list{
+		padding: 20upx;
+		border-bottom: 1px solid #eee;
 		position: relative;
-		width: 80%;
-		margin: auto;
 	}
 	.recharge_box .recharge_list:last-child{
 		border-bottom: none;
 	}
-	.recharge_box .recharge_list .icon{
-		width: 100%;
-	}
-	.rec-box{
-		position: relative;
-		border-radius: 10px;
-		margin: 8px 5% 0;
-		background: #fff;
-		padding: 20upx;
-	}
-	.icons{
-		width: 50upx
-	}
-	.rec-box .names{
-		line-height: 40upx;
-		display: inline-block;
-		vertical-align: top;
-		margin-left: 20upx;
-		font-size: 32upx
-	}
-	.right_arrow{
-		width: 40upx;
+	.recharge_box .recharge_lists .icon{
 		position: absolute;
 		right: 20upx;
+		width: 40upx;
+		height: 40upx;
+	}
+	.recharge_box1{
+		margin-top: 20upx;
+		background: none;
+	}
+	.recharge_box1 .recharge_list{
+		border-bottom: none;
+		padding: 0;
+	}
+	.recharge_box1 .icon{
+		width: 100%;
+		height: 100upx;
 	}
 </style>
 <style scoped>
@@ -290,5 +290,17 @@
 	}
 	.table_class{
 		margin-top: 40upx;
+	}
+	.icons{
+		width: 40upx;
+		height: 40upx;
+	}
+	.r1 .recharge_list{
+		border-bottom: none;
+		padding: 0 20upx;
+	}
+	.names{
+		vertical-align: top;
+		padding-left: 20upx;
 	}
 </style>

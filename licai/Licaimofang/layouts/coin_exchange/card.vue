@@ -1,8 +1,5 @@
 <template>
 	<view class="card">
-		<view class="notice">
-			<u-notice-bar mode="vertical" color="#fff" type="none" :list="noticeList"></u-notice-bar>
-		</view>
 		<view class="main">
 			<view class="box">
 				<view class="labels">{{getLang('shop_p2')}}</view>
@@ -40,13 +37,11 @@
 		padding: 20upx;
 		width: 100%;
 		position: relative;
-		top: -150upx;
-		left: 0;
 	}
 	.card .main{
 		padding: 20upx;
 		background: #fff;
-		border-radius: 0 0 40upx 40upx;
+		border-radius: 40upx;
 		box-shadow: 0 0 20upx 0 rgba(0,0,0,.05);
 		display: flex;
 	}

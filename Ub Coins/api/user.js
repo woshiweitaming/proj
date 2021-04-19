@@ -571,3 +571,11 @@ export const getWithdrawalTypeList = (data = {}) => {
 		data
 	})
 }
+
+export const getProductId = (data = {}) => {
+	return request({
+		url: '/user/getProductId',
+		method: 'get',
+		data
+	})
+}

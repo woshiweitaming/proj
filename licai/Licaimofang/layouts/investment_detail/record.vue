@@ -9,10 +9,12 @@
 				<view class="td td2">{{getLang('investment_detail_p9')}}</view>
 			</view>
 			<view class="tbody">
-				<view class="td td1">1</view>
-				<view class="td td2">12,511,12</view>
-				<view class="td td2">12,511,12</view>
-				<view class="td td2 date">2020-03-08</view>
+				<view class="tr" v-for="(curItem, index) in dataList" :key="index">
+					<view class="td td1">{{(index+1)}}</view>
+					<view class="td td2">{{curItem.principal}}</view>
+					<view class="td td2">{{curItem.amount}}</view>
+					<view class="td td2 date">{{curItem.ctime}}</view>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -22,7 +24,8 @@
 	import langMixins from '@/mixins/lang_mixins.js'
 	export default {
 		name: 'Record',
-		mixins: [langMixins]
+		mixins: [langMixins],
+		props: ['dataList']
 	}
 </script>
 

@@ -17,7 +17,7 @@
 	/**
 	 * 上传证件
 	 */
-	import { mapMutations } from 'vuex'
+	import { mapMutations, mapGetters } from 'vuex'
 	import appConfig from '@/config/appConfig.js'
 	import commonMixins from '@/mixins/common_mixins.js'
 	import langsMixins from '@/mixins/lang_mixins.js'
@@ -63,6 +63,27 @@
 				const token = this.$storage.getLocalData('token')
 				let url = `${appConfig.domain}/user/uploadIdImg/${(index+1)}`
 				let name = `${(index+1)}`
+				let ens = ''
+				switch (this.getGlobalLang) {
+					case 'cn' :
+					    ens = 0
+						break;
+					case 'en' :
+					    ens = 1
+						break;
+					case 'ja' :
+					    ens = 2
+						break;
+					case 'ko' :
+					    ens = 3
+						break;
+					case 'cns' :
+					    ens = 4
+						break;
+					case 'vi' :
+					    ens = 5
+						break;
+				}
 				// #ifdef H5
 				return uni.chooseImage({
 				    success: (chooseImageRes) => {
@@ -71,6 +92,7 @@
 						    url: url,
 							header: {
 								'token': token,
+								ens: ens
 							},
 							name: 'f',
 							filePath: tempFilePaths[0],
@@ -103,6 +125,7 @@
 								    url: url,
 									header: {
 										'token': token,
+										ens: ens
 									},
 									name: 'f',
 									filePath: file,
@@ -124,6 +147,7 @@
 							            url: url,
 							        	header: {
 							        		'token': token,
+											ens: ens
 							        	},
 							        	name: 'f',
 							        	filePath: file,
@@ -160,6 +184,11 @@
 			},
 			...mapMutations({
 				setAdvancedCertCurrent: 'SET_ADVANCED_CERT_CURRENT'
+			})
+		},
+		computed: {
+			...mapGetters({
+				getGlobalLang: 'getGlobalLang'
 			})
 		}
 	}

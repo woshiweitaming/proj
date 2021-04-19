@@ -67,13 +67,13 @@ const validateMixins = {
 				this.$tips.showToast(this.getLangs('phoneEmptyTips'))
 				return false
 			}
-			if(vcode === ''){
-				this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
-				return false
-			}
+			// if(vcode === ''){
+			// 	this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
+			// 	return false
+			// }
 			const params = {
 				phone: phone,
-				vcode: vcode,
+				// vcode: vcode,
 				qh: qh
 			}
 			return params
@@ -88,13 +88,13 @@ const validateMixins = {
 		    	this.$tips.showToast(this.getLangs('emailEmptyTips'))
 		    	return false
 		    }
-		    if(vcode === ''){
-		    	this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
-		    	return false
-		    }
+		    // if(vcode === ''){
+		    // 	this.$tips.showToast(this.getLangs('validCodeEmptyTips'))
+		    // 	return false
+		    // }
 		    const emailParams = {
 		    	email: email,
-		    	vcode: vcode,
+		    	// vcode: vcode,
 		    }
 			return emailParams
 		}

@@ -5,7 +5,7 @@
 			<view class="labels" v-else v-for="(items, index) in dataList" :key="index">
 				<uni-swipe-action>
 				    <uni-swipe-action-item :options="options" @click="onClick($event, items)">
-				         <view class="items"><text class="currency">USDT</text><text class="box">{{items.chainname}}</text></view>
+				         <view class="items"><text class="currency">{{items.bname}}</text><text class="box">{{items.chainname}}</text></view>
 				         <view class="items"><text class="name">{{items.remarks}}</text></view>
 				         <view class="items"><text class="address">{{items.address}}</text></view>
 				         <view class="more"><image class="more_icon" src="../../static/images/more.png"></image></view>
@@ -40,13 +40,13 @@
 			            text: '取消',
 						icon: '/static/images/edit_icon.png',
 			            style: {
-			                backgroundColor: '#20222c'
+			                backgroundColor: '#151936'
 			            }
 			        }, {
 			            text: '确认',
 						icon: '/static/images/del_icon.png',
 			            style: {
-			                backgroundColor: '#20222c'
+			                backgroundColor: '#151936'
 			            }
 			        }
 			    ]
@@ -82,6 +82,9 @@
 				if(validate.checkCode(res)){
 					this.getPayAddListHandler()
 				}
+			},
+			toType(type){
+				return type == 0 ? 'USDT' : 'BTC'
 			}
 		},
 		onShow(){
@@ -93,7 +96,7 @@
 
 <style scoped>
 	page{
-		background: #111;
+		background: #20222c
 	}
 	.wallet_class{
 		height: 100%;

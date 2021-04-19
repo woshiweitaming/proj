@@ -1,7 +1,16 @@
 {
 	"folders": [
 		{
+			"name": "admin",
 			"path": "."
+		},
+		{
+			"name": "houtaiweb_admin",
+			"path": "../houtaiweb_admin"
+		},
+		{
+			"name": "admin",
+			"path": "../newAdmin/admin"
 		}
 	]
 }

@@ -1,0 +1,323 @@
+<template>
+	<view class="help_class">
+		<view class="listData">
+			<view class="label" v-for="(items, index) in listData[getGlobalLang]" :key="index">
+				<view class="title">{{items.title}}</view>
+				<view class="desc">
+					<rich-text :nodes="items.desc"></rich-text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	/**
+	 * 帮助中心
+	 */
+	import commonMixins from '@/mixins/common_mixins.js'
+	import langsMixins from '@/mixins/lang_mixins.js'
+	export default {
+		name: 'HelpCenter',
+		mixins: [commonMixins, langsMixins],
+		data(){
+			return {
+				listData: {
+					cn: [
+						{
+							title: '合约交易的风险度代表什么？',
+							desc: '风险度是您合约账户中风险指标，风险度等于100%被视为爆仓。我们建议您，当您的风险度超过50%时，需要谨慎开仓，以免因为爆仓而造成损失。可通过补充合约资产的可用资金，或减少持仓来降低您的风险。'
+						},
+						{
+							title: '什么是限价委托和市价委托？',
+							desc: '限价委托指的是：按照您的指定价格委托平台进行交易的价格。<br />市价委托指的是：委托平台直接以当前市场价格进行交易。 <br />在开放交易规则中，市价订单优先于限价订单。 <br />如果您选择限价单，请根据当前货币市场价格合理开仓。'
+						},
+						{
+							title: '合约交易中的保证金是什么？',
+							desc: '在合约交易中，用户根据合约价格和数量，根据对应的杠杆倍数，缴纳资金作为履行合约的财力担保，便可参与合约的买卖，这种资金就是合约保证金。用户开仓将占用保证金，占用的开仓保证金越多，账户风险越高。'
+						},
+						{
+							title: '合约交易规则是什么？',
+							desc: `交易类型<br />
+							       交易类型分为开仓做多（买入）和开仓做空（卖出）两个方向：<br />
+								   买入做多（看涨），是指您认为当前指数有涨的可能，希望以您设定的价格或者当前市价，新买入一定数量的某种合约。<br />
+								   卖出做空（看跌），是指您认为当前指数有跌的可能，您期望以您设定的价格或当前市价，新卖出一定数量的某种合约。<br />
+								   下单方式<br />
+                                   限价委托：您需要自己指定下单的价格和数量<br />
+                                   市价委托：您只需设定下单的数量，价格为当前市场价格<br />
+                                   持仓<br />
+                                   当您提交的开仓委托单成交后，即称之为持仓<br />
+                                   合约交割问题：<br />
+                                   平台合约为永续合约，无设定交割时间。只要未达到系统爆仓条件或您未手动平仓，您可永久持仓。<br />
+                                   系统平仓<br />
+                                   1.达到止盈止损设定值，系统自动平仓<br />
+                                   2.风险度过高，系统强制平仓`
+						},
+						{
+							title: '区块链',
+							desc: `区块链（Blockchain）是一种由多方共同维护，使用密码学保证传输和访问安全，能够实现数据一致存储、难以篡改、防止抵赖的记账技术，也称为分布式账本技术（Distributed Ledger Technology）。典型的区块链以块-链结构存储数据。作为一种在不可信的竞争环境中低成本建立信任的新型计算范式和协作模式，区块链凭借其独有的信任建立机制，正在改变诸多行业的应用场景和运行规则，是未来发展数字经济、构建新型信任体系不可或缺的技术之一。 <br />
+                                   各类区块链虽然在具体实现上各有不同，但在功能架构存在共性。在总结各种区块链系统实现方案的基础上，将区块链的功能架构划分为基础设施、基础组件、账本、共识、智能合约、接口、应用、操作运维和系统管理等模块，同时阐述了区块链即服务（Blockchain as a Service， BaaS）1的架构。 <br />
+                                   数字货币是一种不受管制的、数字化的货币，通常由开发者发行和管理，被特定虚拟社区的成员所接受和使用。 欧洲银行业管理局将虚拟货币定义为：价值的数字化表示，不由央行或当局发行，也不与法币挂钩，但由于被公众所接受，所以可作为支付手段，也可以电子形式转移、存储或交易 。<br />
+                                `
+						},
+						
+					],
+					cns: [
+						{
+							title: '合約交易的風險度代表什麼？',
+							desc: '風險度是您合約帳戶中風險名額，風險度等於100%被視為爆倉。我們建議您，當您的風險度超過50%時，需要謹慎開倉，以免因為爆倉而造成損失。可通過補充合約資產的可用資金，或减少持倉來降低您的風險'
+						},
+						{
+							title: '什麼是限價委託和市價委托？',
+							desc: '限價委託指的是：按照您的指定價格委託平臺進行交易的價格。<br />市價委托指的是：委託平臺直接以當前市場價格進行交易。<br />在開放交易規則中，市價訂單優先於限價訂單。<br />如果您選擇限價單，請根據當前貨幣市場價格合理開倉。'
+						},
+						{
+							title: '合約交易中的保證金是什麼？',
+							desc: '在合約交易中，用戶根據合約價格和數量，根據對應的杠杆倍數，繳納資金作為履行合約的財力擔保，便可參與合約的買賣，這種資金就是合約保證金。用戶開倉將佔用保證金，佔用的開倉保證金越多，帳戶風險越高。'
+						},
+						{
+							title: '合約交易規則是什麼？',
+							desc: `
+							              交易類型<br />
+							              
+							              交易類型分為開倉做多（買入）和開倉做空（賣出）兩個方向：<br />
+							              
+							              買入做多（看漲），是指您認為當前指數有漲的可能，希望以您設定的價格或者當前市價，新買入一定數量的某種合約。<br />
+							              
+							              賣出做空（看跌），是指您認為當前指數有跌的可能，您期望以您設定的價格或當前市價，新賣出一定數量的某種合約。<br />
+							              
+							              下單管道<br />
+							              
+							              限價委託：您需要自己指定下單的價格和數量<br />
+							              
+							              市價委托：您只需設定下單的數量，價格為當前市場價格<br />
+							              
+							              持倉<br />
+							              
+							              當您提交的開倉委託單成交後，即稱之為持倉<br />
+							              
+							              合約交割問題：<br />
+							              
+							              平臺合約為永續合約，無設定交割時間。只要未達到系統爆倉條件或您未手動平倉，您可永久持倉。<br />
+							              
+							              系統平倉<br />
+							              
+							              1.達到止盈止損設定值，系統自動平倉<br />
+							              
+							              2.風險度過高，系統強制平倉
+							`
+						},
+						{
+							title: '區塊鏈介紹',
+							desc: `
+                            區塊鏈（Blockchain）是一種由多方共同維護，使用密碼學保證傳輸和訪問安全，能夠實現數據一致存儲、難以篡改、防止抵賴的記賬技術，也稱為分佈式賬本技術（Distributed Ledger Technology ）。典型的區塊鏈以塊-鏈結構存儲數據。作為一種在不可信的競爭環境中低成本建立信任的新型計算範式和協作模式，區塊鏈憑藉其獨有的信任建立機制，正在改變諸多行業的應用場景和運行規則，是未來發展數字經濟、構建新型信任體係不可或缺的技術之一。<br/>
+                            各類區塊鏈雖然在具體實現上各有不同，但在功能架構存在共性。在總結各種區塊鏈系統實現方案的基礎上，將區塊鏈的功能架構劃分為基礎設施、基礎組件、賬本、共識、智能合約、接口、應用、操作運維和系統管理等模塊，同時闡述了區塊鏈即服務（Blockchain as a Service， BaaS）1的架構。
+                            數字貨幣是一種不受管制的、數字化的貨幣，通常由開發者發行和管理，被特定虛擬社區的成員所接受和使用。歐洲銀行業管理局將虛擬貨幣定義為：價值的數字化表示，不由央行或當局發行，也不與法幣掛鉤，但由於被公眾所接受，所以可作為支付手段，也可以電子形式轉移、存儲或交易。<br />
+							`
+						},
+						
+					],
+					ja: [
+						{
+							title: '契約取引のリスクは何ですか？?',
+							desc: 'リスク度は契約口座のリスク指標であり、リスク度は100%をバーストと見なします。あなたの危険度が50%を超える場合は、破裂による損失を防ぐために、慎重に倉庫を開けてください。契約資産の使用可能な資金を補充することによって、持ち場を減らすことによって、リスクを低減することができます。'
+						},
+						{
+							title: '価格限定依頼と相場依頼とは？?',
+							desc: `価格制限の委託とは、指定された価格に基づいてプラットフォームに取引を委託する価格のことです。<br/>時価の委託とは、委託プラットフォームが直接現在の市場価格で取引することです。<br/>オープン取引規則では、時価注文は限定価格注文より優先されます。<br/>価格制限表を選択したら、現在の貨幣市場価格によって合理的に倉庫を開けてください。`
+						},
+						{
+							title: '契約取引中の保証金は何ですか？',
+							desc: '契約取引において、ユーザは契約価格と数量に応じて、対応するてこの倍数に応じて、契約履行の財力保証金として資金を納付することができる。ユーザーが倉庫を開けて保証金を占用して、占用するのは多くて、アカウントのリスクはもっと高いです。'
+						},
+						{
+							title: '契約取引のルールは何ですか？',
+							desc: `
+							      取引の種類<br/>
+							      
+							      取引の種類は開倉が多い（買う）と開倉が空いている（売る）の二つの方向に分けられます。
+							      
+							      買いすぎ（強気）とは、現在の指数が上がる可能性があると思います。設定された価格または現在の相場で、新たに一定の数量の契約を買いたいです。<br/>
+							      
+							      売りが空振りするということは、現在の指数が下がる可能性があるということです。設定された価格または現在の相場で、新たに一定の数量の契約を売りたいです。<br/>
+							      
+							      注文の仕方<br/>
+							      
+							      価格制限依頼：注文の価格と数量を自分で指定してください。
+							      
+							      市価委託：注文数量を設定するだけで、価格は現在の市場価格です。
+							      
+							      持ち場<br/>
+							      
+							      あなたが提出した発注書が成約したら、それを手持ちと言います。<br/>
+							      
+							      契約の受け渡し問題：<br/>
+							      
+							      プラットフォーム契約は継続契約で、受け渡し時間は設定されていません。システムのパンク状態に達していない限り、または手動で倉庫を平らにしていない限り、永久に倉庫を持つことができます。<br/>
+							      
+							      システム平倉<br/>
+							      
+							      1.ストップロス設定値に到達し、システムは自動的に倉庫を平らにする<br/>
+							      
+							      2.リスクが高すぎて、システムが倉庫を強制する
+							`
+						},
+						{
+							title: 'ブロックチェーンの紹介',
+							desc: `
+							ブロックチェーンは、複数の関係者が共同で管理する一種の会計技術であり、暗号化を使用して送信とアクセスのセキュリティを確保し、一貫したデータストレージを実現でき、改ざんが困難で、否認を防ぎます。分散元帳技術（分散型元帳技術）とも呼ばれます。 。一般的なブロックチェーンは、データをブロックチェーン構造で保存します。ブロックチェーンは、信頼できない競争環境で低コストで信頼を構築する新しいコンピューティングパラダイムとコラボレーションモデルとして、独自の信頼構築メカニズムにより、多くの業界のアプリケーションシナリオと運用ルールを変えています。これはデジタル経済の将来の発展です。新しい信頼システムを構築するために不可欠な技術の1つ。 <br/>各類區塊鏈雖然在具體實現上各有不同，但在功能架構存在共性。在總結各種區塊鏈系統實現方案的基礎上，將區塊鏈的功能架構劃分為基礎設施、基礎組件、賬本、共識、智能合約、接口、應用、操作運維和系統管理等模塊，同時闡述了區塊鏈即服務（Blockchain as a Service， BaaS）1的架構。
+						    デジタル通貨は規制されていないデジタル通貨であり、通常は開発者によって発行および管理され、特定の仮想コミュニティのメンバーによって受け入れられ、使用されます。欧州銀行当局は、仮想通貨を次のように定義しています。中央銀行や当局によって発行されておらず、法定通貨にリンクされていない価値のデジタル表現ですが、一般に受け入れられているため、支払い手段として使用でき、転送、保存、または電子的にも使用できます。トランザクション。 <br />
+							`
+						},
+						
+					],
+					ko: [
+						{
+							title: '계약 거래 의 위험 도 는 무엇 을 대표 합 니까?',
+							desc: '리 스 크 도 는 귀하 의 계약 계 정 에서 리 스 크 기준 으로 리 스 크 도 는 100% 가 창고 폭발 로 간주 된다.저 희 는 귀하 의 위험 도가 50% 를 넘 으 면 창고 가 폭발 로 인해 손실 이 발생 하지 않도록 신중 해 야 합 니 다.계약 자산 의 사용 가능 한 자금 을 보충 하거나 창 고 를 줄 여서 귀하 의 위험 을 낮 출 수 있 습 니 다.'
+						},
+						{
+							title: '가격 제한 의뢰 와 시가 의뢰 는 무엇 입 니까?',
+							desc: '가격 제한 의뢰 란 귀하 가 지정 한 가격 으로 플랫폼 에 의뢰 하여 거래 하 는 가격 을 말 합 니 다.<br /> 시가 위탁 이란 위탁 플랫폼 이 현재 시장 가격 으로 직접 거래 하 는 것 을 말한다.<br /> 오픈 거래 규칙 중 시가 주문 이 한정 주문 보다 우선 합 니 다.<br /> 만약 에 귀하 가 제한 가격 표를 선택 하신 다 면 현재 화폐 시장 가격 에 따라 합 리 적 으로 창 고 를 하 십시오.'
+						},
+						{
+							title: '계약 거래 에서 보증금 은 무엇 입 니까?',
+							desc: '계약 거래 에서 사용 자 는 계약 가격 과 수량 에 따라 해당 하 는 레버 리 지 배수 에 따라 자금 을 납부 하여 계약 을 이행 하 는 재력 담보 로 하면 계약 의 매매 에 참여 할 수 있다. 이런 자금 은 바로 계약 보증금 이다.사용자 가 창 고 를 개설 하면 보증금 을 점용 하고 사용 하 는 창 고 를 개설 하 는 보증금 이 많 을 수록 계 정 리 스 크 가 높아진다.'
+						},
+						{
+							title: '계약 거래 규칙 이 뭐 예요？',
+							desc: `
+							     거래 유형 <br /> 거래 유형 은 창 고 를 많이 하 는 것 (매입) 과 창 고 를 오픈 하 는 것 (매출) 두 가지 방향 으로 나 뉜 다. <br /> 매입 많이 (오 를 기미) 란 현재 지수 가 오 를 가능성 이 있다 고 생각 하고 귀하 가 설정 한 가격 또는 현재 시세 로 일정 수량의 특정한 계약 을 새로 구입 하고 자 하 는 것 을 말 합 니 다.<br />매출 이 헛 되 었 다 (하락 세 를 보 였 다) 는 것 은 현재 지수 가 하락 할 가능성 이 있다 고 생각 하 는 것 을 말 합 니 다. 귀 하 는 귀하 가 설정 한 가격 이나 현재 시세 로 특정한 수량의 계약 을 새로 판매 하 기 를 원 합 니 다.<br /> 주문 방식 <br />한정 위탁: 당신 은 자신 이 주문 한 가격 과 수량 <br /> 을 지정 해 야 합 니 다.시가 의뢰: 당신 은 아래 의 수량 만 설정 하면 됩 니 다. 가격 은 현재 시장 가격 <br /> 입 니 다. 창 고 를 보유 <br />당신 이 제출 한 창 고 개설 의뢰 서 가 거래 된 후, 이 를 창 고 를 보유 <br /> 라 고 합 니 다. 계약 결제 문제: <br />플랫폼 계약 은 영구적 인 계약 이 고 거래 시간 을 설정 하지 않 습 니 다.시스템 폭발 조건 이 되 지 않 거나 수 동 으로 창 고 를 정리 하지 않 으 면 영구적 으로 창 고 를 유지 할 수 있 습 니 다.<br /> 시스템 일반 창 고 <br />1. 이윤 정지 설정 치 달성, 시스템 자동 평 창 <br /> 2. 위험 도가 너무 높 고 시스템 이 창고 평 가 를 강제 한다.
+								 `
+						},
+						{
+							title: '블록 체인 소개',
+							desc: `
+							블록 체인은 여러 당사자가 공동으로 유지 관리하고 암호화를 사용하여 전송 및 액세스 보안을 보장하고 일관된 데이터 저장을 달성 할 수 있으며 변조가 어렵고 거부를 방지하는 일종의 회계 기술입니다. 분산 원장 기술 (Distributed Ledger Technology)이라고도합니다. ). 일반적인 블록 체인은 블록 체인 구조에 데이터를 저장합니다. 신뢰할 수없는 경쟁 환경에서 저비용으로 신뢰를 구축하는 새로운 컴퓨팅 패러다임 및 협업 모델로서 블록 체인은 고유 한 신뢰 구축 메커니즘으로 많은 산업의 애플리케이션 시나리오와 운영 규칙을 변화시키고 있으며, 디지털 경제의 미래 발전입니다. , 새로운 신뢰 시스템 구축에 없어서는 안될 기술 중 하나입니다.
+							다양한 유형의 블록 체인은 특정 구현이 다르지만 기능 아키텍처에서 공통점이 있습니다. 다양한 블록 체인 시스템 구현 계획의 요약을 기반으로 블록 체인의 기능적 아키텍처는 인프라, 기본 구성 요소, 원장, 합의, 스마트 계약, 인터페이스, 애플리케이션, 운영 및 유지 보수, 시스템 관리와 ​​같은 모듈로 나뉩니다. Blockchain as a Service (BaaS) 1의 아키텍처를 설명합니다.
+							디지털 통화는 일반적으로 개발자가 발행하고 관리하며 특정 가상 커뮤니티의 구성원이 승인하고 사용하는 규제되지 않은 디지털 통화입니다. 유럽 ​​은행 당국은 가상 화폐를 다음과 같이 정의합니다. 중앙 은행이나 당국에서 발행하지 않았거나 법적 통화와 연결되지 않은 디지털 가치 표현이지만 대중이 승인하기 때문에 지불 수단으로 사용할 수 있으며 전자 형식으로 전송, 저장 또는 거래 할 수도 있습니다. .
+							`
+						},
+						
+					],
+					vi: [
+						{
+							title: 'Nguy cơ giao dịch hợp đồng là gì?',
+							desc: 'Tỷ lệ rủi ro là tỷ lệ rủi ro trong tài khoản hợp đồng của bạn, nếu mức độ rủi ro bằng 100 Name, nó sẽ được coi là một vụ nổ vị trí.Chúng tôi đề nghị khi rủi ro cao hơn 500kg, hãy cẩn thận mở vị trí để tránh tổn thất do tiếp xúc.Bạn có thể giảm rủi ro bằng cách bổ sung thêm quỹ hợp đồng hoặc giảm vị trí của bạn.'
+						},
+						{
+							title: 'Điều gì là giới hạn trật tự và trật tự thị trường?',
+							desc: 'Giá cả giao nhiệm vụ là giá mà anh giao dịch dựa theo giá đã xác định.Thậm chí còn có tin đồn về giá cả thị trường là platform tổ chức giao dịch trực tiếp với giá trên thị trường.Trong quy tắc thương mại mở, thị trường đặt ưu tiên trên giới hạn.Nếu bạn chọn một lệnh giới hạn, hãy mở vị trí của bạn dựa theo giá thị trường tiền tệ hiện thời.'
+						},
+						{
+							title: 'Giá trị của giao dịch hợp đồng là bao nhiêu?',
+							desc: 'Trong giao dịch hợp đồng, người dùng có thể tham gia giao dịch bằng cách trả quỹ như một bảo đảm tài chính để thực hiện các hợp đồng dựa trên giá và số lượng và tỉ lệ đòn bẩy tương ứng.Càng mở rộng khoảng trống, rủi ro tài khoản càng cao.'
+						},
+						{
+							title: 'Quy tắc hợp đồng？',
+							desc: `
+							    Trong giao dịch hợp đồng, người dùng có thể tham gia giao dịch bằng cách trả quỹ như một bảo đảm tài chính để thực hiện các hợp đồng dựa trên giá và số lượng và tỉ lệ đòn bẩy tương ứng.Càng mở rộng khoảng trống, rủi ro tài khoản càng cao.Kiểu chuyển giao
+							    
+							    Các kiểu giao dịch được chia thành hai hướng: vị trí mở cho dài (mua) và ngắn vị trí mở (bán): tập trung trung trung trung trung:: bh
+							    
+							    Mua dài (màu vàng) có nghĩa là bạn nghĩ rằng chỉ mục hiện thời có khả năng tăng lên và hy vọng mua một số hợp đồng mới nhất định với giá của bạn hoặc giá thị trường hiện thời.David:
+							    
+							    Bán ít (vẻ gấu) đề cập đến việc bạn nghĩ rằng chỉ mục hiện thời có thể giảm, và bạn mong đợi bán một số hợp đồng nhất vào giá bạn đặt hay giá hiện thời.David:
+							    
+							    Phương pháp gọi
+							    
+							    Số giới hạn: bạn cần phải xác định giá và số lượng của đơn đặt
+							    
+							    Việc giao tin vào thị trường: bạn chỉ cần đặt số lượng lệnh, và giá là giá hiện thời trên thị trường.
+							    
+							    Vị trí
+							    
+							    Khi lệnh khai trương được hoàn thành, nó được gọi là vị trí
+							    
+							    Hệ thống phân phối hợp đồng:
+							    
+							    Giao kèo platform là hợp đồng bất hợp pháp mà không có thời gian giao hàng.Miễn là hệ thống không đáp ứng yêu cầu của hệ thống hoặc bạn không đóng vị trí bằng tay, bạn có thể giữ vị trí này vĩnh viễn.David:
+							    
+							    Vị trí đóng hệ thống
+							    
+							    1. Khi nó đạt tới giá trị đã đặt của lãi suất dừng và giảm lỗ, hệ thống sẽ tự động đóng cửa vị trí.
+							    
+							    2. Mức độ rủi ro quá cao, và hệ thống buộc phải đóng cửa vị trí.
+							`
+						},
+						{
+							title: 'Giới thiệu về ',
+							desc: `
+							Blockchain là một loại công nghệ kế toán được nhiều bên cùng duy trì, sử dụng mật mã để đảm bảo an ninh cho việc truyền tải và truy cập, có thể đạt được khả năng lưu trữ dữ liệu nhất quán, khó bị giả mạo và ngăn chặn sự thoái thác. Nó còn được gọi là công nghệ sổ cái phân tán (Công nghệ sổ cái phân tán). ). Một chuỗi khối điển hình lưu trữ dữ liệu trong một cấu trúc chuỗi khối. Là một mô hình máy tính mới và mô hình cộng tác xây dựng lòng tin với chi phí thấp trong một môi trường cạnh tranh không đáng tin cậy, blockchain đang thay đổi các kịch bản ứng dụng và quy tắc hoạt động của nhiều ngành bằng cơ chế xây dựng lòng tin độc đáo và là sự phát triển trong tương lai của nền kinh tế kỹ thuật số. , Một trong những công nghệ không thể thiếu để xây dựng hệ thống ủy thác mới.
+							Mặc dù nhiều loại blockchains khác nhau có các cách triển khai cụ thể khác nhau, nhưng chúng có những điểm tương đồng về kiến ​​trúc chức năng. Trên cơ sở tóm tắt việc triển khai các hệ thống blockchain khác nhau, kiến ​​trúc chức năng của blockchain được chia thành các mô-đun như cơ sở hạ tầng, các thành phần cơ bản, sổ cái, sự đồng thuận, hợp đồng thông minh, giao diện, ứng dụng, vận hành và bảo trì và quản lý hệ thống. Giải thích kiến ​​trúc của Blockchain như một dịch vụ (BaaS) 1.
+							Tiền kỹ thuật số là một loại tiền kỹ thuật số, không được kiểm soát, thường do các nhà phát triển phát hành và quản lý, đồng thời được các thành viên của các cộng đồng ảo cụ thể chấp nhận và sử dụng. Cơ quan Ngân hàng Châu Âu định nghĩa tiền ảo là: một đại diện kỹ thuật số về giá trị, không phải do ngân hàng trung ương hoặc các cơ quan có thẩm quyền phát hành, cũng không liên quan đến tiền pháp định, nhưng vì nó được công chúng chấp nhận nên nó có thể được sử dụng làm phương tiện thanh toán và cũng có thể được chuyển nhượng, lưu trữ hoặc giao dịch dưới dạng điện tử .
+							`
+						},
+						
+					],
+					en: [
+						{
+							title: 'What is contract risk?',
+							desc: 'When the risk is equal to 100%, it is considered a short position. We recommend that when your risk exceeds 50%, you need to open a position cautiously to avoid losses due to liquidation. You can reduce your risk by replenishing the available funds of contract assets or reducing your positions.'
+						},
+						{
+							title: 'What are limit orders and market orders?',
+							desc: `Limit order refers to ：Entrust platform to trade at the price you specify<br />
+                                   Market order refers to: the entrusted platform directly trades at the current market price.<br />
+                                   In open trading rules,The system will prioritize market orders. If you choose a limit order, please open the position reasonably based on the current currency market price.`
+						},
+						{
+							title: 'What is the margin in contract trading?',
+							desc: 'In contract transactions, users can participate in the purchase and sale of contracts by paying funds as a financial guarantee for performing the contract according to the contract price and quantity, and according to the corresponding leverage multiples. Such funds are the contract security. The user will use the margin to open a position. The more opening margin is used, the higher the account risk.'
+						},
+						{
+							title: 'Notes on forced liquidation',
+							desc: 'Risk is an indicator of the risk of your assets. When the risk is equal to 100%, your order will be forcibly liquidated by the system. Note: We hope you can reasonably control your risk to avoid unnecessary losses.'
+						},
+						{
+							title: 'Introduction to Blockchain',
+							desc: `
+						    Blockchain is a kind of accounting technology that is jointly maintained by multiple parties, uses cryptography to ensure transmission and access security, can achieve consistent data storage, is difficult to tamper with, and prevents repudiation. It is also known as distributed ledger technology (Distributed Ledger Technology). ). A typical blockchain stores data in a block-chain structure. As a new computing paradigm and collaboration model that builds trust at low cost in an untrustworthy competitive environment, blockchain is changing the application scenarios and operating rules of many industries with its unique trust-building mechanism, and is the future development of the digital economy. , One of the indispensable technologies for building a new trust system.
+							<br />
+							Although various types of blockchains have different specific implementations, they have commonalities in functional architecture. On the basis of summarizing the implementation of various blockchain systems, the functional architecture of the blockchain is divided into modules such as infrastructure, basic components, ledgers, consensus, smart contracts, interfaces, applications, operation and maintenance, and system management. Describes the architecture of Blockchain as a Service (BaaS)1.
+							Digital currency is an unregulated, digital currency, usually issued and managed by developers, and accepted and used by members of specific virtual communities. The European Banking Authority defines virtual currency as: a digital representation of value, which is not issued by the central bank or the authorities, nor is it linked to legal currency, but because it is accepted by the public, it can be used as a means of payment, and can also be transferred, stored or traded in electronic form .
+							`
+						},
+						
+					]
+				}
+			}
+		},
+		onShow() {
+			this.setTitle(this.getLangs('helpCenter'))
+		}
+	}
+</script>
+
+<style scoped>
+	.help_class{
+		border-top: 1px solid #f9f9f9;
+		padding: 40upx 0 0 0;
+		background: #fff;
+	}
+	.listData{
+		padding-left: 40upx;
+	}
+	.listData .label{
+		border-bottom: 1px solid #f9f9f9;
+		position: relative;
+		padding-bottom: 20upx;
+		margin-bottom: 20upx;
+	}
+	.listData .label .title{
+		font-size: 30upx;
+		color: #333;
+		font-weight: bold;
+		line-height: 60upx;
+	}
+	.listData .label .desc{
+		font-size: 26upx;
+		display: block;
+		color: #aaa;
+	}
+</style>

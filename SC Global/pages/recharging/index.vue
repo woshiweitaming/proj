@@ -51,6 +51,7 @@
 	/**
 	 * 充值完成
 	 */
+	import { mapMutations, mapGetters } from 'vuex'
 	import appConfig from '@/config/appConfig.js'
 	import langsMixins from '@/mixins/lang_mixins.js'
 	import commonMixins from '@/mixins/common_mixins.js'
@@ -74,6 +75,11 @@
 				qrcode: '',
 				img: ''
 			}
+		},
+		computed: {
+			...mapGetters({
+				getGlobalLang: 'getGlobalLang'
+			})
 		},
 		methods: {
 			/**
@@ -216,10 +222,32 @@
 					add: this.chainName
 				}
 				this.$tips.showLoading(this.getLangs('loadingText'))
+				let ens = ''
+				switch (this.getGlobalLang) {
+					case 'cn' :
+					    ens = 0
+						break;
+					case 'en' :
+					    ens = 1
+						break;
+					case 'ja' :
+					    ens = 2
+						break;
+					case 'ko' :
+					    ens = 3
+						break;
+					case 'cns' :
+					    ens = 4
+						break;
+					case 'vi' :
+					    ens = 5
+						break;
+				}
 				uni.uploadFile({
 				    url: url,
 					header: {
 						'token': token,
+						ens: ens
 					},
 					name: 'head_img',
 					formData: params,

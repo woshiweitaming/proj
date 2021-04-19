@@ -1,33 +1,38 @@
 <template>
 	<view class="fund">
-		<Balance />
-		<Rank />
-		<Shortcut />
-		<!-- <Footer /> -->
+		<Balance :userInfo="userInfo" />
+		<List />
 	</view>
 </template>
 
 <script>
 	import Balance from '@/layouts/fund/balance.vue'
-	import Rank from '@/layouts/fund/rank.vue'
-	import Shortcut from '@/layouts/fund/shortcut.vue'
-	import Footer from '@/layouts/common/footer.vue'
+	import List from '@/layouts/fund/list.vue'
+	import { getUserInfo } from '@/apis/users.js'
 	export default {
 		name: 'Fund',
+		data(){
+			return {
+				userInfo: {}
+			}
+		},
 		components: {
-			Rank,
 			Balance,
-			Shortcut,
-			Footer
+			List
+		},
+		methods: {  
+			async getUserInfoHandler(){
+				uni.stopPullDownRefresh();
+				const res = await getUserInfo()
+				this.userInfo = res.data
+			}
 		},
 		onLoad(){
-		    // uni.startPullDownRefresh();
+		    uni.startPullDownRefresh();
 		},
 		onPullDownRefresh() {
-		    setTimeout(() => {
-		        uni.stopPullDownRefresh();
-		    }, 1000);
-		}
+		    this.getUserInfoHandler()
+		},
 	}
 </script>
 

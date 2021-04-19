@@ -1,5 +1,5 @@
 {
-    "name" : "理财魔方",
+    "name" : "隆奥",
     "appid" : "__UNI__B544D5B",
     "description" : "",
     "versionName" : "3.5",
@@ -100,24 +100,27 @@
                 "androidStyle" : "default",
                 "iosStyle" : "default",
                 "android" : {
-                    "hdpi" : "unpackage/images/480.png",
-                    "xhdpi" : "unpackage/images/720-1.png",
-                    "xxhdpi" : "unpackage/images/1080.png"
+                    "hdpi" : "unpackage/images/480x762.png",
+                    "xhdpi" : "unpackage/images/720x1242.png",
+                    "xxhdpi" : "unpackage/images/1080x1882.png"
                 },
                 "ios" : {
                     "iphone" : {
-                        "portrait-896h@3x" : "unpackage/images/1242.png",
-                        "portrait-896h@2x" : "unpackage/images/828.png",
-                        "iphonex" : "unpackage/images/1125.png",
-                        "iphonexl" : "unpackage/images/2436.png",
-                        "retina55" : "unpackage/images/1242.png",
-                        "retina47" : "unpackage/images/750-2.png",
-                        "retina40" : "unpackage/images/640-1.png",
-                        "retina35" : "unpackage/images/640-2.png"
+                        "portrait-896h@3x" : "unpackage/images/1242x2688.png",
+                        "portrait-896h@2x" : "unpackage/images/828x1792.png",
+                        "iphonex" : "unpackage/images/1125x2436.png",
+                        "iphonexl" : "unpackage/images/2436x1125.png",
+                        "retina55" : "unpackage/images/1242x2208.png",
+                        "retina47" : "unpackage/images/750x1334.png",
+                        "retina40" : "unpackage/images/640x1136.png",
+                        "retina35" : "unpackage/images/640x960.png"
                     },
                     "ipad" : {
-                        "portrait-1366h@2x" : "unpackage/images/2048.png",
-                        "portrait-1194h@2x" : "unpackage/images/1688.png"
+                        "portrait-1366h@2x" : "unpackage/images/2048x2732.png",
+                        "portrait-1194h@2x" : "unpackage/images/1688x2388.png",
+                        "portrait-1112h@2x" : "unpackage/images/1688x2224.png",
+                        "portrait-retina7" : "unpackage/images/1536x2048.png",
+                        "portrait7" : "unpackage/images/768x1024.png"
                     }
                 }
             }
@@ -147,11 +150,20 @@
         "enable" : false
     },
     "h5" : {
-        "title" : "理财魔方",
+        "title" : "隆奥",
         "domain" : "",
         "template" : "index.html",
         "sdkConfigs" : {
-            "maps" : {}
+            "maps" : {
+                "qqmap" : {
+                    "key" : ""
+                }
+            }
+        },
+        "optimization" : {
+            "treeShaking" : {
+                "enable" : true
+            }
         }
     }
 }

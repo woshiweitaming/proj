@@ -1,0 +1,8 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "withdraw-apply": "/layouts/fund/withdraw_apply",
+    "withdraw-record": "/layouts/fund/withdraw_record",
+    "recharge-record": "/layouts/fund/recharge_record"
+  }
+}

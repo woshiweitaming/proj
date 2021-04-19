@@ -13,8 +13,10 @@
 		{
 			"path": "pages/find/index",
 			"style": {
-				"navigationStyle":"custom",
-				"navigationBarTextStyle": "black"
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 100
 			}
 		},
 		{
@@ -28,7 +30,7 @@
 			}
 		},
 		{
-			"path": "pages/my/index"
+			"path": "pages/my/index" 
 		},
 		{
 			"path": "pages/webview/index"
@@ -61,9 +63,6 @@
 			"path": "pages/redpack/index"
 		},
 		{
-			"path": "pages/withdraw_record/index"
-		},
-		{
 			"path": "pages/lessons/index"
 		},
 		{
@@ -91,7 +90,11 @@
 			}
 		},
 		{
-			"path": "pages/product/index"
+			"path": "pages/product/index",
+			"style": {
+				"navigationBarBackgroundColor":"#282633",
+				"navigationBarTextStyle": "white"
+			}
 		},
 		{
 			"path": "pages/login/index",
@@ -101,7 +104,14 @@
 			}
 		},
 		{
-			"path": "pages/register/index",
+			"path": "pages/phone_register/index",
+			"style": {
+				"navigationBarBackgroundColor":"#f8fbfd",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/email_register/index",
 			"style": {
 				"navigationBarBackgroundColor":"#f8fbfd",
 				"navigationBarTextStyle": "black"
@@ -110,7 +120,9 @@
 		{
 			"path": "pages/coin_exchange/index", 
 			"style": {
-				"navigationStyle":"custom"
+				"navigationBarBackgroundColor":"#f8fbfd",
+				"navigationBarTextStyle": "black",
+				"enablePullDownRefresh": true
 			}
 		},
 		{
@@ -118,22 +130,178 @@
 		},
 		{
 			"path": "pages/investment_detail/index"
+		},
+		{
+			"path": "pages/piggy_bank/index"
+		},
+		{
+			"path": "pages/order/index"
+		},
+		{
+			"path": "pages/update_pwd/index"
+		},
+		{
+			"path": "pages/update_phone/index"
+		},
+		{
+			"path": "pages/update_nickname/index"
+		},
+		{
+			"path": "pages/certification/index"
+		},
+		{
+			"path": "pages/recharge_record/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 100
+			}
+		},
+		{
+			"path": "pages/withdraw_record/index",
+			"style": {
+				"enablePullDownRefresh": true,
+				"onReachBottomDistance": 100
+			}
+		},
+		{
+			"path": "pages/fund_record/index"
+		},
+		{
+			"path": "pages/help/index"
+		},
+		{
+			"path": "pages/invite_friend/index",
+			"style": {
+				"navigationBarBackgroundColor":"#f8fbfd",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/my_team/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/recharge/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/withdraw/index"
+		},
+		{
+			"path": "pages/transfer/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/success/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/transfer_success/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/recharge_success/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/withdraw_success/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/member/index",
+			"style": {
+				"navigationBarBackgroundColor": "#111322",
+				"navigationBarTextStyle": "white",
+				"backgroundColorTop": "#111322",
+				"backgroundColorBottom": "#111322",
+				"backgroundColor": "#111322"
+			}
+		},
+		{
+			"path": "pages/desc/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/sign/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/create_delivery_address/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/delivery_address/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/kefu_webview/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/goods/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
+		},
+		{
+			"path": "pages/my_delivery_address/index",
+			"style": {
+				"navigationBarBackgroundColor":"#fff",
+				"navigationBarTextStyle": "black"
+			}
 		}
 	], 
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarBackgroundColor": "#007AFF",
 		"backgroundColor": "#f8fbfd",
-		"navigationBarTitleText":"理财魔方"
+		"navigationBarTitleText":"隆奥"
 	},
 	"tabBar": {
 	    "color": "#666",
 	    "selectedColor": "#2970e6",
 	    "borderStyle": "black",
-	    "backgroundColor": "#ffffff", 
+	    "backgroundColor": "#f8fbfd", 
 	    "list": [{
 	        "pagePath": "pages/home/index" 
-	    },{
+	    },{ 
 	        "pagePath": "pages/find/index"
 	    },{
 	        "pagePath": "pages/kefu/index"

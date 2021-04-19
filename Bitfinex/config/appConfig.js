@@ -4,6 +4,8 @@
 const appConfig = {
 	domain: 'https://api.bitfinex.store',
 	wsDomain: 'wss://api.bitfinex.store',
+	domain: 'http://180.178.39.226:8080',
+	wsDomain: 'ws://180.178.39.226:8080',
 	//应用名称
 	appName: 'Bitfinex',
 	//外链

@@ -3,24 +3,24 @@
 		<view class="topbar">
 			<view class="labels">
 				<image class="icon" src="/static/images/user/usercenter.png" mode="widthFix"></image>
-				<text class="uname">190****0000</text>
+				<text class="uname">{{userInfo.nick_name}}</text>
 			</view>
-			<view class="labels">
+			<view class="labels setting">
 				<image class="icon" @click="toPage('/pages/my/index')" src="/static/images/icon/settings.png" mode="widthFix"></image>
 			</view>
 		</view>
 		<view class="total_balance">
 			<view class="name">{{getLang('fund_p1')}}({{getLang('fund_p2')}})</view>
-			<view class="value">0.00</view>
+			<view class="value">{{userInfo.alltotal || 0}}</view>
 		</view>
 		<view class="profit">
 			<view class="labels">
 				<view class="name">{{getLang('fund_p3')}}</view>
-				<view class="value">0.00</view>
+				<view class="value">{{userInfo.yesterday || 0}}</view>
 			</view>
 			<view class="labels">
 				<view class="name">{{getLang('fund_p4')}}</view>
-				<view class="value">0.00</view>
+				<view class="value">{{userInfo.total || 0}}</view>
 			</view>
 		</view>
 		<view class="bottom_bar">
@@ -37,18 +37,19 @@
 	export default {
 		name: 'Balance',
 		mixins: [langMixins],
+		props: ['userInfo'],
 		data(){
 			return {
 				dataList: [
 					{
 						name: 'fund_p5',
 						icon: '/static/images/icon/f3.png',
-						path: '/pages/account/index'
+						path: '/pages/recharge/index'
 					},
 					{
 						name: 'fund_p6',
 						icon: '/static/images/icon/f2.png',
-						path: '/pages/mofangbao/index'
+						path: '/pages/withdraw/index'
 					},
 					{
 						name: 'fund_p7',
@@ -75,7 +76,7 @@
 
 <style scoped>
 	.balance{
-		height: calc(600upx + var(--status-bar-height));
+		height: calc(500upx + var(--status-bar-height));
 		background: #007AFF;
 		position: relative;
 		padding-top: calc(20upx + var(--status-bar-height));
@@ -121,20 +122,22 @@
 	}
 	.topbar .icon{
 		width: 50upx;
+		display: inline-block;
 	}
 	.topbar .labels{
 		width: 50%;
 	}
 	.topbar .labels:first-child{
 		padding-left: 20upx;
+		display: flex;
 	}
 	.topbar .labels:last-child{
 		text-align: right;
 		padding-right: 20upx;
 	}
 	.topbar .uname{
-		vertical-align: top;
 		padding-left: 20upx;
+		height: 52upx;
 		line-height: 52upx;
 		color: #fff;
 	}

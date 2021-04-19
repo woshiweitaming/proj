@@ -2,8 +2,8 @@
     "name" : "Ant Coins",
     "appid" : "__UNI__BB62B4F",
     "description" : "",
-    "versionName" : "4.5",
-    "versionCode" : 450,
+    "versionName" : "5.3",
+    "versionCode" : 530,
     "transformPx" : false,
     //* 5+App特有相关 */
     "app-plus" : {
