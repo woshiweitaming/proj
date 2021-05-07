@@ -38,14 +38,14 @@
 						</view>
 					</view>
 				</view>
-				<view class="form_label" v-if="isShowParent">
+				<!-- <view class="form_label" v-if="isShowParent">
 					<view class="form_label_name"><text class="iconfont icon-headlines"></text></view>
 					<view class="form_label_main">
 						<view class="form_input_bar">
 							<input type="text" @input="changeInputParentid" class="input_bar" :placeholder="getLangs('recommendationCodePlaceholder')" v-model="form.parentId" />
 						</view>
 					</view>
-				</view>
+				</view> -->
 			</view>
 			<view class="button" @tap="registerHandler">{{getLangs('submit')}}</view>
 		</view>
@@ -75,7 +75,7 @@
 					// uname: '',
 					// nickName: '',
 					pwd: '',
-					parentId: ''
+					// parentId: ''
 				}
 			}
 		},

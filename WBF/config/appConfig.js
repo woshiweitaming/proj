@@ -2,8 +2,10 @@
  * 应用配置
  */
 const appConfig = {
-	domain: 'http://180.178.39.226:8080',
-	wsDomain: 'ws://180.178.39.226:8080',
+	// domain: 'http://180.178.39.226:8080',
+	// wsDomain: 'ws://180.178.39.226:8080',
+	domain: 'https://api.wbfname.net',
+	wsDomain: 'wss://api.wbfname.net',
 	//应用名称
 	appName: 'WBF',
 	//外链

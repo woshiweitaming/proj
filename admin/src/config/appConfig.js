@@ -130,8 +130,10 @@ const appConfig = {
     // wsDomain: 'wss://api.itk-ex.pro',
     // domain: 'https://api.bitgetold.me',
     // wsDomain: 'wss://api.bitgetold.me',
-    domain: 'https://api.kingexc-ex.cc',
-    wsDomain: 'wss://api.kingexc-ex.cc',
+    // domain: 'https://api.kingexc-ex.cc',
+    // wsDomain: 'wss://api.kingexc-ex.cc',
+    domain: 'https://api.wbfname.net',
+    wsDomain: 'wss://api.wbfname.net',
     logo: `${process.env.BASE_URL}img/logo/logo.png`
 }
 
