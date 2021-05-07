@@ -23,6 +23,7 @@
 	import langsMixins from '@/mixins/lang_mixins.js'
 	import { uploadIdcard, uploadConfirm } from '@/api/user.js'
 	import validate from '@/utils/validate.js'
+	import permision from "@/js_sdk/wa-permission/permission.js"
 	export default {
 		name: 'Upload',
 		mixins: [commonMixins, langsMixins],
@@ -59,31 +60,40 @@
 			/**
 			 * 上传身份证
 			 */
-			chooseIdcardHandler(index){
-				const token = this.$storage.getLocalData('token')
-				let url = `${appConfig.domain}/user/uploadIdImg/${(index+1)}`
-				let name = `${(index+1)}`
+			async chooseIdcardHandler(index){
 				let ens = ''
+				let title = ''
 				switch (this.getGlobalLang) {
 					case 'cn' :
 					    ens = 0
+						title = '请设置打开相机及相册权限'
 						break;
 					case 'en' :
 					    ens = 1
+						title = 'Please set the permission to open the camera and album'
 						break;
 					case 'ja' :
 					    ens = 2
+						title = 'カメラとアルバムを開く許可を設定してください'
 						break;
 					case 'ko' :
 					    ens = 3
+						title = '카메라와 앨범을 열 수있는 권한을 설정하십시오'
 						break;
 					case 'cns' :
 					    ens = 4
+						title = '請設置打開相機及相冊權限'
 						break;
 					case 'vi' :
 					    ens = 5
+						title = 'Vui lòng đặt quyền để mở máy ảnh và album'
 						break;
 				}
+				
+				const token = this.$storage.getLocalData('token')
+				let url = `${appConfig.domain}/user/uploadIdImg/${(index+1)}`
+				let name = `${(index+1)}`
+				
 				// #ifdef H5
 				return uni.chooseImage({
 				    success: (chooseImageRes) => {
@@ -138,6 +148,7 @@
 								    }
 								});
 							},(err)=>{  
+								console.log(err)
 								this.$tips.showToast(this.getLangs('error'))
 							},{"optimize":false})  
 						}else if (tap.index === 2) {  
@@ -190,7 +201,7 @@
 			...mapGetters({
 				getGlobalLang: 'getGlobalLang'
 			})
-		}
+		},
 	}
 </script>
 

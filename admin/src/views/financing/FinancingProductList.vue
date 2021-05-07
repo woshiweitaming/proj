@@ -73,7 +73,7 @@ import {
 import commonMixins from '@/mixins/common_mixins'
 import recordMixins from '@/mixins/record_mixins'
 import paginationMixins from '@/mixins/pagination_mixins'
-import EditFinancing from '@/views/Financing/EditFinacing'
+import EditFinancing from '@/views/financing/EditFinacing'
 import Drawer from '@/components/Drawer/Drawer'
 import {
     getCoinPoolproductList,

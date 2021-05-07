@@ -1,0 +1,72 @@
+<template>
+	<view class="aboutus">
+		<view class="p" v-if="getGlobalLang == 'cn'">
+			EXMO公司汇集了来自全球各地的专业家。自来西班牙、俄罗斯、印度和泰国的程序员同自来英国、美国、立陶宛和新加坡的成功的金融顾问员一起创建世界上最方便的数字货币国际站。专家指出比特币能使金融计算变得更简单，更安全和更好并EXMO为区块链技术发展作出自己的贡献。
+			<br />
+			在工作时间中，EXMO团队的专家不仅成了一个团队而成了好朋友对这项事业有着共同热爱。我们所有的员工都拥有最高的资格，使我们能够为每个客户提供个性化的方法和提高服务水平。我们的团队提供7X24小时的服务，因此，我们的用户能够成功出售，兑换及在EXMO账户安全地存储他们的基金。
+			<br />我们乐意随时为您提供帮助，并且我们非常重视客户意见，因此，若有任何疑问，提示或建议，请通过在线聊天室联系我们，我们会尽快回复您。
+			感谢您选择EXMO及我们承诺， 我们会尽全力就保证您在我们的国际站有一个舒适的经验。
+		</view>
+		<view class="p" v-if="getGlobalLang == 'cns'">
+			EXMO公司匯集了來自全球各地的專業家。自來西班牙、俄羅斯、印度和泰國的程序員同自來英國、美國、立陶宛和新加坡的成功的金融顧問員一起創建世界上最方便的數字貨幣國際站。專家指出比特幣能使金融計算變得更簡單，更安全和更好並EXMO為區塊鏈技術發展作出自己的貢獻。
+			<br />
+			在工作時間中，EXMO團隊的專家不僅成了一個團隊而成了好朋友對這項事業有著共同熱愛。我們所有的員工都擁有最高的資格，使我們能夠為每個客戶提供個性化的方法和提高服務水平。我們的團隊提供7X24小時的服務，因此，我們的用戶能夠成功出售，兌換及在EXMO賬戶安全地存儲他們的基金。
+			<br />我們樂意隨時為您提供幫助，並且我們非常重視客戶意見，因此，若有任何疑問，提示或建議，請通過在線聊天室聯繫我們，我們會盡快回复您。
+			感謝您選擇EXMO及我們承諾， 我們會盡全力就保證您在我們的國際站有一個舒適的經驗。
+		</view>
+		<view class="p" v-if="getGlobalLang == 'en'">
+			EXMO company brings together professionals from all over the world. Programmers from Spain, Russia, India and Thailand joined successful financial advisors from the United Kingdom, the United States, Lithuania and Singapore to create the world's most convenient digital currency international station. Experts pointed out that Bitcoin can make financial calculations simpler, safer and better, and EXMO makes its own contribution to the development of blockchain technology.
+			<br />
+			During working hours, the experts of the EXMO team have not only become a team and become good friends, they have a common love for this cause. All our employees have the highest qualifications, allowing us to provide each customer with a personalized approach and improve service levels. Our team provides 7X24 hours of service, so our users can successfully sell, exchange and safely store their funds in EXMO accounts.
+			<br />We are happy to help you at any time, and we attach great importance to customer opinions, so if you have any questions, tips or suggestions, please contact us through the online chat room, and we will get back to you as soon as possible.
+			Thank you for choosing EXMO and our commitment, we will do our best to ensure you have a comfortable experience in our international station.
+		</view>
+		<view class="p" v-if="getGlobalLang == 'ja'">
+			EXMO社は世界中から専門家を集めています。スペイン、ロシア、インド、タイのプログラマーが、英国、米国、リトアニア、シンガポールの成功したファイナンシャルアドバイザーに加わり、世界で最も便利なデジタル通貨国際ステーションを作成しました。専門家は、ビットコインは財務計算をより簡単、安全、そしてより良くすることができ、EXMOはブロックチェーン技術の開発に独自の貢献をしていると指摘しました。
+			<br />
+			勤務時間中、EXMOチームの専門家はチームになり、良い友達になっただけでなく、この目的に対して共通の愛情を持っています。すべての従業員は最高の資格を持っており、各顧客にパーソナライズされたアプローチを提供し、サービスレベルを向上させることができます。私たちのチームは7X24時間のサービスを提供しているため、ユーザーはEXMOアカウントで資金を正常に販売、交換、安全に保管できます。
+			<br />いつでも喜んでお手伝いさせていただきます。お客様のご意見を重視しておりますので、ご不明な点、ご意見、ご提案がございましたら、オンラインチャットルームからご連絡いただければ、折り返しご連絡いたします。できるだけ速やかに。
+			EXMOをお選びいただき、誠にありがとうございます。国際駅で快適に過ごせるよう最善を尽くします。
+		</view>
+		<view class="p" v-if="getGlobalLang == 'ko'">
+			EXMO 회사는 전 세계의 전문가들을한데 모았습니다. 스페인, 러시아, 인도 및 태국의 프로그래머가 영국, 미국, 리투아니아 및 싱가포르의 성공적인 재무 고문과 합류하여 세계에서 가장 편리한 디지털 통화 국제 스테이션을 만들었습니다. 전문가들은 Bitcoin이 재무 계산을 더 간단하고 안전하며 더 좋게 만들 수 있으며 EXMO는 블록 체인 기술 개발에 자체적으로 기여할 수 있다고 지적했습니다.
+			<br />
+			근무 시간 동안 EXMO 팀의 전문가들은 팀이되어 좋은 친구가되었을뿐만 아니라이 일에 대한 공통의 사랑을 가지고 있습니다. 모든 직원은 최고의 자격을 갖추고있어 각 고객에게 개인화 된 접근 방식을 제공하고 서비스 수준을 향상시킬 수 있습니다. 저희 팀은 연중 무휴 24 시간 서비스를 제공하므로 사용자는 EXMO 계정에 자금을 성공적으로 판매, 상환 및 안전하게 보관할 수 있습니다.
+			<br /> 언제든지 기꺼이 도와 드리며 고객의 의견을 소중히 여기므로 궁금한 점이나 조언, 제안 사항이 있으시면 온라인 채팅룸을 통해 연락 주시면 연락 드리겠습니다. 최대한 빨리.
+			EXMO를 선택 해주셔서 감사 드리며, 저희 국제 역에서 편안한 경험을하실 수 있도록 최선을 다하겠습니다.
+		</view>
+		<view class="p" v-if="getGlobalLang == 'vi'">
+			Công ty EXMO tập hợp các chuyên gia từ khắp nơi trên thế giới. Các lập trình viên từ Tây Ban Nha, Nga, Ấn Độ và Thái Lan đã tham gia cùng các cố vấn tài chính thành công từ Vương quốc Anh, Hoa Kỳ, Lithuania và Singapore để tạo ra trạm quốc tế tiền tệ kỹ thuật số thuận tiện nhất thế giới. Các chuyên gia đã chỉ ra rằng Bitcoin có thể làm cho các phép tính tài chính trở nên đơn giản hơn, an toàn hơn và tốt hơn, và EXMO cũng đóng góp vào sự phát triển của công nghệ blockchain.
+			<br />
+			Trong giờ làm việc, các chuyên gia của đội EXMO không chỉ trở thành một đội và trở thành những người bạn tốt mà họ còn có một tình yêu chung vì sự nghiệp này. Tất cả nhân viên của chúng tôi đều có trình độ chuyên môn cao nhất, cho phép chúng tôi cung cấp cho từng khách hàng phương pháp tiếp cận được cá nhân hóa và cải thiện mức độ dịch vụ. Nhóm của chúng tôi cung cấp 7X24 giờ dịch vụ, vì vậy người dùng của chúng tôi có thể bán, đổi thành công và lưu trữ an toàn tiền của họ trong tài khoản EXMO.
+			<br /> Chúng tôi sẵn lòng trợ giúp bạn bất cứ lúc nào và chúng tôi rất coi trọng ý kiến ​​của khách hàng, vì vậy nếu bạn có bất kỳ câu hỏi, mẹo hoặc đề xuất nào, vui lòng liên hệ với chúng tôi qua phòng trò chuyện trực tuyến và chúng tôi sẽ liên hệ lại với bạn sớm nhất có thể.
+			Cảm ơn bạn đã chọn EXMO và cam kết của chúng tôi, chúng tôi sẽ cố gắng hết sức để đảm bảo bạn có một trải nghiệm thoải mái trong nhà ga quốc tế của chúng tôi.
+		</view>
+	</view>
+</template>
+
+<script>
+	import { mapGetters } from 'vuex'
+	import langsMixins from '@/mixins/lang_mixins.js'
+	export default {
+		name: 'Aboutus',
+		mixins: [langsMixins],
+		computed: {
+			...mapGetters({
+				getGlobalLang: 'getGlobalLang'
+			})
+		},
+		onLoad() {
+			uni.setNavigationBarTitle({
+				title: this.getLangs('aboutus')
+			})
+		}
+	}
+</script>
+
+<style scoped>
+	.aboutus{
+		padding: 20upx;
+		color: #fff;
+	}
+</style>

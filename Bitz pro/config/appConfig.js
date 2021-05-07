@@ -2,10 +2,10 @@
  * 应用配置
  */
 const appConfig = {
-	// domain: 'http://180.178.39.226:8080',
-	// wsDomain: 'ws://180.178.39.226:8080',
-	domain: 'https://api.bitzpro.info',
-	wsDomain: 'wss://api.bitzpro.info',
+	domain: 'http://180.178.39.226:8080',
+	wsDomain: 'ws://180.178.39.226:8080',
+	// domain: 'https://api.bitzpro.info',
+	// wsDomain: 'wss://api.bitzpro.info',
 	//应用名称
 	appName: 'Bitz pro',
 	//外链

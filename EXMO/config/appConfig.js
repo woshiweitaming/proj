@@ -4,6 +4,8 @@
 const appConfig = {
 	domain: 'https://api.bksmails.com',
 	wsDomain: 'wss://api.bksmails.com',
+	// domain: 'http://180.178.39.226:8080',
+	// wsDomain: 'ws://180.178.39.226:8080',
 	//应用名称
 	appName: 'EXMO',
 	//外链

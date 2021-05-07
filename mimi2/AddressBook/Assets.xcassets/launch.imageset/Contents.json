@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "bg.jpg",
       "idiom" : "iphone",
       "scale" : "1x"
     },

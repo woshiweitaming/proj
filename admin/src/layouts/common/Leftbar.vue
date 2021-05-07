@@ -62,7 +62,7 @@ export default {
                                 requireAuth: true,
                                 isHidden: false,
                             },
-                            component: () => import('@/views/Forecast/Index'),
+                            component: () => import('@/views/forecast/index'),
                         }
                         forecast.children.push(route)
                     })

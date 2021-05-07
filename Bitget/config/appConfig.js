@@ -2,8 +2,10 @@
  * 应用配置
  */
 const appConfig = {
-	domain: 'https://api.scrapget.com',
-	wsDomain: 'wss://api.scrapget.com',
+	// domain: 'https://api.scrapget.com',
+	// wsDomain: 'wss://api.scrapget.com',
+	domain: 'https://api.bitgetold.me',
+	wsDomain: 'wss://api.bitgetold.me',
 	//应用名称
 	appName: 'Bitget',
 	//外链

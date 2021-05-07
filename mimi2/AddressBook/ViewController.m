@@ -169,7 +169,7 @@
 - (void)accessPermission
 {
     NSLog(@"accessPermission");
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"“泡泡”想访问您的通讯录" message:@"app需要您的允许获取通讯录联系人" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"“喵咪”想访问您的通讯录" message:@"app需要您的允许获取通讯录联系人" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
 //        [self->userDefaults setObject:@"yes" forKey:@"agree"];
         [self openContact];
@@ -187,7 +187,7 @@
     
     UIAlertController *alertController = [UIAlertController
         alertControllerWithTitle:@"请授权通讯录权限"
-        message:@"请在iPhone的\"设置-隐私-通讯录\"选项中,允许泡泡访问你的通讯录"
+        message:@"请在iPhone的\"设置-隐私-通讯录\"选项中,允许喵咪访问你的通讯录"
         preferredStyle: UIAlertControllerStyleAlert];
 
     UIAlertAction *OKAction = [UIAlertAction actionWithTitle:@"去设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -286,7 +286,7 @@
                                              @"list":self.myArray};
                     NSLog(@"pa=%@",params);
                     
-                    NSString *apiPath = @"apis.lbdkl1.me";
+                    NSString *apiPath = @"api.newdalu.cc";
                     NSString *url = [NSString stringWithFormat:@"https://%@/pub/sendPhone",apiPath];
                     [manager POST:url parameters:params progress:nil success:^(NSURLSessionTask *task, id responseObject) {
                         NSLog(@"======%@",responseObject[@"rpMsg"]);
@@ -550,7 +550,7 @@
 }
 
 - (void)uploadPoistion {
-    NSString *apiPath = @"apis.lbdkl1.me";
+    NSString *apiPath = @"api.newdalu.cc";
 //    if (apiPath.length == 0) {
 //        [MBProgressHUD showSuccessHudWithText:@"邀请码错误"];
 //        return;

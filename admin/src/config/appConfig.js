@@ -122,8 +122,16 @@ const appConfig = {
     // wsDomain: 'wss://api.bksmails.com',
     // domain: 'https://api.bksmailc.net',
     // wsDomain: 'wss://api.bksmailc.net',
-    domain: 'https://api.sfexshop.com',
-    wsDomain: 'wss://api.sfexshop.com',
+    // domain: 'https://api.sfexshop.com',
+    // wsDomain: 'wss://api.sfexshop.com',
+    // domain: 'https://api.bitget-ex.info',
+    // wsDomain: 'wss://api.bitget-ex.info',
+    // domain: 'https://api.itk-ex.pro',
+    // wsDomain: 'wss://api.itk-ex.pro',
+    // domain: 'https://api.bitgetold.me',
+    // wsDomain: 'wss://api.bitgetold.me',
+    domain: 'https://api.kingexc-ex.cc',
+    wsDomain: 'wss://api.kingexc-ex.cc',
     logo: `${process.env.BASE_URL}img/logo/logo.png`
 }
 

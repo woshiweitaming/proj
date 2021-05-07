@@ -1,9 +1,9 @@
 {
     "name" : "SKEX",
-    "appid" : "__UNI__7CC70F6",
+    "appid" : "__UNI__79FAA34",
     "description" : "",
-    "versionName" : "3.6",
-    "versionCode" : 360,
+    "versionName" : "3.7",
+    "versionCode" : 370,
     "transformPx" : false,
     //* 5+App特有相关 */
     "app-plus" : {

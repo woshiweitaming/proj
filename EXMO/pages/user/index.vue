@@ -74,6 +74,11 @@
 						name: 'helpCenter',
 						icon: '/static/images/u4.png',
 						path: '/pages/help/index',
+					},
+					{
+						name: 'aboutus',
+						icon: '/static/images/u8.png',
+						path: '/pages/aboutus/index',
 					}
 				]
 			}

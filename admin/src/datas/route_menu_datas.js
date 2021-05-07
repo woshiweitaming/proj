@@ -12,7 +12,7 @@ const routeMenuDatas = [
         },
         hidden: true,
         redirect: '/recharge',
-        component: () => import('@/views/Index'),
+        component: () => import('@/views/index'),
         children: [
             //管理员
             {
@@ -25,7 +25,7 @@ const routeMenuDatas = [
                     level: [0]
                 },
                 hidden: true,
-                component: () => import('@/views/Admin/Index'),
+                component: () => import('@/views/admin/index'),
                 children: [
                     {
                         name: '管理员列表',
@@ -34,7 +34,7 @@ const routeMenuDatas = [
                             title: '管理员列表',
                             requireAuth: true
                         },
-                        component: () => import('@/views/Admin/AdminList'),
+                        component: () => import('@/views/admin/AdminList'),
                     },
                     {
                         name: '创建管理员',
@@ -43,7 +43,7 @@ const routeMenuDatas = [
                             title: '创建管理员',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Admin/CreateAdmin'),
+                        component: () => import('@/views/admin/CreateAdmin'),
                     },
                     {
                         name: '帐变记录',
@@ -52,7 +52,7 @@ const routeMenuDatas = [
                             title: '帐变记录',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Admin/PaylogRecord'),
+                        component: () => import('@/views/admin/PaylogRecord'),
                     },
                     {
                         name: '登录日志',
@@ -61,7 +61,7 @@ const routeMenuDatas = [
                             title: '帐变记录',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Admin/LoginLog'),
+                        component: () => import('@/views/admin/LoginLog'),
                     },
                     {
                         name: '网站设置',
@@ -70,7 +70,7 @@ const routeMenuDatas = [
                             title: '网站设置',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Admin/WebsiteSetting'),
+                        component: () => import('@/views/admin/WebsiteSetting'),
                     },
                     {
                         name: '支付设置',
@@ -79,7 +79,7 @@ const routeMenuDatas = [
                             title: '支付设置',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Admin/PaySetting'),
+                        component: () => import('@/views/admin/PaySetting'),
                     },
                     {
                         name: '公告管理',
@@ -141,7 +141,7 @@ const routeMenuDatas = [
                             title: '统计报表',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Admin/ReportList'),
+                        component: () => import('@/views/admin/ReportList'),
                     },
                 ]
             },
@@ -155,7 +155,7 @@ const routeMenuDatas = [
                     level: [0]
                 },
                 hidden: true,
-                component: () => import('@/views/Product/Index'),
+                component: () => import('@/views/product/index'),
                 children: [
                     {
                         name: '产品列表',
@@ -164,7 +164,7 @@ const routeMenuDatas = [
                             title: '产品列表',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Product/ProductList'),
+                        component: () => import('@/views/product/ProductList'),
                     }
                 ]
             },
@@ -178,7 +178,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Recharge/Index'),
+                component: () => import('@/views/recharge/index'),
                 children: [
                     {
                         name: '充值记录',
@@ -188,7 +188,7 @@ const routeMenuDatas = [
                             requireAuth: true,
                             keepAlive: true
                         },
-                        component: () => import('@/views/Recharge/RechargeRecord'),
+                        component: () => import('@/views/recharge/RechargeRecord'),
                     }
                 ]
             },
@@ -202,7 +202,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Withdraw/Index'),
+                component: () => import('@/views/withdraw/index'),
                 children: [
                     {
                         name: '提现记录',
@@ -211,7 +211,7 @@ const routeMenuDatas = [
                             title: '提现记录',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Withdraw/WithdrawRecord'),
+                        component: () => import('@/views/withdraw/WithdrawRecord'),
                     }
                 ]
             },
@@ -225,7 +225,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Member/Index'),
+                component: () => import('@/views/member/index'),
                 children: [
                     {
                         name: '会员列表',
@@ -234,7 +234,7 @@ const routeMenuDatas = [
                             title: '会员列表',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Member/MemberList'),
+                        component: () => import('@/views/member/MemberList'),
                     },
                     {
                         name: '认证审核',
@@ -243,7 +243,7 @@ const routeMenuDatas = [
                             title: '认证审核',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Member/Auditing'),
+                        component: () => import('@/views/member/auditing'),
                     },
                 ]
             },
@@ -257,7 +257,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Order/Index'),
+                component: () => import('@/views/order/index'),
                 children: [
                     {
                         name: '持仓订单',
@@ -266,7 +266,7 @@ const routeMenuDatas = [
                             title: '持仓订单',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Order/PositionOrderList'),
+                        component: () => import('@/views/order/PositionOrderList'),
                     },
                     {
                         name: '平仓订单',
@@ -275,7 +275,7 @@ const routeMenuDatas = [
                             title: '平仓订单',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Order/HistoryOrderList'),
+                        component: () => import('@/views/order/HistoryOrderList'),
                     },
                 ]
             },
@@ -289,7 +289,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Financing/Index'),
+                component: () => import('@/views/financing/index'),
                 children: [
                     {
                         name: '理财产品',
@@ -298,7 +298,7 @@ const routeMenuDatas = [
                             title: '理财产品', 
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Financing/FinancingProductList'),
+                        component: () => import('@/views/financing/FinancingProductList'),
                     },
                     {
                         name: '理财订单',
@@ -307,7 +307,7 @@ const routeMenuDatas = [
                             title: '理财订单',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Financing/FinancingOrderList'),
+                        component: () => import('@/views/financing/FinancingOrderList'),
                     },
                     {
                         name: '理财报表',
@@ -316,7 +316,7 @@ const routeMenuDatas = [
                             title: '理财报表',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Financing/FinancingReportList'),
+                        component: () => import('@/views/financing/FinancingReportList'),
                     },
                 ]
             },
@@ -330,7 +330,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Staking/Index'),
+                component: () => import('@/views/staking/index'),
                 children: [
                     {
                         name: '产品列表',
@@ -339,7 +339,7 @@ const routeMenuDatas = [
                             title: '产品列表', 
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Staking/StakingProductList'),
+                        component: () => import('@/views/staking/StakingProductList'),
                     },
                     {
                         name: '订单列表',
@@ -348,7 +348,7 @@ const routeMenuDatas = [
                             title: '订单列表', 
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Staking/StakingOrderList'),
+                        component: () => import('@/views/staking/StakingOrderList'),
                     },
                 ]
             },
@@ -362,7 +362,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Staking/Index'),
+                component: () => import('@/views/staking/index'),
                 children: [
                     {
                         name: '产品列表',
@@ -371,7 +371,7 @@ const routeMenuDatas = [
                             title: '产品列表', 
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Pow/PowProductList'),
+                        component: () => import('@/views/pow/PowProductList'),
                     },
                     {
                         name: '挖矿订单',
@@ -380,7 +380,7 @@ const routeMenuDatas = [
                             title: '挖矿订单', 
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Pow/OrderList'),
+                        component: () => import('@/views/pow/OrderList'),
                     }
                 ]
             },
@@ -394,7 +394,7 @@ const routeMenuDatas = [
                     level: [0]
                 },
                 hidden: true,
-                component: () => import('@/views/Forecast/Index'),
+                component: () => import('@/views/forecast/index'),
                 children: [
                     {
                         name: '预测表',
@@ -405,7 +405,7 @@ const routeMenuDatas = [
                             requireAuth: true,
                             level: 0
                         },   
-                        component: () => import('@/views/Forecast/ForecastList'),     
+                        component: () => import('@/views/forecast/ForecastList'),     
                     },
                 ]
             },
@@ -419,7 +419,7 @@ const routeMenuDatas = [
                     level: [0,1,2,3]
                 },
                 hidden: true,
-                component: () => import('@/views/Line/Index'),
+                component: () => import('@/views/line/index'),
                 children: [
                     {
                         name: '二维码链接',
@@ -428,7 +428,7 @@ const routeMenuDatas = [
                             title: '二维码链接',
                             requireAuth: true,
                         },
-                        component: () => import('@/views/Line/QrcodeLink'),
+                        component: () => import('@/views/line/QrcodeLink'),
                     },
                 ]
             }
@@ -438,7 +438,7 @@ const routeMenuDatas = [
         name: 'Login',
         path: '/login',
         meta: {
-            title: 'DBS后台管理',
+            title: '后台管理',
             requireAuth: false,
         },
         component: () => import('@/views/Login'),

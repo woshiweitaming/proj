@@ -68,8 +68,8 @@
 						name: 'EN'
 					},
 					{
-						value: 'ja',
-						name: 'JA'
+						value: 'cns',
+						name: '繁'
 					},
 				]
 			}

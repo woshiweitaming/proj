@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "",
-  "color": "#eead22",
-  "navigationBarBackgroundColor": "#151a25",
-  "usingComponents": {
-    "swipers": "/layouts/home/Swiper",
-    "currency": "/layouts/home/Currency"
-  }
-}

@@ -2,10 +2,10 @@
  * 应用配置
  */
 const appConfig = {
-	// domain: 'http://180.178.39.226:8080',
-	// wsDomain: 'ws://180.178.39.226:8080',
-	domain: 'https://api.ubcoins.cc',
-	wsDomain: 'wss://api.ubcoins.cc',
+	domain: 'http://180.178.39.226:8080',
+	wsDomain: 'ws://180.178.39.226:8080',
+	// domain: 'https://api.ubcoins.cc',
+	// wsDomain: 'wss://api.ubcoins.cc',
 	//应用名称
 	appName: 'Ub Coins',
 	//外链

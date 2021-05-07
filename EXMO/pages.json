@@ -486,10 +486,10 @@
 			}
 		},
 		{
-			"path": "pages/pow_record_detail/index",
+			"path": "pages/aboutus/index",
 			"style": {
-				"navigationBarTextStyle":"black",
-				"navigationBarBackgroundColor": "#ffffff"
+				"navigationBarTextStyle":"white",
+				"navigationBarBackgroundColor": "#000"
 			}
 		}
 	],

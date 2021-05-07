@@ -54,7 +54,9 @@
 				<view class="titles">
 				    {{getLangs('productIntroduction')}}<image @tap="showDesc" class="down_arrow" src="../../static/images/down_arrow.png"></image>
 				</view>
-			    <view class="desc" v-if="show"></view>
+			    <view class="desc" v-if="show">
+					<rich-text :nodes="datas.introduce"></rich-text>
+				</view>
 			</view>
 			<view class="coin_labels">
 				<view class="titles">{{getLangs('escrowAmount')}}</view>
