@@ -1,7 +1,7 @@
 <template>
 	<view class="fund_card">
 		<view class="user_info">
-			<view class="nickname">{{getUserInfoData.ncikname}} {{getLangs('fundp1')}} (USDT)</view>
+			<view class="nickname">{{getLangs('fundp1')}} (USDT)</view>
 			<view class="leftmoney">{{getLeftmoney}}</view>
 			<!-- <view class="sub">≈ {{getCny}} CNY </view> -->
 		</view>

@@ -83,10 +83,12 @@
 		},
 		methods: {
 			async payOrderHandler(){
+				uni.showLoading()
 				const params = {
 					orderNo: this.data.orderNo
 				}
 				const res = await payOrder(params)
+				uni.hideLoading()
 				this.backTips(res)
 				if(validate.checkCode(res)){
 					this.navigateTo('/pages/coin_pool_success/index', {fid: this.fid, title: 'subscriptionSuccessful', desc: 'getSubscriptionOrder'})
